@@ -1,4 +1,4 @@
-import { genImg } from "src/contracts/contract/my-crypto-heroes/contract";
+import { genImg } from "src/contracts/contract/my-crypto-heroes-extension/contract";
 
 describe("[Contract] coingecko", () => {
   it("test genImg", () => {
