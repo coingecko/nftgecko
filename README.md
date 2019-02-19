@@ -1,5 +1,7 @@
 # NFT Manager
 
+[![Build Status](https://travis-ci.org/coingecko/nft-manager.svg?branch=master)](https://travis-ci.org/coingecko/nft-manager)
+
 NFT Manager is a web interface to manage CryptoCollectibles and ERC-721 tokens.
 
 # Contributing

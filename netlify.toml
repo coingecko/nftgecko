@@ -1,0 +1,9 @@
+[build]
+  base    = ""
+  publish = "dist/pwa"
+  command = "yarn build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
