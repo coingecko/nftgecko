@@ -1,14 +1,27 @@
 <template>
-  <div class="row justify-center">
-    <h1 class="col col-12 text-h2">Landing Page</h1>
-    <h4 class="col col-12 text-h4">You are not connected to metamask</h4>
-    <q-btn
-      class="col col-12"
-      icon="refresh"
-      label="restart the prompt for metamask"
-      color="info"
-      @click="initializeWeb3"
-    />
+  <div class="q-pa-md">
+    <q-card class="row justify-center q-py-lg">
+      <span class="col col-12 text-h4 text-bold text-center"
+        >You are not connected to metamask</span
+      >
+      <div class="col col-12 text-center q-py-lg">
+        <a href="https://metamask.io" rel="noreferrer" target="_blank">
+          <img
+            class="Metamask__Img"
+            src="~/assets/download-metamask.png"
+            alt="download metamask"
+          />
+        </a>
+      </div>
+      <div class="col col-12 text-center">
+        <q-btn
+          icon="refresh"
+          label="restart prompt for web3"
+          color="info"
+          @click="initializeWeb3"
+        />
+      </div>
+    </q-card>
   </div>
 </template>
 
@@ -27,4 +40,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.Metamask__Img {
+  max-width: 400px;
+  width: 100%;
+}
+</style>
