@@ -31,6 +31,16 @@ import Identicon from "identicon.js";
 
 export default Vue.extend({
   name: "CurrentAdressComponent",
+  props: {
+    slug: {
+      type: String,
+      default: ""
+    },
+    type: {
+      type: String,
+      default: "index"
+    }
+  },
   data() {
     return {};
   },
@@ -38,7 +48,8 @@ export default Vue.extend({
     ...mapActions({
       updateBalance: ActionsName.contract.updateBalance,
       initializeWeb3: ActionsName.web3.initializeWeb3,
-      loadAllContracts: ActionsName.contract.loadAllContracts
+      loadAllContracts: ActionsName.contract.loadAllContracts,
+      loadSpecificContract: ActionsName.contract.loadSpecificContract
     }),
     ...mapMutations({
       setAddress: MutationsName.contract.setAddress,
@@ -49,6 +60,9 @@ export default Vue.extend({
       this.setAddress(val);
       this.setLoading(true);
       await this.updateBalance();
+      if (this.type === "nft") {
+        await this.loadSpecificContract(this.slug);
+      }
       this.setLoading(false);
     }
   },
