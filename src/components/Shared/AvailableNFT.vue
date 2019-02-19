@@ -2,34 +2,54 @@
   <div class="q-pa-md full-width">
     <q-card>
       <q-card-section>
-        <h2 class="text-h2">Available NFTs</h2>
+        <span class="text-h2">Available NFTs</span>
         <p class="text-subtitle2">
           by
-          <a href="https://coingecko.com" rel="noreferrer" target="_blank"
+          <a
+            class="Link__Default"
+            href="https://coingecko.com"
+            rel="noreferrer"
+            target="_blank"
             >CoinGecko</a
           >
         </p>
       </q-card-section>
 
-      <div class="row items-stretch">
-        <q-card
+      <div class="row items-stretch justify-center">
+        <div
           v-for="(c, key) in contractsData"
           :key="key"
-          class="col col-xs-12 col-sm-6 col-md-4 col-lg-3"
+          class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 q-pa-sm"
         >
-          <q-card-section class="column">
-            <img :src="c.image.small" class="NFT-Card__Image" :alt="c.name" />
-            <h5 class="text-h5">{{ c.name }}</h5>
-          </q-card-section>
-          <q-separator />
-          <p class="text-subtitle2 NFT-Card__Description">
-            {{ c.description }}
-            <br />
-            <a :href="c.official_site" rel="noreferrer" target="_blank">{{
-              c.official_site
-            }}</a>
-          </p>
-        </q-card>
+          <q-card class="full-width full-height">
+            <q-card-section class="column">
+              <router-link class="NFT-Card__Image" :to="`/nft/${c.slug}`">
+                <img
+                  :src="c.image.large"
+                  class="NFT-Card__Image"
+                  :alt="c.name"
+                />
+              </router-link>
+              <router-link
+                :to="`/nft/${c.slug}`"
+                class="q-py-sm text-h5 text-bold text-center Link__Default"
+                >{{ c.name }}</router-link
+              >
+            </q-card-section>
+            <q-separator />
+            <p class="text-subtitle2 NFT-Card__Description">
+              {{ c.description }}
+              <br />
+              <a
+                class="Link__Default"
+                :href="c.official_site"
+                rel="noreferrer"
+                target="_blank"
+                >{{ c.official_site }}</a
+              >
+            </p>
+          </q-card>
+        </div>
       </div>
     </q-card>
   </div>

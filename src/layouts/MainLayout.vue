@@ -109,7 +109,13 @@
         </span>
         <q-space />
         <q-tabs v-model="tab" class="Footer__Text">
-          <q-tab name="tab1" label="GitHub" />
+          <a
+            href="https://github.com/coingecko/nft-manager"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <q-tab name="tab1" label="GitHub" />
+          </a>
         </q-tabs>
       </q-toolbar>
     </q-footer>

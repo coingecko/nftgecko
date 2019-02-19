@@ -59,6 +59,13 @@
             </q-card>
             <current-address v-if="currentAddress !== ''" />
             <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
+            <div class="row full-width q-mt-lg bg-grey-2" v-else>
+              <div class="col-12 q-pa-lg row">
+                <span class="text-h5 text-center col-12">
+                  No NFTs available
+                </span>
+              </div>
+            </div>
           </q-page>
         </q-page-container>
       </q-layout>
