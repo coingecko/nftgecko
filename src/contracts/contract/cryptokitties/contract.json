@@ -1,0 +1,16 @@
+{
+  "name": "CryptoKitties",
+  "slug": "cryptokitties",
+  "description": "Collect and breed digital cats.",
+  "official_site": "https://www.cryptokitties.co",
+  "abi": "cryptokitties.abi.json",
+  "image": {
+    "thumb": "img/contract/marble-nft/thumb.png",
+    "small": "img/contract/marble-nft/small.jpeg",
+    "large": "img/contract/marble-nft/large.png"
+  },
+  "contract": {
+    "contract_address": "0x06012c8cf97bead5deae237070f9587f8e7a266d",
+    "standard": "cryptokitties"
+  }
+}

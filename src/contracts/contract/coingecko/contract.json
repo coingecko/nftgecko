@@ -1,0 +1,16 @@
+{
+  "name": "CoinGecko Xmas 2018 NFToken",
+  "slug": "coingecko",
+  "description": "CoinGecko first NFT.",
+  "official_site": "https://xmas2018.coingecko.com/",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "img/contract/coingecko/thumb.png",
+    "small": "img/contract/coingecko/small.png",
+    "large": "img/contract/coingecko/large.png"
+  },
+  "contract": {
+    "contract_address": "0xfd98724f1c8a36c7be155cddce51b456eb1eb08d",
+    "standard": "openzeppelin"
+  }
+}

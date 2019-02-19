@@ -1,0 +1,19 @@
+{
+  "app": {
+    "name": "NFT Manager"
+  },
+  "web3": {
+    "error": {
+      "connect_eth_acc": "Please allow us to connect to your eth account.",
+      "web3_err": "Unable to use web3, please use MetaMask or Trust Wallet."
+    },
+    "success": {
+      "sign_in": "Successfully sign in."
+    }
+  },
+  "contract": {
+    "error": {
+      "no_acc": "no Ethereum account selected."
+    }
+  }
+}
