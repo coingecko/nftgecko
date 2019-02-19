@@ -57,7 +57,11 @@
                 </div>
               </q-card-section>
             </q-card>
-            <current-address v-if="currentAddress !== ''" />
+            <current-address
+              v-if="currentAddress !== ''"
+              :slug="slug"
+              type="nft"
+            />
             <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
             <div class="row full-width q-mt-lg bg-grey-2" v-else>
               <div class="col-12 q-pa-lg row">
@@ -144,9 +148,7 @@ export default {
       await this.initializeWeb3();
     }
     await this.loadSpecificContract(this.slug);
-    setTimeout(() => {
-      this.showNftList = true;
-    }, 200);
+    this.showNftList = true;
   }
 };
 </script>
