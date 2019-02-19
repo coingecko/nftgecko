@@ -1,6 +1,6 @@
 {
     "name": "MyCryptoHeroes:Hero",
-    "slug": "my-crypto-heroes-Hero",
+    "slug": "my-crypto-heroes-hero",
     "description": "My Crypto Heroes (MCH) - where your time and passion will become your assets. Get great extensions and Land through collecting/training historical Heroes! Can be played without gas fee.",
     "official_site": "https://www.mycryptoheroes.net",
     "abi": "openzeppelin.abi.json",
