@@ -1,0 +1,65 @@
+{
+  "name": "nft-manager",
+  "version": "0.0.1",
+  "description": "NFT Manager for ETH ERC721",
+  "productName": "NFT Manager",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "CoinGecko <hello@coingecko.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "dev": "quasar dev",
+    "build": "quasar build -m pwa",
+    "deploy": "yarn build && (cd dist/pwa && echo https://nft-manager.surge.sh > CNAME && mv index.html 200.html && surge .)",
+    "test:unit": "jest --updateSnapshot",
+    "test:unit:coverage": "jest --coverage",
+    "test:unit:watch": "jest --watch",
+    "test:unit:watchAll": "jest --watchAll",
+    "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
+    "concurrently:dev:jest": "concurrently -p \"[{name}]\" -n \"QUASAR,_JEST_\" -c \"quasar dev\" \"jest --watch\"",
+    "test:e2e": "cypress open",
+    "test:e2e:CI": "cypress run",
+    "serve:test:lighthouse": "quasar serve test/lighthouse/reports/ --port 8789",
+    "audit:snyk": "snyk test --json > ./test/audits/snyk.json",
+    "audit:node_modules": "yarn audit --json > ./test/audits/node_modules_audit.json",
+    "audit:licenses": "nlf --summary detail > ./test/audits/licenses.txt",
+    "audit:lighthouse": "lighthouse http://localhost:4000 view --output-path=./test/lighthouse/reports/index.html --config-path=./test/lighthouse/configs/full-config.js"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "dotenv": "^6.2.0",
+    "identicon.js": "^2.3.3",
+    "quasar": "^1.0.0-beta.1",
+    "vue-i18n": "^7.3.3",
+    "vuex-router-sync": "^5.0.0",
+    "web3": "^1.0.0-beta.46"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.0.0-beta.0",
+    "@quasar/quasar-app-extension-testing": "^1.0.0-beta.5",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^1.0.0-beta.3",
+    "@quasar/quasar-app-extension-testing-quality": "^1.0.0-beta.2",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^1.0.0-beta.4",
+    "@types/web3": "^1.0.18",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "strip-ansi": "=3.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "resolutions": {
+    "ajv": "6.8.1"
+  }
+}

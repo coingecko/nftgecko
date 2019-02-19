@@ -1,0 +1,16 @@
+{
+  "name": "Marble NFT",    
+  "slug": "marble-nft",
+  "description": "Every web page can only be marbled once and by one person only. Once a card is created, that URL is claimed forever. Now go create some classics!",
+  "official_site": "https://marble.cards",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "img/contract/marble-nft/thumb.png",
+    "small": "img/contract/marble-nft/small.jpeg",
+    "large": "img/contract/marble-nft/large.png"
+  },
+  "contract": {
+    "contract_address": "0x1d963688fe2209a98db35c67a041524822cf04ff",
+    "standard": "openzeppelin"
+  }
+}

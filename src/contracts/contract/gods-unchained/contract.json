@@ -1,0 +1,16 @@
+{
+  "name": "Gods Unchained",
+  "slug": "gods-unchained",
+  "description": "nft description",
+  "official_site": "https://godsunchained.com/",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "img/contract/marble-nft/thumb.png",
+    "small": "img/contract/marble-nft/small.jpeg",
+    "large": "img/contract/marble-nft/large.png"
+  },
+  "contract": {
+    "contract_address": "0x6EbeAf8e8E946F0716E6533A6f2cefc83f60e8Ab",
+    "standard": "openzeppelin"
+  }
+}

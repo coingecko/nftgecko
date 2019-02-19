@@ -1,0 +1,16 @@
+{
+  "name": "NFT NAME",
+  "slug": "nft-short-name-slug",
+  "description": "nft description",
+  "official_site": "NFT_SITE_HERE",
+  "abi": "ABI_JSON_LOCATION_IN_ASSETS/ABI",
+  "image": {
+    "thumb": "img/contract/marble-nft/thumb.png",
+    "small": "img/contract/marble-nft/small.jpeg",
+    "large": "img/contract/marble-nft/large.png"
+  },
+  "contract": {
+    "contract_address": "MAIN_NET_ADDRESS",
+    "standard": "openzeppelin"
+  }
+}
