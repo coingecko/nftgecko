@@ -1,9 +1,11 @@
+import { genImgFunc, genNFTFunc } from "~/src/types/contract";
+
 /** A function to get NFT's image
  *
  * @param {{id: number}} payload
  * @returns {{shortcut: boolean, imgAddr: string}}
  */
-export const genImg = ({ id }) => {
+export const genImg: genImgFunc = ({ id }) => {
   return {
     imgAddr: "",
     shortcut: false
@@ -14,4 +16,4 @@ export const genImg = ({ id }) => {
  *
  * @param {{id: number}} payload
  */
-export const getNft = ({ id }) => {};
+export const getNft: genNFTFunc = ({ id }) => {};

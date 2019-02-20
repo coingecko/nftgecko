@@ -27,7 +27,7 @@ const actions: ActionTree<ContractState, any> = {
     const {
       genImg
       // getNft
-    } = await import(`src/contracts/contract/${name}/contract`);
+    } = await import(`src/contracts/contract/${name}/contract.ts`);
     numArr.forEach(async key => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
       commit(ContractMutationName.addNftIds, { name: name, id: tokenId });

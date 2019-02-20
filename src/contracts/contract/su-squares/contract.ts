@@ -1,17 +1,19 @@
-const pad = function(number, size) {
-  var s = String(number);
-  while (s.length < (size || 2)) {
-    s = "0" + s;
-  }
-  return s;
-};
+import { genImgFunc, genNFTFunc } from "~/src/types/contract";
+
 
 /** A function to get NFT's image
  *
  * @param {{id: number}} payload
  * @returns {{shortcut: boolean, imgAddr: string}}
  */
-export const genImg = ({ id }) => {
+export const genImg: genImgFunc = ({ id }) => {
+const pad = (number: number, size: number) => {
+  let s = String(number);
+  while (s.length < (size || 2)) {
+    s = "0" + s;
+  }
+  return s;
+};
   const formattedId = pad(id, 5);
   return {
     imgAddr: `https://tenthousandsu.com/erc721/${formattedId}.png`,
@@ -23,4 +25,4 @@ export const genImg = ({ id }) => {
  *
  * @param {{id: number}} payload
  */
-export const getNft = ({ id }) => {};
+export const getNft: genNFTFunc = ({ id }) => {};

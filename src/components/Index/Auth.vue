@@ -28,7 +28,12 @@
             </q-td>
             <q-td>
               <span class>
-                <img class="Table__Img float-left" :src="props.row.thumb" />
+                <img
+                  class="Table__Img float-left"
+                  :src="
+                    props.row.thumb || generateImageHolder(props.row.address)
+                  "
+                />
                 <span class="q-ml-md column inline">{{ props.row.name }}</span>
               </span>
             </q-td>
