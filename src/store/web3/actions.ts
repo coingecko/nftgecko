@@ -1,10 +1,10 @@
-import { Web3ActionName, Web3MutationName } from "./names";
-import {
-  successNotification,
-  errorNotification
-} from "src/helper/notifications";
 import { web3Instance } from "src/boot/web3";
+import {
+  errorNotification,
+  successNotification
+} from "src/helper/notifications";
 import { ActionTree } from "vuex";
+import { Web3ActionName, Web3MutationName } from "./names";
 import { Web3State } from "./state";
 
 const actions: ActionTree<Web3State, any> = {

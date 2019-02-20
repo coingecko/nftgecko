@@ -15,6 +15,14 @@ dev:
 	@echo "Starting development mode..."
 	@quasar dev
 
+lint:
+	@yarn eslint --ext .js,.vue src
+	@yarn tslint --project tsconfig.json
+
+lint-fix:
+	@yarn eslint --ext .js,.vue src --fix
+	@yarn tslint --project tsconfig.json --fix
+
 # Generate contract from template
 contract:
 	@[ "${CONTRACT}" ] || (echo ">> CONTRACT is not set"; exit 1)

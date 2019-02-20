@@ -7,7 +7,7 @@
   "author": "CoinGecko <hello@coingecko.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.vue src",
+    "lint": "eslint --ext .js,.vue src && tslint --project tsconfig.json",
     "dev": "quasar dev",
     "build": "quasar build -m pwa",
     "deploy": "yarn build && (cd dist/pwa && echo https://nft-manager.surge.sh > CNAME && mv index.html 200.html && surge .)",
@@ -52,6 +52,7 @@
     "strip-ansi": "=3.0.1",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
+    "tslint": "^5.12.1",
     "typescript": "^3.3.3"
   },
   "engines": {

@@ -1,7 +1,7 @@
 export interface Web3State {
   loading: boolean;
   status: "logout" | "login" | "loading";
-  message: string,
+  message: string;
   initialized: boolean;
 }
 

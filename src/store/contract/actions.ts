@@ -1,13 +1,13 @@
+import { web3Instance } from "src/boot/web3";
 import {
-  loadAllContract,
   FILENAME,
+  loadAllContract,
   loadSpecificContract
 } from "src/contracts/contract";
-import { ContractActionName, ContractMutationName } from "./names";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
-import { web3Instance } from "src/boot/web3";
 import { ActionTree } from "vuex";
+import { ContractActionName, ContractMutationName } from "./names";
 import { ContractState } from "./state";
 
 const actions: ActionTree<ContractState, any> = {
@@ -29,9 +29,9 @@ const actions: ActionTree<ContractState, any> = {
       getSupportImgShortcut
       // getNft
     } = await import(`src/contracts/contract/${name}/contract.ts`);
-    numArr.forEach(async key => {
+    numArr.forEach(async (key) => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
-      commit(ContractMutationName.addNftIds, { name: name, id: tokenId });
+      commit(ContractMutationName.addNftIds, { name, id: tokenId });
       if (getSupportImgShortcut()) {
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
@@ -60,18 +60,18 @@ const actions: ActionTree<ContractState, any> = {
   /** Load Specific JSON Contract data */
   async [ContractActionName.loadSpecificJson](
     { commit },
-    /** @type {string} */ name
+    name: string
   ) {
     const jsonData = await loadSpecificContract(name);
     commit(ContractMutationName.setSpecificContractData, {
-      name: name,
+      name,
       contract: jsonData
     });
   },
   /** Update an array NFTs on balance (use in main page) */
   async [ContractActionName.updateBalance]({ state, commit }) {
     const acc = state.address;
-    for (let contract of Object.keys(state.contractDetails)) {
+    for (const contract of Object.keys(state.contractDetails)) {
       const { address, name, abi } = state.contractDetails[contract];
       await web3Instance.setContract({ abiAddress: abi, address, acc });
       const bal = await web3Instance.getBalance(acc);
@@ -97,7 +97,7 @@ const actions: ActionTree<ContractState, any> = {
   },
   async [ContractActionName.loadSpecificContract](
     { state, commit, dispatch },
-    /** @type {string} */ name
+    name: string
   ) {
     if (state.address === "") {
       await dispatch(ContractActionName.setupAddress);

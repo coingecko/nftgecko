@@ -1,5 +1,5 @@
-import { Web3MutationName } from "./names";
 import { MutationTree } from "vuex";
+import { Web3MutationName } from "./names";
 import { Web3State } from "./state";
 
 const mutations: MutationTree<Web3State> = {
@@ -18,7 +18,7 @@ const mutations: MutationTree<Web3State> = {
   // Mutations to set message
   [Web3MutationName.setMessage](state, message: string) {
     state.message = message;
-  }
+  },
 };
 
 export default mutations;

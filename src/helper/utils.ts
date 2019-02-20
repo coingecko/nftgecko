@@ -8,7 +8,7 @@ import Identicon from "identicon.js";
  */
 export function nameFactory<T>(name: string, obj: T): T {
   const temp: any = {};
-  Object.keys(obj).forEach(objName => {
+  Object.keys(obj).forEach((objName) => {
     temp[objName] = `${name}/${objName}`;
   });
   return temp;
@@ -21,8 +21,8 @@ export function nameFactory<T>(name: string, obj: T): T {
  */
 export function loadScripts(srcAry: Array<{src: string, integrity: string}>) {
   // Browser supports Promises
-  const promises: Promise<any>[] = [];
-  srcAry.forEach(srcObj => {
+  const promises: Array<Promise<any>> = [];
+  srcAry.forEach((srcObj) => {
     promises.push(
       new Promise((resolve, reject) => {
         loadScript(srcObj, resolve, reject);
@@ -37,12 +37,12 @@ export function loadScript(
   resolve: any = () => {},
   reject: any = () => {}
 ) {
-  var js = document.createElement("script");
+  const js = document.createElement("script");
   js.src = srcObj.src;
   js.crossOrigin = "anonymous";
   js.integrity = srcObj.integrity;
   js.onload = resolve;
-  js.onerror = function() {
+  js.onerror = () => {
     reject(new Error("Failed to load script " + srcObj.src));
   };
   document.head.appendChild(js);

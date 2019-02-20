@@ -1,8 +1,8 @@
-import { getSupportImgShortcutFunc, genImgFunc, genNFTFunc } from "~/src/types/contract";
+import { genImgFunc, genNFTFunc, getSupportImgShortcutFunc } from "~/src/types/contract";
 
 export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
   return true;
-}
+};
 
 /** A function to get NFT's image
  *
@@ -17,4 +17,6 @@ export const genImg: genImgFunc = ({ id }) => {
  *
  * @param {{id: number}} payload
  */
-export const getNft: genNFTFunc = ({ id }) => {};
+export const getNft: genNFTFunc = ({ id }) => {
+  //
+};

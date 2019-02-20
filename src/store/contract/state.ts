@@ -4,8 +4,8 @@ export interface ContractState {
   compKey: number;
   address: string;
   loading: boolean;
-  contractsData: Array<ContractJson>;
-  names: Array<string>;
+  contractsData: ContractJson[];
+  names: string[];
   contractDetails: {
     [contract: string]: {
       address: string;
