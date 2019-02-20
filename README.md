@@ -1,6 +1,8 @@
 # NFT Box
 
 [![Build Status](https://travis-ci.org/coingecko/nft-manager.svg?branch=master)](https://travis-ci.org/coingecko/nft-manager)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/08b82cd8-2d1f-4e5c-a921-cdec960554bd/deploy-status)](https://app.netlify.com/sites/nft-manager/deploys)
+
 
 NFT Manager is a web interface to manage CryptoCollectibles and ERC-721 tokens.
 

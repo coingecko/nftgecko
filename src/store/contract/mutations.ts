@@ -2,7 +2,7 @@ import Vue from "vue";
 import { ContractMutationName } from "./names";
 import { MutationTree } from "vuex";
 import { ContractState } from "./state";
-import { ContractJson } from "~/src/types/contractJson";
+import { ContractJson } from "src/types/contractJson";
 
 const mutations: MutationTree<ContractState> = {
   // Mutations to update component key (for rerender purpose)

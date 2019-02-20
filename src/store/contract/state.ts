@@ -1,4 +1,4 @@
-import { ContractJson } from "~/src/types/contractJson";
+import { ContractJson } from "src/types/contractJson";
 
 export interface ContractState {
   compKey: number;

@@ -84,6 +84,9 @@ export default {
   },
   methods: {
     openURL
+  },
+  created() {
+    this.tab = this.$route.path;
   }
 };
 </script>
