@@ -10,7 +10,7 @@ export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
  * @returns string
  */
 export const genImg: genImgFunc = ({ id }) => {
-  return `https://nft-assets.coingecko.com/xmas-2018/images-mirror/${id}.png`;
+  return `https://nft-assets.coingecko.com/testnet-geckotomo/images/coingecko-tomo-v1-A-${id}.png`;
 };
 
 /** A function to get NFT's data

@@ -1,8 +1,8 @@
 {
-  "name": "CoinGecko Xmas 2018 NFToken",
+  "name": "CoinGecko TOMO",
   "slug": "coingecko",
-  "description": "CoinGecko first NFT.",
-  "official_site": "https://xmas2018.coingecko.com/",
+  "description": "CoinGecko first NFT on TOMO.",
+  "official_site": "",
   "abi": "openzeppelin.abi.json",
   "image": {
     "thumb": "img/contract/coingecko/thumb.png",
@@ -10,7 +10,7 @@
     "large": "img/contract/coingecko/large.png"
   },
   "contract": {
-    "contract_address": "0xfd98724f1c8a36c7be155cddce51b456eb1eb08d",
+    "contract_address": "0xd04141B6D18709061aC34168CBba53ec62a23739",
     "standard": "openzeppelin"
   }
 }
