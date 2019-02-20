@@ -1,14 +1,13 @@
 <template>
-  <div class="row full-width q-px-md">
-    <div class="col col-12 q-pb-md">
-      <current-address />
-    </div>
+  <div class="row q-px-md">
     <q-card class="col col-12">
+      <div class="col col-12 q-pb-md">
+        <current-address />
+      </div>
       <div class="row" :key="compKey">
         <q-table
           :key="compKey"
-          class="full-width"
-          title="Available NFTs"
+          title="NFTs"
           :data="contractDetails"
           :columns="contractColumns"
           row-key="name"
@@ -21,14 +20,14 @@
             @click.native="rowClick(props.row)"
             class="cursor-pointer"
           >
-            <q-td class="text-center" key="thumb" :props="props">
-              <img class="Table__Img" :src="props.row.thumb" />
-            </q-td>
             <q-td>
-              {{ props.row.name }}
+              <span class="">
+                <img class="Table__Img float-left" :src="props.row.thumb" />
+                <span class="q-ml-md column inline">{{ props.row.name }}</span>
+              </span>
             </q-td>
             <q-td class="text-right">
-              {{ props.row.balance }}
+              <span>{{ props.row.balance }} XYZ</span>
             </q-td>
           </q-tr>
         </q-table>
@@ -51,17 +50,9 @@ export default {
     return {
       contractColumns: [
         {
-          name: "thumb",
-          required: true,
-          label: "Thumb Image",
-          align: "center",
-          field: "thumb",
-          style: "width: 40px;"
-        },
-        {
           name: "name",
           required: true,
-          label: "Contract Name",
+          label: "Asset",
           align: "left",
           field: "name",
           sortable: true
@@ -69,7 +60,7 @@ export default {
         {
           name: "balance",
           required: true,
-          label: "NFTs Availables",
+          label: "Balance",
           align: "right",
           field: "balance",
           sortable: true
@@ -103,7 +94,7 @@ export default {
 
 <style>
 .Table__Img {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 }
 </style>

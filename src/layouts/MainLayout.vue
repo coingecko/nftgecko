@@ -28,15 +28,13 @@
 
     <q-drawer v-model="leftDrawerOpen" bordered content-class="bg-secondary">
       <q-list>
-        <q-item-label header>{{ $t("app.name") }}</q-item-label>
         <router-link to="/">
           <q-item clickable>
             <q-item-section avatar>
               <q-icon name="home" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Home</q-item-label>
-              <q-item-label caption>Homepage of NFT Manager</q-item-label>
+              <q-item-label>Wallet</q-item-label>
             </q-item-section>
           </q-item>
         </router-link>
@@ -46,8 +44,7 @@
               <q-icon name="card_giftcard" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Available NFT</q-item-label>
-              <q-item-label caption>Listing of all available NFTs</q-item-label>
+              <q-item-label>Supported NFTs</q-item-label>
             </q-item-section>
           </q-item>
         </router-link>
@@ -58,13 +55,12 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>Settings</q-item-label>
-              <q-item-label caption>Settings</q-item-label>
             </q-item-section>
           </q-item>
         </router-link>
       </q-list>
       <q-list>
-        <q-item-label header>External Site</q-item-label>
+        <q-item-label header>More Info</q-item-label>
         <q-item
           clickable
           tag="a"
@@ -140,6 +136,10 @@ export default {
 </script>
 
 <style>
+body { 
+  background: #2c2f38;
+}
+
 .Layout__Settings {
   width: 2rem;
   height: 2rem;
@@ -155,7 +155,7 @@ export default {
 }
 
 .Footer__Container {
-  background: #ade75f;
+  background: #fff;
 }
 
 .Footer__Text {

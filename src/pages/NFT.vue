@@ -1,78 +1,69 @@
 <template>
-  <q-page padding>
+  <q-page class="flex flex-center">
     <q-inner-loading :showing="loading">
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
     <div class="q-pa-xs" v-show="!loading" v-if="!loading">
-      <q-layout
-        view="lHh lpr lFf"
-        container
-        style="height: 85vh"
-        class="shadow-2 rounded-borders"
-      >
-        <q-header elevated class="bg-info">
-          <q-toolbar>
-            <q-avatar>
-              <img :src="jsonData.image.thumb" :alt="jsonData.name" />
-            </q-avatar>
-            <q-toolbar-title>
-              {{ jsonData.name }}
-            </q-toolbar-title>
-          </q-toolbar>
-        </q-header>
+    
+    <q-header elevated class="bg-info">
+      <q-toolbar>
+        <q-avatar>
+          <img :src="jsonData.image.thumb" :alt="jsonData.name" />
+        </q-avatar>
+        <q-toolbar-title>
+          {{ jsonData.name }}
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-header>
 
-        <q-page-container>
-          <q-page padding>
-            <q-card class="q-my-md">
-              <q-card-section class="row">
-                <div
-                  class="col col-12 q-px-md q-py-sm row justify-start items-center"
-                >
-                  <img
-                    class="Contract__Image q-mx-sm"
-                    :src="jsonData.image.small"
-                    :alt="jsonData.name"
-                  />
-                  <div class="column justify-start">
-                    <span class="text-h4">{{ jsonData.name }}</span>
-                    <div class="q-pa-md q-gutter-md">
-                      <q-badge color="blue">
-                        {{ jsonData.contract.standard }}
-                      </q-badge>
-                      <q-badge color="purple">
-                        <a
-                          rel="noreferrer"
-                          target="_blank"
-                          :href="jsonData.official_site"
-                        >
-                          official site
-                        </a>
-                      </q-badge>
-                    </div>
-                  </div>
-                </div>
-                <div inline class="col col-12 q-px-md q-py-sm">
-                  <span class="text-h5 text-bold">About</span>
-                  <p>{{ jsonData.description }}</p>
-                </div>
-              </q-card-section>
-            </q-card>
-            <current-address
-              v-if="currentAddress !== ''"
-              :slug="slug"
-              type="nft"
-            />
-            <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
-            <div class="row full-width q-mt-lg bg-grey-2" v-else>
-              <div class="col-12 q-pa-lg row">
-                <span class="text-h5 text-center col-12">
-                  No NFTs available
-                </span>
-              </div>
+    <q-card class="q-my-md">
+      <q-card-section class="">
+        <div class="row">
+          <img
+            class="Contract__Image q-mx-sm float-left"
+            :src="jsonData.image.small"
+            :alt="jsonData.name"
+          />
+          <div class="column justify-start column inline q-ml-sm">
+            <span class="text-h5">{{ jsonData.name }}</span>
+            <div>
+              <q-badge color="blue">
+                {{ jsonData.contract.standard }}
+              </q-badge>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                :href="jsonData.official_site"
+              >
+                official site
+              </a>
             </div>
-          </q-page>
-        </q-page-container>
-      </q-layout>
+          </div>
+        </div>
+        <!-- <div inline class="col col-12 q-px-md q-py-sm">
+          <span class="text-h5 text-bold">About</span>
+          <p>{{ jsonData.description }}</p>
+        </div> -->
+
+        <div class="col col-12 q-px-md q-py-sm">
+           <current-address
+          v-if="currentAddress !== ''"
+          :slug="slug"
+          type="nft"
+        />
+        </div>
+      </q-card-section>
+
+    </q-card>
+    
+    <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
+    <div class="row full-width q-mt-lg bg-grey-2" v-else>
+      <div class="col-12 q-pa-lg row">
+        <span class="text-h5 text-center col-12">
+          No NFTs available
+        </span>
+      </div>
+    </div>
     </div>
   </q-page>
 </template>
@@ -155,7 +146,7 @@ export default {
 
 <style>
 .Contract__Image {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
 }
 </style>

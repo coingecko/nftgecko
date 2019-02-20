@@ -49,9 +49,9 @@ module.exports = function(ctx) {
         "QAvatar",
         "QBadge",
         "QFooter",
+        "QSpace",
         "QTabs",
         "QTab",
-        "QSpace"
       ],
 
       directives: ["Ripple"],
