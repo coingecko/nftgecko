@@ -20,7 +20,6 @@
       <router-view />
       <div class="row">
         <span class="col Footer__Text text-white text-center">
-          © 2019 CoinGecko. All Rights Reserved.
         </span>
       </div>
     </q-page-container>
