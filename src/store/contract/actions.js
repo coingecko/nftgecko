@@ -34,23 +34,21 @@ const actions = {
       // getNft
     } = await import(`src/contracts/contract/${name}/contract`);
     numArr.forEach(async key => {
-      const tId = await web3Instance.token.methods
-        .tokenOfOwnerByIndex(state.address, key)
-        .call();
-      commit(ContractMutationName.addNftIds, { name: name, id: tId });
-      const image = genImg({ id: tId });
+      const tokenId = await web3Instance.getTokenWithId(state.address, key);
+      commit(ContractMutationName.addNftIds, { name: name, id: tokenId });
+      const image = genImg({ id: tokenId });
       if (image.shortcut) {
         commit(ContractMutationName.setNftImages, {
-          id: tId,
+          id: tokenId,
           image: image.imgAddr
         });
       } else {
         // make RPC call
-        const uri = await web3Instance.getURI(tId);
+        const uri = await web3Instance.getURI(tokenId);
         const res = await fetch(uri);
         const jsonData = await res.json();
         commit(ContractMutationName.setNftImages, {
-          id: tId,
+          id: tokenId,
           image: jsonData.properties.image.description
         });
       }

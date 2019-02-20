@@ -10,13 +10,14 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Supported Contract
 
-| Name                        | Slug             | Status                                              |
-| --------------------------- | ---------------- | --------------------------------------------------- |
-| CoinGecko Xmas 2018 NFToken | coingecko        | [Complete](src/contracts/contract/coingecko)        |
-| CryptoKitties               | cryptokitties    | [WIP](src/contracts/contract/cryptokitties)         |
-| Gods Unchained              | gods-unchained   | [WIP](src/contracts/contract/gods-unchained)        |
-| Marble Cards                | marble-nft       | [Complete](src/contracts/contract/marble-nft)       |
-| MyCryptoHeroes              | my-crypto-heroes | [Complete](src/contracts/contract/my-crypto-heroes) |
+| Name                        | Slug                       | Status                                              |
+| --------------------------- | -------------------------- | --------------------------------------------------- |
+| CoinGecko Xmas 2018 NFToken | coingecko                  | [Complete](src/contracts/contract/coingecko)        |
+| CryptoKitties               | cryptokitties              | [WIP](src/contracts/contract/cryptokitties)         |
+| Gods Unchained              | gods-unchained             | [WIP](src/contracts/contract/gods-unchained)        |
+| Marble Cards                | marble-nft                 | [Complete](src/contracts/contract/marble-nft)       |
+| MyCryptoHeroes:Extension    | my-crypto-heroes-extension | [Complete](src/contracts/contract/my-crypto-heroes-extension) |
+| MyCryptoHeroes:Hero         | my-crypto-heroes-hero      | [Complete](src/contracts/contract/my-crypto-heroes-hero) |
 
 # Feature shipped
 

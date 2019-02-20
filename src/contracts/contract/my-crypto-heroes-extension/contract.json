@@ -1,7 +1,7 @@
 {
-    "name": "MyCryptoHeroes",
-    "slug": "my-crypto-heroes",
-    "description": "My Crypto Heroes (MCH) -where your time and passion will become your assets. Get great extensions and Land through collecting/training historical Heroes! Can be played without gas fee.",
+    "name": "MyCryptoHeroes:Extension",
+    "slug": "my-crypto-heroes-extension",
+    "description": "My Crypto Heroes Extension (MCHE) - where your time and passion will become your assets. Get great extensions and Land through collecting/training historical Heroes! Can be played without gas fee.",
     "official_site": "https://www.mycryptoheroes.net",
     "abi": "openzeppelin.abi.json",
     "image": {
