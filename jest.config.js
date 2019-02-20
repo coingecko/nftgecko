@@ -8,7 +8,7 @@ module.exports = {
   bail: true,
   cache: false,
   verbose: true,
-  collectCoverage: true,
+  collectCoverage: false,
   coverageDirectory: "<rootDir>/test/jest/coverage",
   collectCoverageFrom: [
     "<rootDir>/src/**/*.vue",
