@@ -1,8 +1,10 @@
 const pad = function(number, size) {
   var s = String(number);
-  while (s.length < (size || 2)) {s = "0" + s;}
+  while (s.length < (size || 2)) {
+    s = "0" + s;
+  }
   return s;
-}
+};
 
 /** A function to get NFT's image
  *

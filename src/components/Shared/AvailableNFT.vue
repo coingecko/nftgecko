@@ -25,7 +25,10 @@
             <q-card-section class="column">
               <router-link class="NFT-Card__Image" :to="`/nft/${c.slug}`">
                 <img
-                  :src="c.image.large"
+                  :src="
+                    c.image.large ||
+                      generateImageHolder(c.contract.contract_address, 300)
+                  "
                   class="NFT-Card__Image"
                   :alt="c.name"
                 />
@@ -58,6 +61,7 @@
 <script>
 import { ActionsName } from "src/store";
 import { mapActions, mapState } from "vuex";
+import { generateImageHolder } from "src/helper/utils";
 
 export default {
   name: "AvailableNFTComponent",
@@ -74,7 +78,8 @@ export default {
   methods: {
     ...mapActions({
       loadAllJson: ActionsName.contract.loadAllJson
-    })
+    }),
+    generateImageHolder: generateImageHolder
   },
   mounted() {
     this.loadAllJson();

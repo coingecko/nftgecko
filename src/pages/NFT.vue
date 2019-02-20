@@ -13,7 +13,13 @@
         <q-header elevated class="bg-info">
           <q-toolbar>
             <q-avatar>
-              <img :src="jsonData.image.thumb" :alt="jsonData.name" />
+              <img
+                :src="
+                  jsonData.image.thumb ||
+                    generateImageHolder(jsonData.contract.contract_address)
+                "
+                :alt="jsonData.name"
+              />
             </q-avatar>
             <q-toolbar-title>
               {{ jsonData.name }}
@@ -30,7 +36,13 @@
                 >
                   <img
                     class="Contract__Image q-mx-sm"
-                    :src="jsonData.image.small"
+                    :src="
+                      jsonData.image.small ||
+                        generateImageHolder(
+                          jsonData.contract.contract_address,
+                          100
+                        )
+                    "
                     :alt="jsonData.name"
                   />
                   <div class="column justify-start">
@@ -84,6 +96,7 @@ import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
 import NFTListVue from "src/components/NFT/NFTList.vue";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import { GettersName, ActionsName, MutationsName } from "src/store";
+import { generateImageHolder } from "src/helper/utils";
 
 export default {
   name: "NFTComponent",
@@ -106,7 +119,8 @@ export default {
     }),
     ...mapMutations({
       setName: MutationsName.contract.setName
-    })
+    }),
+    generateImageHolder: generateImageHolder
   },
   computed: {
     ...mapGetters({

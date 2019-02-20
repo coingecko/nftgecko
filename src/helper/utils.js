@@ -1,3 +1,5 @@
+import Identicon from "identicon.js";
+
 /**
  * @export
  * @param {string} name
@@ -58,4 +60,14 @@ export function range(start = 0, end = 0, step = 1) {
   return start > end
     ? Array.from({ length }, (_, key) => start - key * step)
     : Array.from({ length }, (_, key) => start + key * step);
+}
+
+/**
+ *
+ * @param {string | number} name
+ * @param {number} size
+ */
+export function generateImageHolder(name, size = 50) {
+  const identicon = new Identicon(name, size).toString();
+  return `data:image/png;base64,${identicon}`;
 }
