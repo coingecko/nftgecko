@@ -1,5 +1,5 @@
-import { ContractGetterName } from "./names";
 import { GetterTree } from "vuex";
+import { ContractGetterName } from "./names";
 import { ContractState } from "./state";
 
 const getters: GetterTree<ContractState, any> = {
@@ -13,11 +13,11 @@ const getters: GetterTree<ContractState, any> = {
   },
   // get all the contract addresses
   [ContractGetterName.getContractAdresses](state) {
-    return state.contractsData.map(c => c.contract.contract_address);
+    return state.contractsData.map((c) => c.contract.contract_address);
   },
   // get contract ContractDetails
   [ContractGetterName.getContractDetails](state) {
-    return Object.keys(state.contractDetails).map(key => {
+    return Object.keys(state.contractDetails).map((key) => {
       return state.contractDetails[key];
     });
   },

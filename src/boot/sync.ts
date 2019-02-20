@@ -1,6 +1,6 @@
-import { sync } from "vuex-router-sync";
 // @ts-ignore
 import store from "src/store";
+import { sync } from "vuex-router-sync";
 import { BootInput } from "../types/boot";
 // import { BootInput } from "../types/boot";
 

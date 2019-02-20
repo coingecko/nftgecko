@@ -1,5 +1,5 @@
-import { SettingsMutationName } from "./names";
 import { MutationTree } from "vuex";
+import { SettingsMutationName } from "./names";
 import { SettingsState } from "./state";
 
 const mutations: MutationTree<SettingsState> = {

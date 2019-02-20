@@ -1,22 +1,19 @@
-import Vuex from "vuex";
+import { nameFactory } from "src/helper/utils";
 import createLogger from "vuex/dist/logger";
-
 import contract from "./contract";
-import settings from "./settings";
-import web3 from "./web3";
 import {
   ContractActionName,
   ContractGetterName,
   ContractMutationName
 } from "./contract/names";
+import settings from "./settings";
 import {
   SettingsActionName,
-  SettingsMutationName,
-  SettingsGetterName
+  SettingsGetterName,
+  SettingsMutationName
 } from "./settings/names";
-import { nameFactory } from "src/helper/utils";
-import { Web3ActionName, Web3MutationName, Web3GetterName } from "./web3/names";
-
+import web3 from "./web3";
+import { Web3ActionName, Web3GetterName, Web3MutationName } from "./web3/names";
 
 const VuexStoreProperties = {
     modules: {
@@ -25,7 +22,7 @@ const VuexStoreProperties = {
       contract
     },
     plugins: process.env.DEV ? [createLogger()] : []
-  }
+  };
 export default VuexStoreProperties;
 
 export const ActionsName = {

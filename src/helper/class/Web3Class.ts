@@ -4,7 +4,7 @@ import { Contract } from "web3-eth-contract/types";
 export class Web3Class {
   public web3: Web3;
   public token: Contract|null;
-  
+
   constructor() {
     this.web3 = window.web3;
     this.token = null;
@@ -15,7 +15,7 @@ export class Web3Class {
    * @param {*} web3
    * @memberof Web3Class
    */
-  setWeb3(web3: any) {
+  public setWeb3(web3: any) {
     this.web3 = new Web3(web3);
     return;
   }
@@ -26,7 +26,7 @@ export class Web3Class {
    * @returns {Promise<string[]>}
    * @memberof Web3Class
    */
-  getAvailableAddress() {
+  public getAvailableAddress() {
     return this.web3.eth.getAccounts();
   }
 
@@ -34,7 +34,7 @@ export class Web3Class {
    * @param {{abiAddress: string, address: string, acc: string}} payload
    * @memberof Web3Class
    */
-  async setContract({ abiAddress, address, acc }: {abiAddress: string, address: string, acc: string}) {
+  public async setContract({ abiAddress, address, acc }: {abiAddress: string, address: string, acc: string}) {
     const res = await fetch(`abi/${abiAddress}`);
     const abiJson = await res.json();
     this.token = new this.web3.eth.Contract(abiJson, address, {
@@ -48,23 +48,24 @@ export class Web3Class {
    * @param {string} acc
    * @returns {number} balance
    */
-  getBalance(acc: string) {
+  public getBalance(acc: string) {
     return this.token!.methods
       .balanceOf(acc)
       .call()
       .catch(() => 0);
   }
 
-  /** getTokenWithId: Get tokenId by passing in a key (Key generated with an array in ascending order from 0 -> balanceOf no)
+  /** getTokenWithId:
+   * Get tokenId by passing in a key (Key generated with an array in ascending order from 0 -> balanceOf no)
    * @param {string} acc
    * @param {number} key
    * @returns {number} tokenId
    */
-  getTokenWithId(acc: string, key: number) {
+  public getTokenWithId(acc: string, key: number) {
     return this.token!.methods.tokenOfOwnerByIndex(acc, key).call();
   }
 
-  getURI(tokenId: number) {
+  public getURI(tokenId: number) {
     return this.token!.methods.tokenURI(tokenId).call();
   }
 }

@@ -1,5 +1,5 @@
-import VueI18n from "vue-i18n";
 import messages from "src/i18n";
+import VueI18n from "vue-i18n";
 import { BootInput } from "../types/boot";
 
 let i18n: VueI18n;

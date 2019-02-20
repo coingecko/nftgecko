@@ -26,7 +26,7 @@ module.exports = function(ctx) {
 
     extras: [
       "roboto-font",
-      // "material-icons", // optional, you are not bound to it
+      "material-icons", // optional, you are not bound to it
       // 'ionicons-v4',
       // 'mdi-v3',
       "fontawesome-v5"
@@ -129,6 +129,10 @@ module.exports = function(ctx) {
     pwa: {
       // workboxPluginMode: "InjectManifest",
       // workboxOptions: {},
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true
+      },
       manifest: {
         name: "CoinGecko NFT Manager",
         short_name: "CoinGecko NFT Manager",

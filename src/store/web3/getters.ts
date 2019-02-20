@@ -1,5 +1,5 @@
-import { Web3GetterName } from "./names";
 import { GetterTree } from "vuex";
+import { Web3GetterName } from "./names";
 import { Web3State } from "./state";
 
 const getters: GetterTree<Web3State, any> = {
