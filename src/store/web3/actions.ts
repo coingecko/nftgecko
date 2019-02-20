@@ -4,11 +4,10 @@ import {
   errorNotification
 } from "src/helper/notifications";
 import { web3Instance } from "src/boot/web3";
+import { ActionTree } from "vuex";
+import { Web3State } from "./state";
 
-/** @typedef {import("./state").default} Web3State */
-
-/** @type {import("vuex").ActionTree<Web3State>} */
-const actions = {
+const actions: ActionTree<Web3State, any> = {
   /** Required to run this after browser loaded */
   async [Web3ActionName.initializeWeb3]({ state, commit }, force = false) {
     commit(Web3MutationName.setLoading, true);

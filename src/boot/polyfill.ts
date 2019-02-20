@@ -1,6 +1,7 @@
 import { loadScripts } from "src/helper/utils";
+import { BootInput } from "../types/boot";
 
-export default async ({ app, router, Vue }) => {
+export default async ({ app, router, Vue }: BootInput) => {
   if (!window.fetch) {
     loadScripts([
       {

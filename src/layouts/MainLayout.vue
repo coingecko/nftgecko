@@ -136,7 +136,7 @@ export default {
 </script>
 
 <style>
-body { 
+body {
   background: #2c2f38;
 }
 

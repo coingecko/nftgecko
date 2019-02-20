@@ -4,77 +4,73 @@
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
     <div class="q-pa-xs" v-show="!loading" v-if="!loading">
-    <q-header elevated class="bg-info">
-      <q-toolbar>
-        <q-avatar>
-          <img
-            :src="
-              jsonData.image.thumb ||
-                generateImageHolder(jsonData.contract.contract_address)
-            "
-            :alt="jsonData.name"
-          />        
-        </q-avatar>
-        <q-toolbar-title>
-          {{ jsonData.name }}
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+      <q-header elevated class="bg-info">
+        <q-toolbar>
+          <q-avatar>
+            <img
+              :src="
+                jsonData.image.thumb ||
+                  generateImageHolder(jsonData.contract.contract_address)
+              "
+              :alt="jsonData.name"
+            />
+          </q-avatar>
+          <q-toolbar-title>
+            {{ jsonData.name }}
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
 
-    <q-card class="q-my-md">
-      <q-card-section class="">
-        <div class="row">
-          <img
-            class="Contract__Image q-mx-sm"
-            :src="
-              jsonData.image.small ||
-                generateImageHolder(
-                  jsonData.contract.contract_address,
-                  100
-                )
-            "
-            :alt="jsonData.name"
-          />
-          <div class="column justify-start column inline q-ml-sm">
-            <span class="text-h5">{{ jsonData.name }}</span>
-            <div>
-              <q-badge color="blue">
-                {{ jsonData.contract.standard }}
-              </q-badge>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                :href="jsonData.official_site"
-              >
-                official site
-              </a>
+      <q-card class="q-my-md">
+        <q-card-section class="">
+          <div class="row">
+            <img
+              class="Contract__Image q-mx-sm"
+              :src="
+                jsonData.image.small ||
+                  generateImageHolder(jsonData.contract.contract_address, 100)
+              "
+              :alt="jsonData.name"
+            />
+            <div class="column justify-start column inline q-ml-sm">
+              <span class="text-h5">{{ jsonData.name }}</span>
+              <div>
+                <q-badge color="blue">
+                  {{ jsonData.contract.standard }}
+                </q-badge>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  :href="jsonData.official_site"
+                >
+                  official site
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- <div inline class="col col-12 q-px-md q-py-sm">
+          <!-- <div inline class="col col-12 q-px-md q-py-sm">
           <span class="text-h5 text-bold">About</span>
           <p>{{ jsonData.description }}</p>
         </div> -->
 
-        <div class="col col-12 q-px-md q-py-sm">
-           <current-address
-          v-if="currentAddress !== ''"
-          :slug="slug"
-          type="nft"
-        />
-        </div>
-      </q-card-section>
+          <div class="col col-12 q-px-md q-py-sm">
+            <current-address
+              v-if="currentAddress !== ''"
+              :slug="slug"
+              type="nft"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
 
-    </q-card>
-    
-    <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
-    <div class="row full-width q-mt-lg bg-grey-2" v-else>
-      <div class="col-12 q-pa-lg row">
-        <span class="text-h5 text-center col-12">
-          No NFTs available
-        </span>
+      <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
+      <div class="row full-width q-mt-lg bg-grey-2" v-else>
+        <div class="col-12 q-pa-lg row">
+          <span class="text-h5 text-center col-12">
+            No NFTs available
+          </span>
+        </div>
       </div>
-    </div>
     </div>
   </q-page>
 </template>

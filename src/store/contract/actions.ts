@@ -7,14 +7,13 @@ import { ContractActionName, ContractMutationName } from "./names";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
 import { web3Instance } from "src/boot/web3";
+import { ActionTree } from "vuex";
+import { ContractState } from "./state";
 
-/** @typedef {import("./state").default} ContractState */
-
-/** @type {import("vuex").ActionTree<ContractState>} */
-const actions = {
+const actions: ActionTree<ContractState, any> = {
   /** [Private] Setup ETH Address */
   async [ContractActionName.setupAddress]({ commit, rootState }) {
-    let acc;
+    let acc: string[];
     if (rootState.route.query.address) {
       acc = [rootState.route.query.address];
     } else {
@@ -23,10 +22,7 @@ const actions = {
     commit(ContractMutationName.setAddress, acc[0]);
   },
   /** [Private] Load all NFTs (with img id) */
-  async [ContractActionName.loadAllNfts](
-    { state, commit, dispatch },
-    /** @type {string} */ name
-  ) {
+  async [ContractActionName.loadAllNfts]({ state, commit }, name: string) {
     const numArr = range(0, state.contractDetails[name].balance);
     const {
       genImg

@@ -1,12 +1,13 @@
 import Web3 from "web3";
+import { Contract } from "web3-eth-contract/types";
 
 export class Web3Class {
-  /** @type {Web3} */
-  web3;
-  /** @type {Object} */
-  token = {};
+  public web3: Web3;
+  public token: Contract|null;
+  
   constructor() {
     this.web3 = window.web3;
+    this.token = null;
   }
 
   // ==========MUTATIONS==========
@@ -14,7 +15,7 @@ export class Web3Class {
    * @param {*} web3
    * @memberof Web3Class
    */
-  setWeb3(web3) {
+  setWeb3(web3: any) {
     this.web3 = new Web3(web3);
     return;
   }
@@ -33,13 +34,13 @@ export class Web3Class {
    * @param {{abiAddress: string, address: string, acc: string}} payload
    * @memberof Web3Class
    */
-  async setContract({ abiAddress, address, acc }) {
+  async setContract({ abiAddress, address, acc }: {abiAddress: string, address: string, acc: string}) {
     const res = await fetch(`abi/${abiAddress}`);
     const abiJson = await res.json();
     this.token = new this.web3.eth.Contract(abiJson, address, {
       from: acc,
       gasPrice: "20000000000"
-    });
+    } as any);
     return;
   }
 
@@ -47,8 +48,8 @@ export class Web3Class {
    * @param {string} acc
    * @returns {number} balance
    */
-  getBalance(acc) {
-    return this.token.methods
+  getBalance(acc: string) {
+    return this.token!.methods
       .balanceOf(acc)
       .call()
       .catch(() => 0);
@@ -59,11 +60,11 @@ export class Web3Class {
    * @param {number} key
    * @returns {number} tokenId
    */
-  getTokenWithId(acc, key) {
-    return this.token.methods.tokenOfOwnerByIndex(acc, key).call();
+  getTokenWithId(acc: string, key: number) {
+    return this.token!.methods.tokenOfOwnerByIndex(acc, key).call();
   }
 
-  getURI(tokenId) {
-    return this.token.methods.tokenURI(tokenId).call();
+  getURI(tokenId: number) {
+    return this.token!.methods.tokenURI(tokenId).call();
   }
 }

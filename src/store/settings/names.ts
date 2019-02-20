@@ -1,5 +1,4 @@
 // types
-
 export const SettingsActionName = {};
 
 export const SettingsGetterName = {

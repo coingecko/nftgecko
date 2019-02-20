@@ -90,7 +90,8 @@ describe("[Contract Mutations]", () => {
         address: cgJson.contract.contract_address,
         balance: 0,
         ids: [],
-        name: payload.name
+        name: payload.name,
+        thumb: cgJson.image.thumb
       }
     });
   });

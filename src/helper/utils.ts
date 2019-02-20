@@ -6,8 +6,8 @@ import Identicon from "identicon.js";
  * @param {Object} obj
  * @returns {*}
  */
-export function nameFactory(name, obj) {
-  const temp = {};
+export function nameFactory<T>(name: string, obj: T): T {
+  const temp: any = {};
   Object.keys(obj).forEach(objName => {
     temp[objName] = `${name}/${objName}`;
   });
@@ -19,9 +19,9 @@ export function nameFactory(name, obj) {
  * @param {Array<{src: string, integrity: string}>} srcAry
  * @returns
  */
-export function loadScripts(srcAry) {
+export function loadScripts(srcAry: Array<{src: string, integrity: string}>) {
   // Browser supports Promises
-  const promises = [];
+  const promises: Promise<any>[] = [];
   srcAry.forEach(srcObj => {
     promises.push(
       new Promise((resolve, reject) => {
@@ -29,14 +29,13 @@ export function loadScripts(srcAry) {
       })
     );
   });
-
   return Promise.all(promises);
 }
 
 export function loadScript(
-  srcObj,
-  resolve = () => {},
-  /** @type {*} */ reject = () => {}
+  srcObj: {src: string, integrity: string},
+  resolve: any = () => {},
+  reject: any = () => {}
 ) {
   var js = document.createElement("script");
   js.src = srcObj.src;
@@ -67,7 +66,7 @@ export function range(start = 0, end = 0, step = 1) {
  * @param {string | number} name
  * @param {number} size
  */
-export function generateImageHolder(name, size = 50) {
+export function generateImageHolder(name: string, size = 50) {
   const identicon = new Identicon(name, size).toString();
   return `data:image/png;base64,${identicon}`;
 }

@@ -1,11 +1,8 @@
 import { SettingsGetterName } from "./names";
+import { GetterTree } from "vuex";
+import { SettingsState } from "./state";
 
-/** @typedef {import("./state").default} SettingsState */
-
-/**
- * @type {*}
- */
-const getters = {
+const getters: GetterTree<SettingsState, any> = {
   // get dark mode
   [SettingsGetterName.getDarkMode](state) {
     return state.darkMode;

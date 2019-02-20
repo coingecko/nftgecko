@@ -1,8 +1,8 @@
 {
-  "name": "nft-manager",
+  "name": "nftbox",
   "version": "0.0.1",
-  "description": "NFT Manager for ETH ERC721",
-  "productName": "NFT Manager",
+  "description": "NFTBox allows you to manage all your crypto-collectibles in one unified interface. Connect Metamask and view all your ERC-721 Non-Fungible Tokens (NFT).",
+  "productName": "NFTBox",
   "cordovaId": "org.cordova.quasar.app",
   "author": "CoinGecko <hello@coingecko.com>",
   "private": true,
@@ -30,6 +30,7 @@
     "dotenv": "^6.2.0",
     "identicon.js": "^2.3.3",
     "quasar": "^1.0.0-beta.1",
+    "vue-class-component": "^7.0.1",
     "vue-i18n": "^7.3.3",
     "vuex-router-sync": "^5.0.0",
     "web3": "^1.0.0-beta.46"
@@ -47,7 +48,10 @@
     "eslint": "^5.10.0",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-vue": "^5.0.0",
-    "strip-ansi": "=3.0.1"
+    "strip-ansi": "=3.0.1",
+    "ts-jest": "^24.0.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3"
   },
   "engines": {
     "node": ">= 8.9.0",

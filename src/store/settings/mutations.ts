@@ -1,15 +1,14 @@
 import { SettingsMutationName } from "./names";
+import { MutationTree } from "vuex";
+import { SettingsState } from "./state";
 
-/** @typedef {import("./state").default} SettingsState */
-
-/** @type {import("vuex").MutationTree<SettingsState>} */
-const mutations = {
+const mutations: MutationTree<SettingsState> = {
   // Mutations to toggle darkMode
   [SettingsMutationName.toggleDarkMode](state) {
     state.darkMode = !state.darkMode;
   },
   // Mutations to set darkMode
-  [SettingsMutationName.setDarkMode](state, /** @type {boolean} */ darkMode) {
+  [SettingsMutationName.setDarkMode](state, darkMode: boolean) {
     state.darkMode = darkMode;
   }
 };

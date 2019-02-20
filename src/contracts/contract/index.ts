@@ -16,6 +16,6 @@ export const loadAllContract = async () => {
   return Promise.all([...loadJson]);
 };
 
-export const loadSpecificContract = async name => {
+export const loadSpecificContract = async (name: string) => {
   return import(`./${name}/contract.json`);
 };

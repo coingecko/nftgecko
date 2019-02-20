@@ -1,6 +1,6 @@
 <template>
   <div class="row q-px-md">
-    <q-card class="col col-12">
+    <q-card class="col col-12 bg-secondary">
       <div class="col col-12 q-pb-md">
         <current-address />
       </div>
@@ -27,7 +27,7 @@
               />
             </q-td>
             <q-td>
-              <span class="">
+              <span class>
                 <img class="Table__Img float-left" :src="props.row.thumb" />
                 <span class="q-ml-md column inline">{{ props.row.name }}</span>
               </span>
@@ -43,12 +43,13 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapState, mapGetters } from "vuex";
 import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
 import { generateImageHolder } from "src/helper/utils";
 
-export default {
+export default Vue.extend({
   name: "AuthComponent",
   components: {
     "current-address": CurrentAddressVue
@@ -97,7 +98,7 @@ export default {
   mounted() {
     this.loadAllContracts();
   }
-};
+});
 </script>
 
 <style>

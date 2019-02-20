@@ -1,28 +1,26 @@
 import Vue from "vue";
 import { ContractMutationName } from "./names";
+import { MutationTree } from "vuex";
+import { ContractState } from "./state";
+import { ContractJson } from "~/src/types/contractJson";
 
-/** @typedef {import("./state").default} ContractState */
-
-/**
- * @type {import("vuex").MutationTree<ContractState>}
- */
-const mutations = {
+const mutations: MutationTree<ContractState> = {
   // Mutations to update component key (for rerender purpose)
   [ContractMutationName.updateCompKey](state) {
     state.compKey++;
   },
   // Mutations to set loading status
-  [ContractMutationName.setLoading](state, /** @type {boolean} */ loading) {
+  [ContractMutationName.setLoading](state, loading: boolean) {
     state.loading = loading;
   },
   // Mutations to set eth address
-  [ContractMutationName.setAddress](state, /** @type {string} */ address) {
+  [ContractMutationName.setAddress](state, address: string) {
     state.address = address;
   },
   // Mutations to set contracts data
   [ContractMutationName.setContractsData](
     state,
-    /** @type {{contracts: Object[], names: string[]}} */ contracts
+    contracts: { contracts: ContractJson[]; names: string[] }
   ) {
     state.contractsData = contracts.contracts;
     state.names = contracts.names;
@@ -40,7 +38,7 @@ const mutations = {
   },
   [ContractMutationName.setSpecificContractData](
     state,
-    /** @type {{contract: Object, name: string}} */ payload
+    payload: { contract: ContractJson; name: string }
   ) {
     state.contractDetails = {
       ...state.contractDetails,
@@ -49,15 +47,15 @@ const mutations = {
         address: payload.contract.contract.contract_address,
         abi: payload.contract.abi,
         balance: 0,
-        ids: []
+        ids: [],
+        thumb: payload.contract.image.thumb
       }
     };
   },
   // Mutation to set Contract Balance
   [ContractMutationName.setContractsBalance](
     state,
-    /** @type {{name: string, bal: number}} */
-    { name, bal }
+    { name, bal }: { name: string; bal: number }
   ) {
     Vue.set(state.contractDetails, name, {
       ...state.contractDetails[name],
@@ -67,9 +65,8 @@ const mutations = {
   // action to add nfts
   [ContractMutationName.addNftIds](
     state,
-    /** @type {{name: string, id: number}} */ payload
+    { name, id }: { name: string; id: number }
   ) {
-    const { name, id } = payload;
     Vue.set(state.contractDetails, name, {
       ...state.contractDetails[name],
       ids: [...state.contractDetails[name].ids, { id, image: "" }]
@@ -78,8 +75,7 @@ const mutations = {
   // action to set img (Need to add id first)
   [ContractMutationName.setNftImages](
     state,
-    /** @type {{id: number, image: string}} */
-    { id, image }
+    { id, image }: { id: number; image: string }
   ) {
     const contractDetails = state.contractDetails[state.name];
     const idKey = contractDetails.ids.findIndex(el => el.id === id);
@@ -98,7 +94,7 @@ const mutations = {
     });
   },
   // set name
-  [ContractMutationName.setName](state, /** @type {string} */ name) {
+  [ContractMutationName.setName](state, name: string) {
     state.name = name;
   }
 };

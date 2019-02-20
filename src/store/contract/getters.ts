@@ -1,10 +1,8 @@
 import { ContractGetterName } from "./names";
+import { GetterTree } from "vuex";
+import { ContractState } from "./state";
 
-/** @typedef {import("./state").default} ContractState */
-/** @typedef {ContractState["contractDetails"]} ContractDetails */
-
-/** @type {*} */
-const getters = {
+const getters: GetterTree<ContractState, any> = {
   // get loading status
   [ContractGetterName.getLoading](state) {
     return state.loading;
@@ -23,8 +21,8 @@ const getters = {
       return state.contractDetails[key];
     });
   },
-  [ContractGetterName.getNFTImages](state, /** @type {string} */ name) {
-    return state.contractDetails[name].ids;
+  [ContractGetterName.getNFTImages](state) {
+    return state.contractDetails[state.name].ids;
   }
 };
 

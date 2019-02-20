@@ -1,9 +1,10 @@
 import VueI18n from "vue-i18n";
 import messages from "src/i18n";
+import { BootInput } from "../types/boot";
 
-let i18n;
+let i18n: VueI18n;
 
-export default async ({ app, Vue }) => {
+export default async ({ app, Vue }: BootInput) => {
   Vue.use(VueI18n);
 
   // Set i18n instance on app

@@ -2,6 +2,18 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // Configuration for your app
+const extendTypescriptToWebpack = config => {
+  config.resolve.extensions.add(".ts");
+  config.module
+    .rule("typescript")
+    .test(/\.tsx?$/)
+    .use("typescript")
+    .loader("ts-loader")
+    .options({
+      appendTsSuffixTo: [/\.vue$/],
+      onlyCompileBundledFiles: true
+    });
+};
 
 /* eslint no-undef: "off" */
 module.exports = function(ctx) {
@@ -51,7 +63,7 @@ module.exports = function(ctx) {
         "QFooter",
         "QSpace",
         "QTabs",
-        "QTab",
+        "QTab"
       ],
 
       directives: ["Ripple"],
@@ -94,6 +106,9 @@ module.exports = function(ctx) {
             }
           ])
         );
+      },
+      chainWebpack(config) {
+        extendTypescriptToWebpack(config);
       }
     },
 
