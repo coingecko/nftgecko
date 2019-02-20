@@ -9,7 +9,8 @@ import { i18n } from "src/boot/i18n";
 export function successNotification(message: string, i18nString = true) {
   Notify.create({
     color: "green",
-    message: i18nString ? i18n.t(message) : message
+    message: i18nString ? i18n.t(message) : message,
+    position: "top-right"
   });
 }
 
@@ -21,6 +22,7 @@ export function successNotification(message: string, i18nString = true) {
 export function errorNotification(message: string, i18nString = true) {
   Notify.create({
     color: "red",
-    message: i18nString ? i18n.t(message) : message
+    message: i18nString ? i18n.t(message) : message,
+    position: "top-right"
   });
 }
