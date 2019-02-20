@@ -7,6 +7,7 @@ import { ContractActionName, ContractMutationName } from "./names";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
 import { web3Instance } from "src/boot/web3";
+import { balanceOfDestructure } from "src/helper/abi";
 
 /** @typedef {import("./state").default} ContractState */
 
@@ -80,7 +81,12 @@ const actions = {
     for (let contract of Object.keys(state.contractDetails)) {
       const { address, name, abi } = state.contractDetails[contract];
       await web3Instance.setContract({ abiAddress: abi, address, acc });
-      const bal = await web3Instance.getBalance(acc);
+      const tempBal = await web3Instance.getBalance(acc);
+      const bal = balanceOfDestructure(
+        web3Instance.abi[address],
+        "balanceOf",
+        tempBal
+      );
       commit(ContractMutationName.setContractsBalance, { name, bal });
     }
   },
@@ -117,7 +123,12 @@ const actions = {
     }
     const { address, abi } = state.contractDetails[name];
     await web3Instance.setContract({ abiAddress: abi, address, acc });
-    const bal = await web3Instance.getBalance(acc);
+    const tempBal = await web3Instance.getBalance(acc);
+    const bal = balanceOfDestructure(
+      web3Instance.abi[address],
+      "balanceOf",
+      tempBal
+    );
     commit(ContractMutationName.setContractsBalance, { name, bal });
     if (bal === 0) {
       return;

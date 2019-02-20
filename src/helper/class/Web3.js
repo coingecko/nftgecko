@@ -5,6 +5,8 @@ export class Web3Class {
   web3;
   /** @type {Object} */
   token = {};
+  abi = {};
+
   constructor() {
     this.web3 = window.web3;
   }
@@ -36,6 +38,7 @@ export class Web3Class {
   async setContract({ abiAddress, address, acc }) {
     const res = await fetch(`abi/${abiAddress}`);
     const abiJson = await res.json();
+    this.abi = { ...this.abi, [address]: abiJson };
     this.token = new this.web3.eth.Contract(abiJson, address, {
       from: acc,
       gasPrice: "20000000000"
