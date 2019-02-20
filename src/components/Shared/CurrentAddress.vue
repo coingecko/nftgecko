@@ -26,7 +26,7 @@
 import Vue from "vue";
 import { mapActions, mapMutations, mapGetters } from "vuex";
 import { ActionsName, MutationsName, GettersName } from "src/store";
-import Identicon from "identicon.js";
+import { generateImageHolder } from "src/helper/utils";
 
 export default Vue.extend({
   name: "CurrentAdressComponent",
@@ -70,8 +70,7 @@ export default Vue.extend({
       currentAddress: GettersName.contract.getCurrentAddress
     }),
     identicon() {
-      const identicon = new Identicon(this.currentAddress, 50).toString();
-      return `data:image/png;base64,${identicon}`;
+      return generateImageHolder(this.currentAddress, 50);
     }
   },
   async mounted() {}

@@ -5,9 +5,9 @@
     "official_site": "https://tenthousandsu.com",
     "abi": "openzeppelin.abi.json",
     "image": {
-      "thumb": "img/contract/su-squares/thumb.png",
-      "small": "img/contract/su-squares/small.jpg",
-      "large": "img/contract/su-squares/large.png"
+      "thumb": "",
+      "small": "",
+      "large": ""
     },
     "contract": {
       "contract_address": "0xe9e3f9cfc1a64dfca53614a0182cfad56c10624f",

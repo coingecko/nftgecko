@@ -20,6 +20,12 @@
             @click.native="rowClick(props.row)"
             class="cursor-pointer"
           >
+            <q-td class="text-center" key="thumb" :props="props">
+              <img
+                class="Table__Img"
+                :src="props.row.thumb || generateImageHolder(props.row.address)"
+              />
+            </q-td>
             <q-td>
               <span class="">
                 <img class="Table__Img float-left" :src="props.row.thumb" />
@@ -40,6 +46,7 @@
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapState, mapGetters } from "vuex";
 import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
+import { generateImageHolder } from "src/helper/utils";
 
 export default {
   name: "AuthComponent",
@@ -84,7 +91,8 @@ export default {
     }),
     rowClick(val) {
       this.$router.push({ path: `/nft/${val.name}` });
-    }
+    },
+    generateImageHolder: generateImageHolder
   },
   mounted() {
     this.loadAllContracts();
