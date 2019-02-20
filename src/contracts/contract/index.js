@@ -1,4 +1,11 @@
-export const FILENAME = ["coingecko", "marble-nft", "my-crypto-heroes-hero", "my-crypto-heroes-extension", "su-squares"];
+export const FILENAME = [
+  "coingecko",
+  "marble-nft",
+  "my-crypto-heroes-hero",
+  "my-crypto-heroes-extension",
+  "su-squares",
+  "cryptokitties"
+];
 
 /** @typedef {{name: string, description: string, official_site: string, abi: string, image: {thumb: string, small: string, large: string}, contract: {contract_address: string, standard: string, image_address?: string}}} ContractJson */
 
