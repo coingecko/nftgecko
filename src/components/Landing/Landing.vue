@@ -15,7 +15,8 @@
       </div>
       <div class="col col-12 text-center">
         <q-btn
-          icon="refresh"
+          class="q-pa-md"
+          icon="fas fa-redo-alt"
           label="restart prompt for web3"
           color="info"
           @click="initializeWeb3"

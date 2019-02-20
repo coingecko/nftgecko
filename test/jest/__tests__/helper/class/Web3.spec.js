@@ -1,5 +1,5 @@
-import { Web3Class } from "src/helper/class/Web3";
-import Web3 from "web3";
+import { Web3Class } from "src/helper/class/Web3Class";
+// import Web3 from "web3";
 
 describe("Web3 class", () => {
   jest.setTimeout(10000);
@@ -10,7 +10,7 @@ describe("Web3 class", () => {
 
   it("initialize web3", () => {
     expect(w3.web3).toBe(undefined);
-    expect(w3.token).toEqual({});
+    expect(w3.token).toEqual(null);
   });
 
   xit("sets web3", () => {

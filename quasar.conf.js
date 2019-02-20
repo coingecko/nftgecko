@@ -2,6 +2,18 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 // Configuration for your app
+const extendTypescriptToWebpack = config => {
+  config.resolve.extensions.add(".ts");
+  config.module
+    .rule("typescript")
+    .test(/\.tsx?$/)
+    .use("typescript")
+    .loader("ts-loader")
+    .options({
+      appendTsSuffixTo: [/\.vue$/],
+      onlyCompileBundledFiles: true
+    });
+};
 
 /* eslint no-undef: "off" */
 module.exports = function(ctx) {
@@ -14,10 +26,10 @@ module.exports = function(ctx) {
 
     extras: [
       "roboto-font",
-      "material-icons" // optional, you are not bound to it
+      // "material-icons", // optional, you are not bound to it
       // 'ionicons-v4',
       // 'mdi-v3',
-      // 'fontawesome-v5',
+      "fontawesome-v5"
       // 'eva-icons'
     ],
 
@@ -49,9 +61,10 @@ module.exports = function(ctx) {
         "QAvatar",
         "QBadge",
         "QFooter",
+        "QSpace",
         "QTabs",
         "QTab",
-        "QSpace"
+        "QRouteTab"
       ],
 
       directives: ["Ripple"],
@@ -94,6 +107,9 @@ module.exports = function(ctx) {
             }
           ])
         );
+      },
+      chainWebpack(config) {
+        extendTypescriptToWebpack(config);
       }
     },
 

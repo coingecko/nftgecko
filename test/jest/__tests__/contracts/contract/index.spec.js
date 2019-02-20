@@ -7,7 +7,7 @@ const readFile = util.promisify(fs.readFile);
 const stat = util.promisify(fs.stat);
 
 const location = path.join("src/contracts/contract");
-const NAMES = fs.readdirSync(location).filter(name => name !== "index.js");
+const NAMES = fs.readdirSync(location).filter(name => name !== "index.ts");
 
 describe("Test for all contracts.json", () => {
   let files = NAMES.map(name => {

@@ -1,4 +1,4 @@
-# NFT Manager
+# NFT Box
 
 [![Build Status](https://travis-ci.org/coingecko/nft-manager.svg?branch=master)](https://travis-ci.org/coingecko/nft-manager)
 

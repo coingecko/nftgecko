@@ -25,14 +25,16 @@ Vue.component(
   () => import("src/components/Index/NotAuth.vue")
 );
 
-export default {
+export default Vue.extend({
   name: "PageIndex",
-  computed: mapGetters({
-    loading: GettersName.web3.web3Loading,
-    message: GettersName.web3.web3LoadingMessage,
-    status: GettersName.web3.web3Status,
-    isInitialized: GettersName.web3.web3Initialize
-  }),
+  computed: {
+    ...mapGetters({
+      loading: GettersName.web3.web3Loading,
+      message: GettersName.web3.web3LoadingMessage,
+      status: GettersName.web3.web3Status,
+      isInitialized: GettersName.web3.web3Initialize
+    })
+  },
   methods: {
     ...mapActions({ initializeWeb3: ActionsName.web3.initializeWeb3 })
   },
@@ -41,7 +43,7 @@ export default {
       this.initializeWeb3();
     }
   }
-};
+});
 </script>
 
 <style>

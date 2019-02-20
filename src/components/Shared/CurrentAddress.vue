@@ -1,11 +1,10 @@
 <template>
   <q-card>
     <q-card-section v-if="currentAddress !== ''">
-      <span class="text-h2">Current Address</span>
       <q-input
         class=""
         type="text"
-        label="ethereum address"
+        label="Address"
         max-height="100"
         @change="handleAddressChange"
         :value="currentAddress"

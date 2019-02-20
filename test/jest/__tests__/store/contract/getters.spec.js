@@ -56,8 +56,9 @@ describe("[Contract Getters]", () => {
   });
 
   it("[Getters] getNFTImages", () => {
-    expect(
-      getters[ContractGetterName.getNFTImages](state, "coingecko")
-    ).toEqual(state.contractDetails.coingecko.ids);
+    state.name = "coingecko";
+    expect(getters[ContractGetterName.getNFTImages](state)).toEqual(
+      state.contractDetails.coingecko.ids
+    );
   });
 });

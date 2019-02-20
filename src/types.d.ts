@@ -1,7 +1,10 @@
 import web3 from "web3";
+import Vue from "vue";
+
+type VueObj = typeof Vue;
+
 declare module "*.vue" {
-  import Vue from "vue";
-  export default typeof Vue;
+  export default VueObj;
 }
 
 declare global {
@@ -10,8 +13,6 @@ declare global {
     web3: web3;
   }
 }
-
-declare module "identicon.js";
 
 window.ethereum = window.ethereum || {};
 window.web3 = window.web3 || {};

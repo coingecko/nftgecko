@@ -1,14 +1,13 @@
 <template>
-  <div class="row full-width q-px-md">
-    <div class="col col-12 q-pb-md">
-      <current-address />
-    </div>
-    <q-card class="col col-12">
+  <div class="row q-px-md">
+    <q-card class="col col-12 bg-secondary">
+      <div class="col col-12 q-pb-md">
+        <current-address />
+      </div>
       <div class="row" :key="compKey">
         <q-table
           :key="compKey"
-          class="full-width"
-          title="Available NFTs"
+          title="NFTs"
           :data="contractDetails"
           :columns="contractColumns"
           row-key="name"
@@ -28,10 +27,18 @@
               />
             </q-td>
             <q-td>
-              {{ props.row.name }}
+              <span class>
+                <img
+                  class="Table__Img float-left"
+                  :src="
+                    props.row.thumb || generateImageHolder(props.row.address)
+                  "
+                />
+                <span class="q-ml-md column inline">{{ props.row.name }}</span>
+              </span>
             </q-td>
             <q-td class="text-right">
-              {{ props.row.balance }}
+              <span>{{ props.row.balance }} XYZ</span>
             </q-td>
           </q-tr>
         </q-table>
@@ -41,12 +48,13 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapState, mapGetters } from "vuex";
 import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
 import { generateImageHolder } from "src/helper/utils";
 
-export default {
+export default Vue.extend({
   name: "AuthComponent",
   components: {
     "current-address": CurrentAddressVue
@@ -55,17 +63,9 @@ export default {
     return {
       contractColumns: [
         {
-          name: "thumb",
-          required: true,
-          label: "Thumb Image",
-          align: "center",
-          field: "thumb",
-          style: "width: 40px;"
-        },
-        {
           name: "name",
           required: true,
-          label: "Contract Name",
+          label: "Asset",
           align: "left",
           field: "name",
           sortable: true
@@ -73,7 +73,7 @@ export default {
         {
           name: "balance",
           required: true,
-          label: "NFTs Availables",
+          label: "Balance",
           align: "right",
           field: "balance",
           sortable: true
@@ -103,12 +103,12 @@ export default {
   mounted() {
     this.loadAllContracts();
   }
-};
+});
 </script>
 
 <style>
 .Table__Img {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
 }
 </style>
