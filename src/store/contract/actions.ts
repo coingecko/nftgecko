@@ -25,17 +25,17 @@ const actions: ActionTree<ContractState, any> = {
   async [ContractActionName.loadAllNfts]({ state, commit }, name: string) {
     const numArr = range(0, state.contractDetails[name].balance);
     const {
-      genImg
+      genImg,
+      getSupportImgShortcut
       // getNft
     } = await import(`src/contracts/contract/${name}/contract.ts`);
     numArr.forEach(async key => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
       commit(ContractMutationName.addNftIds, { name: name, id: tokenId });
-      const image = genImg({ id: tokenId });
-      if (image.shortcut) {
+      if (getSupportImgShortcut()) {
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
-          image: image.imgAddr
+          image: genImg({ id: tokenId })
         });
       } else {
         // make RPC call
@@ -44,7 +44,7 @@ const actions: ActionTree<ContractState, any> = {
         const jsonData = await res.json();
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
-          image: jsonData.properties.image.description
+          image: genImg({ id: tokenId }, jsonData)
         });
       }
     });

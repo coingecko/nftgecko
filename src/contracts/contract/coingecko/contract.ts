@@ -1,15 +1,16 @@
-import { genImgFunc, genNFTFunc } from "~/src/types/contract";
+import { getSupportImgShortcutFunc, genImgFunc, genNFTFunc } from "~/src/types/contract";
+
+export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
+  return true;
+}
 
 /** A function to get NFT's image
  *
  * @param {{id: number}} payload
- * @returns {{shortcut: boolean, imgAddr: string}}
+ * @returns string
  */
 export const genImg: genImgFunc = ({ id }) => {
-  return {
-    imgAddr: `https://nft-assets.coingecko.com/xmas-2018/images-mirror/${id}.png`,
-    shortcut: true
-  };
+  return `https://nft-assets.coingecko.com/xmas-2018/images-mirror/${id}.png`;
 };
 
 /** A function to get NFT's data

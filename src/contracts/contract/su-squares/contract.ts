@@ -1,10 +1,13 @@
-import { genImgFunc, genNFTFunc } from "~/src/types/contract";
+import { getSupportImgShortcutFunc, genImgFunc, genNFTFunc } from "~/src/types/contract";
 
+export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
+  return true;
+}
 
 /** A function to get NFT's image
  *
  * @param {{id: number}} payload
- * @returns {{shortcut: boolean, imgAddr: string}}
+ * @returns string
  */
 export const genImg: genImgFunc = ({ id }) => {
 const pad = (number: number, size: number) => {
@@ -15,10 +18,7 @@ const pad = (number: number, size: number) => {
   return s;
 };
   const formattedId = pad(id, 5);
-  return {
-    imgAddr: `https://tenthousandsu.com/erc721/${formattedId}.png`,
-    shortcut: true
-  };
+  return `https://tenthousandsu.com/erc721/${formattedId}.png`;
 };
 
 /** A function to get NFT's data
