@@ -1,7 +1,7 @@
 <template>
   <div>
-    <available-nft />
     <landing />
+    <available-nft />
   </div>
 </template>
 
