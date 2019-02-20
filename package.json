@@ -11,6 +11,7 @@
     "dev": "quasar dev",
     "build": "quasar build -m pwa",
     "deploy": "yarn build && (cd dist/pwa && echo https://nft-manager.surge.sh > CNAME && mv index.html 200.html && surge .)",
+    "test": "jest",
     "test:unit": "jest --updateSnapshot",
     "test:unit:coverage": "jest --coverage",
     "test:unit:watch": "jest --watch",

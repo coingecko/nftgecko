@@ -1,4 +1,4 @@
-import { genImgFunc, genNFTFunc } from "~/src/types/contract";
+import { genImgFunc, genNFTFunc } from "src/types/contract";
 
 /** A function to get NFT's image
  *
