@@ -1,7 +1,7 @@
 <template>
-  <div class="row q-px-md">
-    <q-card class="col col-12 bg-secondary">
-      <div class="col col-12 q-pb-md">
+  <div class="row justify-center q-pt-lg">
+    <q-card class="">
+      <div class="col col-6 q-pb-md">
         <current-address />
       </div>
       <div class="row" :key="compKey">
