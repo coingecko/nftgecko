@@ -1,7 +1,7 @@
-import { BootInput } from "../types/boot";
 // @ts-ignore
 import store from "src/store";
 import { MutationsName } from "../store/indexts";
+import { BootInput } from "../types/boot";
 
 export default async ({ app, router, Vue }: BootInput) => {
   window.addEventListener("beforeinstallprompt", (e: any) => {
