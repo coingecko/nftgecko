@@ -5,6 +5,7 @@ import { ActionsName } from "../store/indexts";
 import { BootInput } from "../types/boot";
 
 let web3Instance: Web3Class;
+let currentWeb3Address = "";
 
 // leave the export, even if you don't use it
 export default async ({ app, router, Vue }: BootInput) => {
@@ -18,13 +19,15 @@ export default async ({ app, router, Vue }: BootInput) => {
       if (newValue.web3.status === "login") {
         const checkAccInterval = () =>
           setInterval(async () => {
-            if (
-              (await web3Instance.getAvailableAddress())[0] !==
-              newValue.contract.address
-            ) {
-              store.dispatch(ActionsName.contract.setupAddress);
+            const addresses = await web3Instance.getAvailableAddress();
+            const needUpdate = currentWeb3Address !== addresses[0] && currentWeb3Address !== "";
+            currentWeb3Address = addresses[0];
+            const newAddress = newValue.contract.address;
+            if (needUpdate && newAddress !== currentWeb3Address) {
+              // If Metamask account change, reload.
+              location.reload();
             }
-          }, 2000);
+          }, 2500);
         tempInterval = checkAccInterval();
       } else if (newValue.web3.status === "logout") {
         if (tempInterval !== null) {
@@ -32,7 +35,7 @@ export default async ({ app, router, Vue }: BootInput) => {
         }
       }
     } else if (false) {
-// something
+      // something
     }
   });
 };

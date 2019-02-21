@@ -22,7 +22,8 @@ const actions: ActionTree<Web3State, any> = {
           "Waiting for approval to connect to your account..."
         );
         // Request account access if needed
-        await window.ethereum.enable();
+        const provider = await window.ethereum.enable();
+        web3Instance.setWeb3(provider);
         successNotification("web3.success.sign_in");
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "login");
