@@ -1,5 +1,7 @@
 <template>
-  <available-nft-component />
+  <q-page padding>
+    <available-nft-component />
+  </q-page>
 </template>
 
 <script>

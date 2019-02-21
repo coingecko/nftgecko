@@ -1,10 +1,12 @@
 <template>
-  <q-inner-loading :showing="loading" v-if="loading">
-    <q-spinner-gears size="90px" color="primary" />
-    <p class="Loading__Text">{{ message }}</p>
-  </q-inner-loading>
-  <auth-component v-else-if="status === 'login'" />
-  <not-auth-component v-else />
+  <q-page padding>
+    <q-inner-loading :showing="loading" v-if="loading">
+      <q-spinner-gears size="90px" color="primary" />
+      <p class="Loading__Text">{{ message }}</p>
+    </q-inner-loading>
+    <auth-component v-else-if="status === 'login'" />
+    <not-auth-component v-else />
+  </q-page>
 </template>
 
 <script>
