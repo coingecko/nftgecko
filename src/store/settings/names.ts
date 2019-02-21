@@ -2,10 +2,12 @@
 export const SettingsActionName = {};
 
 export const SettingsGetterName = {
-  getDarkMode: "getDarkMode"
+  getDarkMode: "getDarkMode",
+  getDeferredPrompt: "getDeferredPrompt"
 };
 
 export const SettingsMutationName = {
   toggleDarkMode: "toggleDarkMode",
-  setDarkMode: "setDarkMode"
+  setDarkMode: "setDarkMode",
+  setDeferredPrompt: "setDeferredPrompt"
 };

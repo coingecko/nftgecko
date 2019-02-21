@@ -1,46 +1,44 @@
 <template>
   <q-page padding>
-    <div class="row">
-      <div class="col col-12">
-        <h2 class="text-h2">Settings</h2>
+    <q-card>
+      <div class="row q-px-md">
+        <div class="col col-12 q-py-sm">
+          <span class="text-h2">Settings</span>
+        </div>
+        <div class="col col-12 q-py-sm" v-if="deferredPrompt">
+          <span class="text-h5">Add To Homescreen</span>
+          <br />
+          <q-btn
+            @click="addToHomeScreen"
+            icon="fas fa-home"
+            label="Add App To Home Screen"
+            color="info"
+          />
+        </div>
       </div>
-      <div class="col col-12" v-if="deferredPrompt">
-        <h5 class="text-h5" @click="addToHomeScreen">Add To Homescreen</h5>
-        <q-btn icon="home" label="`Add App To Home Screen`" color="info" />
-      </div>
-    </div>
+    </q-card>
   </q-page>
 </template>
 
 <script>
 import Vue from "vue";
+import { mapGetters } from "vuex";
+import { GettersName } from "src/store";
 export default Vue.extend({
   name: "SettingsPage",
-  data() {
-    return {
-      deferredPrompt: null
-    };
+  computed: {
+    ...mapGetters({
+      deferredPrompt: GettersName.settings.getDeferredPrompt
+    })
   },
   methods: {
     addToHomeScreen: function() {
-      this.deferredPrompt.install();
-      this.deferredPrompt.userChoice.then(() => {
-        this.deferredPrompt = null;
+      console.log("fired");
+      window.deferredPrompt.prompt();
+      window.deferredPrompt.userChoice.then(() => {
+        window.deferredPrompt = null;
       });
     }
-  },
-  created() {
-    window.addEventListener("beforeinstallprompt", e => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      this.deferredPrompt = e;
-    });
-  },
-  mounted() {
-    // testing
-    // const event = new Event("beforeinstallprompt");
-    // window.dispatchEvent(event);
   },
   destroyed() {
     window.removeEventListener("beforeinstallprompt", () => {});
