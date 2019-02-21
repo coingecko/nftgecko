@@ -15,5 +15,6 @@ export const Web3MutationName = {
   setInitialized: "setInitialized",
   setLoading: "setLoading",
   setStatus: "setStatus",
-  setMessage: "setMessage"
+  setMessage: "setMessage",
+  setNetwork: "setNetwork"
 };

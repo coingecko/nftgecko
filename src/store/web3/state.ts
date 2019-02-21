@@ -3,7 +3,7 @@ export interface Web3State {
   status: "logout" | "login" | "loading";
   message: string;
   initialized: boolean;
-  network: string;
+  network: number | null;
 }
 
 export default {
@@ -11,5 +11,5 @@ export default {
   status: "loading",
   message: "",
   initialized: false,
-  network: ""
+  network: null
 } as Web3State;

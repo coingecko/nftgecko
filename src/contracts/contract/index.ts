@@ -7,6 +7,11 @@ export const FILENAME = [
   "gods-unchained"
 ];
 
+export const supportedNetwork: Set<number> = new Set([
+  1, // ethereum (mainnet)
+  88, // Tomochain (mainnet)
+]);
+
 /**
  * @returns {Promise<Array<ContractJson>>}
  */

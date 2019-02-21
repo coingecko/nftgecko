@@ -19,6 +19,9 @@ const mutations: MutationTree<Web3State> = {
   [Web3MutationName.setMessage](state, message: string) {
     state.message = message;
   },
+  [Web3MutationName.setNetwork](state, network: number) {
+    state.network = network;
+  }
 };
 
 export default mutations;

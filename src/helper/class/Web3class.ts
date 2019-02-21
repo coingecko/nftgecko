@@ -17,7 +17,6 @@ export class Web3Class {
    */
   public setWeb3(web3: any) {
     this.web3 = new Web3(web3);
-    return;
   }
 
   // ==========ACTIONS==========
@@ -69,7 +68,7 @@ export class Web3Class {
     return this.token!.methods.tokenURI(tokenId).call();
   }
 
-  public getNetworkType() {
-    return this.web3.eth.net.getNetworkType();
+  public getId() {
+    return this.web3.eth.net.getId();
   }
 }

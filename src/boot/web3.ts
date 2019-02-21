@@ -12,7 +12,7 @@ export default async ({ app, router, Vue }: BootInput) => {
   web3Instance = new Web3Class();
   // Vuex Watch for sign in
 
-  let tempInterval: any = null;
+  let tempAccInterval: any = null;
   store.watch((newValue: any, oldValue: any) => {
     if (!(oldValue.web3 && newValue.web3.status === oldValue.web3.status)) {
       // if account switch
@@ -28,14 +28,12 @@ export default async ({ app, router, Vue }: BootInput) => {
               location.reload();
             }
           }, 2500);
-        tempInterval = checkAccInterval();
+        tempAccInterval = checkAccInterval();
       } else if (newValue.web3.status === "logout") {
-        if (tempInterval !== null) {
-          clearInterval(tempInterval);
+        if (tempAccInterval !== null) {
+          clearInterval(tempAccInterval);
         }
       }
-    } else if (false) {
-      // something
     }
   });
 };
