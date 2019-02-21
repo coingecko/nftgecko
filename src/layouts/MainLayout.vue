@@ -19,8 +19,7 @@
     <q-page-container class="q-py-sm">
       <router-view />
       <div class="row">
-        <span class="col Footer__Text text-white text-center">
-        </span>
+        <span class="col Footer__Text text-white text-center"> </span>
       </div>
     </q-page-container>
 

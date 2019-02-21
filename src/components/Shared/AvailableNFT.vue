@@ -6,11 +6,14 @@
       </q-card-section>
 
       <q-list>
-        <q-item v-for="(c, key) in contractsData"
-        :key="key" :to="`/nft/${c.slug}`">
+        <q-item
+          v-for="(c, key) in contractsData"
+          :key="key"
+          :to="`/nft/${c.slug}`"
+        >
           <q-item-section avatar>
             <q-avatar square>
-            <img
+              <img
                 :src="
                   c.image.large ||
                     generateImageHolder(c.contract.contract_address, 300)

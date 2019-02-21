@@ -33,7 +33,6 @@ export default Vue.extend({
   },
   methods: {
     addToHomeScreen: function() {
-      console.log("fired");
       window.deferredPrompt.prompt();
       window.deferredPrompt.userChoice.then(() => {
         window.deferredPrompt = null;

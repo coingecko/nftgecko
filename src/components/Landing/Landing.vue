@@ -30,7 +30,6 @@
   </div>
 </template>
 
-
 <script>
 import { mapActions } from "vuex";
 import { ActionsName } from "src/store";
