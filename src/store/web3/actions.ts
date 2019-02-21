@@ -38,7 +38,6 @@ const actions: ActionTree<Web3State, any> = {
       commit(Web3MutationName.setLoading, false);
       commit(Web3MutationName.setStatus, "login");
     } else {
-      /*eslint no-console: "off"*/
       console.log("[WEB3] No web3 instance injected.");
       commit(Web3MutationName.setLoading, false);
       commit(Web3MutationName.setStatus, "logout");
