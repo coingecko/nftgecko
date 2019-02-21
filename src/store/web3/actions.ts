@@ -44,6 +44,10 @@ const actions: ActionTree<Web3State, any> = {
       errorNotification("web3.error.web3_err");
       return;
     }
+  },
+  async [Web3ActionName.setNetwork]({state, commit}) {
+    const network = await web3Instance.getNetworkType();
+
   }
 };
 

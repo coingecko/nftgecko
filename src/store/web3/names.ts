@@ -1,6 +1,7 @@
 // Types
 export const Web3ActionName = {
-  initializeWeb3: "initializeWeb3"
+  initializeWeb3: "initializeWeb3",
+  setNetwork: "setNetwork"
 };
 
 export const Web3GetterName = {

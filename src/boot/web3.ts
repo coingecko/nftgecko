@@ -13,24 +13,26 @@ export default async ({ app, router, Vue }: BootInput) => {
 
   let tempInterval: any = null;
   store.watch((newValue: any, oldValue: any) => {
-    if (oldValue.web3  && newValue.web3.status === oldValue.web3.status) {
-      return;
-    }
-    if (newValue.web3.status === "login") {
-      const checkAccInterval = () =>
-        setInterval(async () => {
-          if (
-            (await web3Instance.getAvailableAddress())[0] !==
-            newValue.contract.address
-          ) {
-            store.dispatch(ActionsName.contract.setupAddress);
-          }
-        }, 2000);
-      tempInterval = checkAccInterval();
-    } else if (newValue.web3.status === "logout") {
-      if (tempInterval !== null) {
-        clearInterval(tempInterval);
+    if (!(oldValue.web3 && newValue.web3.status === oldValue.web3.status)) {
+      // if account switch
+      if (newValue.web3.status === "login") {
+        const checkAccInterval = () =>
+          setInterval(async () => {
+            if (
+              (await web3Instance.getAvailableAddress())[0] !==
+              newValue.contract.address
+            ) {
+              store.dispatch(ActionsName.contract.setupAddress);
+            }
+          }, 2000);
+        tempInterval = checkAccInterval();
+      } else if (newValue.web3.status === "logout") {
+        if (tempInterval !== null) {
+          clearInterval(tempInterval);
+        }
       }
+    } else if (false) {
+// something
     }
   });
 };

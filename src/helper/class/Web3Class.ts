@@ -68,4 +68,8 @@ export class Web3Class {
   public getURI(tokenId: number) {
     return this.token!.methods.tokenURI(tokenId).call();
   }
+
+  public getNetworkType() {
+    return this.web3.eth.net.getNetworkType();
+  }
 }
