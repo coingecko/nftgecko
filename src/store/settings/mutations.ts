@@ -10,6 +10,9 @@ const mutations: MutationTree<SettingsState> = {
   // Mutations to set darkMode
   [SettingsMutationName.setDarkMode](state, darkMode: boolean) {
     state.darkMode = darkMode;
+  },
+  [SettingsMutationName.setDeferredPrompt](state, installBanner: boolean) {
+    state.installBanner = installBanner;
   }
 };
 

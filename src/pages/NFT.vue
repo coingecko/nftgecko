@@ -4,23 +4,6 @@
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
     <div class="q-pa-xs" v-show="!loading" v-if="!loading">
-      <q-header elevated class="bg-info">
-        <q-toolbar>
-          <q-avatar>
-            <img
-              :src="
-                jsonData.image.thumb ||
-                  generateImageHolder(jsonData.contract.contract_address)
-              "
-              :alt="jsonData.name"
-            />
-          </q-avatar>
-          <q-toolbar-title>
-            {{ jsonData.name }}
-          </q-toolbar-title>
-        </q-toolbar>
-      </q-header>
-
       <q-card class="q-my-md">
         <q-card-section class="">
           <div class="row">

@@ -20,7 +20,7 @@ module.exports = function(ctx) {
   return {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: ["i18n", "polyfill", "sync", "web3"],
+    boot: ["i18n", "a2hs", "polyfill", "sync", "web3"],
 
     css: ["app.styl"],
 

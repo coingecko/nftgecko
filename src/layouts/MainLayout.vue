@@ -3,7 +3,7 @@
     <q-header elevated class="bg-primary">
       <q-toolbar>
         <q-toolbar-title>
-          <router-link to="/" class="q-pl-sm">
+          <router-link to="/" class="q-pl-sm" @click.native="setHomeTab">
             {{ $t("app.name") }}
           </router-link>
         </q-toolbar-title>
@@ -83,7 +83,10 @@ export default {
     };
   },
   methods: {
-    openURL
+    openURL,
+    setHomeTab: function() {
+      this.tab = "/";
+    }
   },
   created() {
     this.tab = this.$route.path;

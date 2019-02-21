@@ -1,15 +1,14 @@
 import { BootInput } from "../types/boot";
+// @ts-ignore
+import store from "src/store";
+import { MutationsName } from "../store/indexts";
 
 export default async ({ app, router, Vue }: BootInput) => {
-  window.addEventListener("beforeinstallprompt", (/** @type {*} */ e) => {
+  window.addEventListener("beforeinstallprompt", (e: any) => {
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
     // Stash the event so it can be triggered later.
-    let deferredPrompt: any = e;
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => {
-      deferredPrompt = null;
-      window.removeEventListener("beforeinstallprompt", () => {});
-    });
+    window.deferredPrompt = e;
+    store.commit(MutationsName.settings.setDeferredPrompt, true);
   });
 };
