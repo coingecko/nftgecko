@@ -6,7 +6,7 @@ export const ContractActionName = {
   loadSpecificJson: "loadSpecificJson",
   loadAllContracts: "loadAllContracts",
   loadSpecificContract: "loadSpecificContract",
-  loadAllNfts: "loadAllNfts"
+  loadAllNfts: "loadAllNfts",
 };
 
 export const ContractGetterName = {

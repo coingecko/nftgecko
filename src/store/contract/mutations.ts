@@ -1,8 +1,8 @@
-import Vue from "vue";
-import { ContractMutationName } from "./names";
-import { MutationTree } from "vuex";
-import { ContractState } from "./state";
 import { ContractJson } from "src/types/contractJson";
+import Vue from "vue";
+import { MutationTree } from "vuex";
+import { ContractMutationName } from "./names";
+import { ContractState } from "./state";
 
 const mutations: MutationTree<ContractState> = {
   // Mutations to update component key (for rerender purpose)
@@ -78,7 +78,7 @@ const mutations: MutationTree<ContractState> = {
     { id, image }: { id: number; image: string }
   ) {
     const contractDetails = state.contractDetails[state.name];
-    const idKey = contractDetails.ids.findIndex(el => el.id === id);
+    const idKey = contractDetails.ids.findIndex((el) => el.id === id);
     const formattedKey = idKey === -1 ? NaN : idKey;
     const beforeIds = contractDetails.ids.slice(
       0,
