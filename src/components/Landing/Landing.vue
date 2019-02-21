@@ -1,26 +1,30 @@
 <template>
-  <div class="q-pa-md">
-    <q-card class="row justify-center q-py-lg">
-      <span class="col col-12 text-h4 text-bold text-center"
-        >You are not connected to metamask</span
-      >
-      <div class="col col-12 text-center q-py-lg">
-        <a href="https://metamask.io" rel="noreferrer" target="_blank">
-          <img
-            class="Metamask__Img"
-            src="~/assets/download-metamask.png"
-            alt="download metamask"
+  <div class="row q-px-md">
+    <q-card class="col col-12">
+      <div class="col col-12 q-pa-lg text-center">
+        <span class="text-h6">
+          Connect with MetaMask to get started
+        </span>
+        <div class="text-center q-py-lg">
+          <a href="https://metamask.io" rel="noreferrer" target="_blank">
+            <img
+              class="Metamask__Img"
+              src="~/assets/download-metamask.png"
+              style="height: 50px; width: auto;"
+              alt="download metamask"
+            />
+          </a>
+        </div>
+        <div class="text-center">
+          <q-btn
+            class="q-pa-md"
+            size="sm"
+            icon="fas fa-redo-alt"
+            label="Retry Web3 Prompt"
+            color="info"
+            @click="initializeWeb3"
           />
-        </a>
-      </div>
-      <div class="col col-12 text-center">
-        <q-btn
-          class="q-pa-md"
-          icon="fas fa-redo-alt"
-          label="restart prompt for web3"
-          color="info"
-          @click="initializeWeb3"
-        />
+        </div>
       </div>
     </q-card>
   </div>

@@ -1,59 +1,35 @@
 <template>
-  <div class="q-pa-md full-width">
-    <q-card>
+  <div class="row justify-center">
+    <q-card class="col col-6 ">
       <q-card-section>
-        <span class="text-h2">Available NFTs</span>
-        <p class="text-subtitle2">
-          by
-          <a
-            class="Link__Default"
-            href="https://coingecko.com"
-            rel="noreferrer"
-            target="_blank"
-            >CoinGecko</a
-          >
-        </p>
+        <span class="text-h5">Supported NFTs</span>
       </q-card-section>
 
-      <div class="row items-stretch justify-center">
-        <div
+      <q-list>
+        <q-item
           v-for="(c, key) in contractsData"
           :key="key"
-          class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 q-pa-sm"
+          :to="`/nft/${c.slug}`"
         >
-          <q-card class="full-width full-height">
-            <q-card-section class="column">
-              <router-link class="NFT-Card__Image" :to="`/nft/${c.slug}`">
-                <img
-                  :src="
-                    c.image.large ||
-                      generateImageHolder(c.contract.contract_address, 300)
-                  "
-                  class="NFT-Card__Image"
-                  :alt="c.name"
-                />
-              </router-link>
-              <router-link
-                :to="`/nft/${c.slug}`"
-                class="q-py-sm text-h5 text-bold text-center Link__Default"
-                >{{ c.name }}</router-link
-              >
-            </q-card-section>
-            <q-separator />
-            <p class="text-subtitle2 NFT-Card__Description">
-              {{ c.description }}
-              <br />
-              <a
-                class="Link__Default"
-                :href="c.official_site"
-                rel="noreferrer"
-                target="_blank"
-                >{{ c.official_site }}</a
-              >
-            </p>
-          </q-card>
-        </div>
-      </div>
+          <q-item-section avatar>
+            <q-avatar square>
+              <img
+                :src="
+                  c.image.large ||
+                    generateImageHolder(c.contract.contract_address, 300)
+                "
+                class="NFT-Card__Image"
+                :alt="c.name"
+              />
+            </q-avatar>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>
+              {{ c.name }}
+            </q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-card>
   </div>
 </template>

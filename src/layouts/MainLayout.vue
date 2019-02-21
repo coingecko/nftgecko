@@ -7,7 +7,6 @@
             {{ $t("app.name") }}
           </router-link>
         </q-toolbar-title>
-
         <div class="relative-position Layout__Settings" v-ripple>
           <router-link to="/settings">
             <q-icon name="fas fa-cog" />
@@ -15,16 +14,12 @@
         </div>
       </q-toolbar>
     </q-header>
-
     <q-page-container class="q-py-sm">
       <router-view />
       <div class="row">
-        <span class="col Footer__Text text-white text-center">
-          © 2019 CoinGecko. All Rights Reserved.
-        </span>
+        <span class="col Footer__Text text-white text-center"> </span>
       </div>
     </q-page-container>
-
     <q-footer>
       <q-toolbar
         class="Footer__Container shadow-2 rounded-borders bg-primary row"

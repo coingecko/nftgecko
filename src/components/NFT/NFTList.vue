@@ -1,27 +1,25 @@
 <template>
-  <q-card v-if="exist">
-    <q-card-section class="row">
-      <span class="col-12 text-h5 text-bold text-center">
-        # NFTs available: {{ bal }}
-      </span>
-      <div class="row col-12" v-if="bal > 0">
-        <div
-          class="col-xs-12 col-sm-6 col-md-3 col-lg-2"
-          v-for="nft in nftIds"
-          :key="nft.id"
-        >
-          <nft-img :src="nft.image" :alt="nft.id" />
-        </div>
+  <div v-if="exist">
+    <div class="col-12 text-h5 text-bold text-center text-white q-my-md">
+      # NFTs available: {{ bal }}
+    </div>
+    <div class="row col-12" v-if="bal > 0">
+      <div
+        class="col-xs-12 col-sm-6 col-md-3 col-lg-2 flex justify-center"
+        v-for="nft in nftIds"
+        :key="nft.id"
+      >
+        <nft-img :src="nft.image" :alt="nft.id" />
       </div>
-      <div class="row full-width q-mt-lg bg-grey-2" v-else>
-        <div class="col-12 q-pa-lg row">
-          <span class="text-h5 text-center col-12">
-            No NFTs available
-          </span>
-        </div>
+    </div>
+    <div class="row q-mt-lg bg-grey-2" v-else>
+      <div class="col-12 q-pa-lg row">
+        <span class="text-h5 text-center col-12">
+          No NFTs available
+        </span>
       </div>
-    </q-card-section>
-  </q-card>
+    </div>
+  </div>
 </template>
 
 <script>

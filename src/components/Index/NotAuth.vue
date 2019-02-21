@@ -1,17 +1,17 @@
 <template>
   <div>
     <landing />
-    <available-nft />
+    <!-- <available-nft /> -->
   </div>
 </template>
 
 <script>
-import AvailableNFTComponent from "src/components/Shared/AvailableNFT.vue";
+// import AvailableNFTComponent from "src/components/Shared/AvailableNFT.vue";
 import LandingVue from "src/components/Landing/Landing.vue";
 
 export default {
   components: {
-    "available-nft": AvailableNFTComponent,
+    // "available-nft": AvailableNFTComponent,
     landing: LandingVue
   }
 };

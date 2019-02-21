@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page padding>
     <q-inner-loading :showing="loading" v-if="loading">
       <q-spinner-gears size="90px" color="primary" />
       <p class="Loading__Text">{{ message }}</p>
