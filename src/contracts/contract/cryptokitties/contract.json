@@ -1,6 +1,7 @@
 {
   "name": "CryptoKitties",
   "slug": "cryptokitties",
+  "symbol": "CK",
   "description": "Collect and breed digital cats.",
   "official_site": "https://www.cryptokitties.co",
   "abi": "cryptokitties.abi.json",

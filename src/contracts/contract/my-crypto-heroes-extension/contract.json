@@ -1,17 +1,17 @@
 {
-    "name": "MyCryptoHeroes:Extension",
-    "slug": "my-crypto-heroes-extension",
-    "description": "My Crypto Heroes Extension (MCHE) - where your time and passion will become your assets. Get great extensions and Land through collecting/training historical Heroes! Can be played without gas fee.",
-    "official_site": "https://www.mycryptoheroes.net",
-    "abi": "openzeppelin.abi.json",
-    "image": {
-      "thumb": "img/contract/my-crypto-heroes/thumb.png",
-      "small": "img/contract/my-crypto-heroes/small.jpg",
-      "large": "img/contract/my-crypto-heroes/large.png"
-    },
-    "contract": {
-      "contract_address": "0xdceaf1652a131F32a821468Dc03A92df0edd86Ea",
-      "standard": "openzeppelin"
-    }
+  "name": "MyCryptoHeroes:Extension",
+  "slug": "my-crypto-heroes-extension",
+  "symbol": "MCHE",
+  "description": "My Crypto Heroes Extension (MCHE) - where your time and passion will become your assets. Get great extensions and Land through collecting/training historical Heroes! Can be played without gas fee.",
+  "official_site": "https://www.mycryptoheroes.net",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "img/contract/my-crypto-heroes/thumb.png",
+    "small": "img/contract/my-crypto-heroes/small.jpg",
+    "large": "img/contract/my-crypto-heroes/large.png"
+  },
+  "contract": {
+    "contract_address": "0xdceaf1652a131F32a821468Dc03A92df0edd86Ea",
+    "standard": "openzeppelin"
   }
-  
+}

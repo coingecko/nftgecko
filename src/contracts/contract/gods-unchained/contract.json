@@ -1,6 +1,7 @@
 {
   "name": "Gods Unchained",
   "slug": "gods-unchained",
+  "symbol": "GODS",
   "description": "nft description",
   "official_site": "https://godsunchained.com/",
   "abi": "openzeppelin.abi.json",
