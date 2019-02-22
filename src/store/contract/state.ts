@@ -14,6 +14,7 @@ export interface ContractState {
       balance: number;
       ids: Array<{ id: number; image: string }>;
       thumb: string;
+      symbol: string;
     };
   };
   name: string;
@@ -26,5 +27,6 @@ export default {
   contractsData: [],
   names: [],
   contractDetails: {},
-  name: ""
+  name: "",
+  symbol: ""
 } as ContractState;

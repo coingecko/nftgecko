@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-center q-pt-lg">
-    <q-card class="">
+    <q-card class>
       <div class="col col-6 q-pb-md">
         <current-address />
       </div>
@@ -38,7 +38,7 @@
               </span>
             </q-td>
             <q-td class="text-right">
-              <span>{{ props.row.balance }} XYZ</span>
+              <span>{{ props.row.balance }} {{ props.row.symbol }}</span>
             </q-td>
           </q-tr>
         </q-table>

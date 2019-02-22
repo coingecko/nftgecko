@@ -54,7 +54,7 @@ const actions: ActionTree<ContractState, any> = {
     const jsonData = await loadAllContract();
     commit(ContractMutationName.setContractsData, {
       contracts: jsonData,
-      names: FILENAME
+      names: FILENAME,
     });
   },
   /** Load Specific JSON Contract data */
