@@ -1,6 +1,6 @@
 <template>
-  <div class="row justify-center">
-    <q-card class="col col-6 ">
+  <div class="row justify-center q-pt-lg">
+    <q-card class="col col-6">
       <q-card-section>
         <span class="text-h5">Supported NFTs</span>
       </q-card-section>

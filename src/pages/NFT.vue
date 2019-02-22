@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center" padding>
+  <q-page class="d-flex justify-center col-6" padding>
     <q-inner-loading :showing="loading">
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
