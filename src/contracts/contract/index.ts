@@ -1,10 +1,10 @@
 export const FILENAME = [
-  "coingecko",
-  "marble-nft",
+  "gods-unchained",
   "my-crypto-heroes-hero",
   "my-crypto-heroes-extension",
-  "su-squares",
-  "gods-unchained"
+  "marble-nft",
+  "coingecko",
+  "su-squares"
 ];
 
 /**
