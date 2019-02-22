@@ -2,7 +2,8 @@ import { web3Instance } from "src/boot/web3";
 import {
   FILE,
   loadAllContract,
-  loadSpecificContract
+  loadSpecificContract,
+  SUPPORTED_NETWORK
 } from "src/contracts/contract";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
@@ -29,13 +30,14 @@ const actions: ActionTree<ContractState, RootState> = {
       // if current network not exist
       return;
     }
+    const currentNetworkName = SUPPORTED_NETWORK[currentNetwork];
     // Generate an array (something like python range)
-    const numArr = range(0, state.contractDetails[name].balance);
+    const numArr = range(0, state.contractDetails[currentNetworkName][name].balance);
     // load function from contract.ts
     const {
       genImg,
       getSupportImgShortcut
-    } = await import(`src/contracts/contract/${FILE[currentNetwork].name}/${name}/contract.ts`);
+    } = await import(`src/contracts/contract/${currentNetworkName}/${name}/contract.ts`);
     numArr.forEach(async (key) => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
       commit(ContractMutationName.addNftIds, { name, id: tokenId });

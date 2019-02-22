@@ -4,6 +4,7 @@ export interface Web3State {
   message: string;
   initialized: boolean;
   network: number | null;
+  networkName: string;
 }
 
 export default {
@@ -11,5 +12,6 @@ export default {
   status: "loading",
   message: "",
   initialized: false,
-  network: null
+  network: null,
+  networkName: ""
 } as Web3State;

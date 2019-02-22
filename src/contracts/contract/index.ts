@@ -10,24 +10,28 @@ const TOMOCHAIN_FILENAME: string[] = [];
 const TOMOCHAIN_TESTNET_FILENAME: string[] = [];
 
 interface IFile {
-  [chainNo: number]: {
+  [chainNo: string]: {
     filename: string[];
     name: string;
+    id: number
   };
 }
 
 export const FILE: IFile = {
-  1: {
+  ethereum: {
     filename: ETHEREUM_FILENAME,
-    name: "ethereum"
+    name: "ethereum",
+    id: 1
   },
-  88: {
+  tomochain: {
     filename: TOMOCHAIN_FILENAME,
-    name: "tomochain"
+    name: "tomochain",
+    id: 88
   },
-  89: {
+  tomochain_testnet: {
     filename: TOMOCHAIN_TESTNET_FILENAME,
-    name: "tomochain_testnet"
+    name: "tomochain_testnet",
+    id: 89
   }
 };
 
