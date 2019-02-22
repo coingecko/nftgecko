@@ -1,11 +1,5 @@
 <template>
   <div class="fixed-center text-center">
-    <p>
-      <img
-        src="~assets/cg_empty_light_theme.png"
-        style="width:30vw;max-width:150px;"
-      />
-    </p>
     <p class="text-faded">
       Sorry, nothing here...
       <strong>(404)</strong>
