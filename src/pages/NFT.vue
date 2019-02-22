@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { FILENAME } from "src/contracts/contract";
+import { FILE, SUPPORTED_NETWORK } from "src/contracts/contract";
 import { Notify } from "quasar";
 import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
 import NFTListVue from "src/components/NFT/NFTList.vue";
@@ -94,16 +94,29 @@ export default {
   computed: {
     ...mapGetters({
       currentAddress: GettersName.contract.getCurrentAddress,
-      isInitialized: GettersName.web3.web3Initialize
+      isInitialized: GettersName.web3.web3Initialize,
+      network: GettersName.web3.web3Network
     })
   },
   async mounted() {
+    // Load Web3
+    if (this.currentAddress === "" && this.isInitialized === false) {
+      await this.initializeWeb3();
+    }
     // Check Route
     this.loading = true;
     if (this.$route.params.slug) {
       this.slug = this.$route.params.slug;
       this.setName(this.slug);
-      if (FILENAME.indexOf(this.slug) === -1) {
+      if (!SUPPORTED_NETWORK.has(this.network)) {
+        this.$router.push({ path: "/nft" });
+        Notify.create({
+          color: "red",
+          message: `Network not supported for id ${this.network}`
+        });
+        return;
+      }
+      if (FILE[this.network].filename.indexOf(this.slug) === -1) {
         this.$router.push({ path: "/nft" });
         Notify.create({
           color: "red",
@@ -126,10 +139,6 @@ export default {
     }/contract.json`);
     this.loading = false;
 
-    // Load Web3
-    if (this.currentAddress === "" && this.isInitialized === false) {
-      await this.initializeWeb3();
-    }
     await this.loadSpecificContract(this.slug);
     this.showNftList = true;
   }

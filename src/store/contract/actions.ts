@@ -1,16 +1,17 @@
 import { web3Instance } from "src/boot/web3";
 import {
-  FILENAME,
+  FILE,
   loadAllContract,
   loadSpecificContract
 } from "src/contracts/contract";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
 import { ActionTree } from "vuex";
+import { RootState } from "../indexts";
 import { ContractActionName, ContractMutationName } from "./names";
 import { ContractState } from "./state";
 
-const actions: ActionTree<ContractState, any> = {
+const actions: ActionTree<ContractState, RootState> = {
   /** [Private] Setup ETH Address */
   async [ContractActionName.setupAddress]({ commit, rootState }) {
     let acc: string[];
@@ -22,23 +23,30 @@ const actions: ActionTree<ContractState, any> = {
     commit(ContractMutationName.setAddress, acc[0]);
   },
   /** [Private] Load all NFTs (with img id) */
-  async [ContractActionName.loadAllNfts]({ state, commit }, name: string) {
+  async [ContractActionName.loadAllNfts]({ state, commit, rootState }, name: string, network?: number) {
+    const currentNetwork = network || rootState.web3.network;
+    if (!currentNetwork) {
+      // if current network not exist
+      return;
+    }
+    // Generate an array (something like python range)
     const numArr = range(0, state.contractDetails[name].balance);
+    // load function from contract.ts
     const {
       genImg,
       getSupportImgShortcut
-      // getNft
-    } = await import(`src/contracts/contract/${name}/contract.ts`);
+    } = await import(`src/contracts/contract/${FILE[currentNetwork].name}/${name}/contract.ts`);
     numArr.forEach(async (key) => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
       commit(ContractMutationName.addNftIds, { name, id: tokenId });
       if (getSupportImgShortcut()) {
+        // if shortcut exist
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
           image: genImg({ id: tokenId })
         });
       } else {
-        // make RPC call
+        // if shorcut not exist, make RPC call
         const uri = await web3Instance.getURI(tokenId);
         const res = await fetch(uri);
         const jsonData = await res.json();
@@ -50,19 +58,19 @@ const actions: ActionTree<ContractState, any> = {
     });
   },
   /** Load all JSON Contract JSON data */
-  async [ContractActionName.loadAllJson]({ state, commit }) {
-    const jsonData = await loadAllContract();
+  async [ContractActionName.loadAllJson]({ state, commit, rootState }) {
+    const jsonData = await loadAllContract(rootState.web3.network!);
     commit(ContractMutationName.setContractsData, {
       contracts: jsonData,
-      names: FILENAME
+      names: FILE
     });
   },
   /** Load Specific JSON Contract data */
   async [ContractActionName.loadSpecificJson](
-    { commit },
+    { commit, rootState },
     name: string
   ) {
-    const jsonData = await loadSpecificContract(name);
+    const jsonData = await loadSpecificContract(rootState.web3.network!, name);
     commit(ContractMutationName.setSpecificContractData, {
       name,
       contract: jsonData

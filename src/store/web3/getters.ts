@@ -1,8 +1,9 @@
 import { GetterTree } from "vuex";
+import { RootState } from "../indexts";
 import { Web3GetterName } from "./names";
 import { Web3State } from "./state";
 
-const getters: GetterTree<Web3State, any> = {
+const getters: GetterTree<Web3State, RootState> = {
   // get loading status
   [Web3GetterName.web3Loading](state) {
     return state.loading;
@@ -18,6 +19,9 @@ const getters: GetterTree<Web3State, any> = {
   // get user status
   [Web3GetterName.web3Status](state) {
     return state.status;
+  },
+  [Web3GetterName.web3Network](state) {
+    return state.network;
   }
 };
 

@@ -1,12 +1,14 @@
 import mutations from "src/store/web3/mutations";
 import { Web3MutationName } from "src/store/web3/names";
+import { Web3State } from "src/store/web3/state";
 
 describe("[Web3 Mutations]", () => {
-  const state = {
+  const state: Web3State = {
     loading: false,
     status: "loading",
     message: "",
-    initialized: false
+    initialized: false,
+    network: 70
   };
 
   it("[Mutations] setInitialized", () => {
@@ -27,5 +29,10 @@ describe("[Web3 Mutations]", () => {
   it("[Mutations] setMessage", () => {
     mutations[Web3MutationName.setMessage](state, "random msg");
     expect(state.message).toBe("random msg");
+  });
+
+  it("[Mutations] setNetwork", () => {
+    mutations[Web3MutationName.setNetwork](state, 88);
+    expect(state.network).toBe(88);
   });
 });
