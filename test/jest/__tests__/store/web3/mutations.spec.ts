@@ -8,7 +8,8 @@ describe("[Web3 Mutations]", () => {
     status: "loading",
     message: "",
     initialized: false,
-    network: 70
+    network: 70,
+    networkName: "ethereum"
   };
 
   it("[Mutations] setInitialized", () => {

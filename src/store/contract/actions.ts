@@ -79,10 +79,11 @@ const actions: ActionTree<ContractState, RootState> = {
     });
   },
   /** Update an array NFTs on balance (use in main page) */
-  async [ContractActionName.updateBalance]({ state, commit }) {
+  async [ContractActionName.updateBalance]({ state, commit , rootState}) {
+    const networkName = rootState.web3.networkName;
     const acc = state.address;
     for (const contract of Object.keys(state.contractDetails)) {
-      const { address, name, abi } = state.contractDetails[contract];
+      const { address, name, abi } = state.contractDetails[networkName][contract];
       await web3Instance.setContract({ abiAddress: abi, address, acc });
       const bal = await web3Instance.getBalance(acc);
       commit(ContractMutationName.setContractsBalance, { name, bal });
@@ -106,9 +107,10 @@ const actions: ActionTree<ContractState, RootState> = {
     commit(ContractMutationName.setLoading, false);
   },
   async [ContractActionName.loadSpecificContract](
-    { state, commit, dispatch },
+    { state, commit, dispatch, rootState},
     name: string
   ) {
+    const networkName = rootState.web3.networkName;
     if (state.address === "") {
       await dispatch(ContractActionName.setupAddress);
     }
@@ -119,7 +121,7 @@ const actions: ActionTree<ContractState, RootState> = {
       commit(ContractMutationName.setLoading, false);
       return;
     }
-    const { address, abi } = state.contractDetails[name];
+    const { address, abi } = state.contractDetails[networkName][name];
     await web3Instance.setContract({ abiAddress: abi, address, acc });
     const bal = await web3Instance.getBalance(acc);
     commit(ContractMutationName.setContractsBalance, { name, bal });

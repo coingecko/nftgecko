@@ -8,7 +8,8 @@ describe("[Web3 Getters]", () => {
     status: "loading",
     message: "rng",
     initialized: false,
-    network: 69
+    network: 69,
+    networkName: "ethereum"
   };
 
   it("[Getters] web3Loading", () => {

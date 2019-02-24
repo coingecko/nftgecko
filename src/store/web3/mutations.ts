@@ -1,5 +1,5 @@
+import { SUPPORTED_NETWORK } from "src/contracts/contract";
 import { MutationTree } from "vuex";
-import { SUPPORTED_NETWORK } from "~/src/contracts/contract";
 import { Web3MutationName } from "./names";
 import { Web3State } from "./state";
 
