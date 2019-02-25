@@ -23,6 +23,9 @@ const getters: GetterTree<ContractState, any> = {
   },
   [ContractGetterName.getNFTImages](state) {
     return (network: string) => state.contractDetails[network][state.name].ids;
+  },
+  [ContractGetterName.getCompKey](state) {
+    return state.compKey;
   }
 };
 

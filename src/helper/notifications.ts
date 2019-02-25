@@ -26,3 +26,16 @@ export function errorNotification(message: string, i18nString = true) {
     position: "top-right"
   });
 }
+
+/** show info notification
+ * @export
+ * @param {string} message
+ * @param {boolean} [i18nString=true]
+ */
+export function infoNotification(message: string, i18nString = true) {
+  Notify.create({
+    color: "blue",
+    message: i18nString ? i18n.t(message) : message,
+    position: "top-right"
+  });
+}

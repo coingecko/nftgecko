@@ -1,6 +1,15 @@
 <template>
   <q-page padding>
-    <available-nft-component :eth-network="ethNetwork" />
+    <q-inner-loading :showing="loading" v-if="loading">
+      <q-spinner-gears size="90px" color="primary" />
+      <p class="Loading__Text">{{ message }}</p>
+    </q-inner-loading>
+    <available-nft-component
+      v-else
+      :eth-network="ethNetwork"
+      :id="compKey"
+      :key="compKey"
+    />
   </q-page>
 </template>
 

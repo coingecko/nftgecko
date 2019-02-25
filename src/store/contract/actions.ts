@@ -84,21 +84,22 @@ const actions: ActionTree<ContractState, RootState> = {
   async [ContractActionName.updateBalance]({ state, commit , rootState}) {
     const networkName = rootState.web3.networkName;
     const acc = state.address;
-    for (const contract of Object.keys(state.contractDetails)) {
-      const { address, name, abi } = state.contractDetails[networkName][contract];
-      await web3Instance.setContract({ abiAddress: abi, address, acc });
+    for (const contract of Object.keys(state.contractDetails[networkName])) {
+      const cData = state.contractDetails[networkName][contract];
+      const { address: contractAddress, name: contractName, abi } =  cData;
+      await web3Instance.setContract({ abiAddress: abi, address: contractAddress, acc });
       const bal = await web3Instance.getBalance(acc);
-      commit(ContractMutationName.setContractsBalance, { name, bal });
+      commit(ContractMutationName.setContractsBalance, { name: contractName, bal, network: networkName });
     }
   },
   /** Load all JSON Contract data */
-  async [ContractActionName.loadAllContracts]({ state, commit, dispatch }) {
+  async [ContractActionName.loadAllContracts]({ state, commit, dispatch }, network?: string) {
     commit(ContractMutationName.setLoading, true);
     commit(ContractMutationName.updateCompKey);
     if (state.address === "") {
       await dispatch(ContractActionName.setupAddress);
     }
-    await dispatch(ContractActionName.loadAllJson);
+    await dispatch(ContractActionName.loadAllJson, network);
     const acc = state.address;
     if (acc === "") {
       errorNotification("contract.error.no_acc");

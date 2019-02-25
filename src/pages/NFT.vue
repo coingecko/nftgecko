@@ -108,7 +108,7 @@ export default {
     if (this.$route.params.slug) {
       this.slug = this.$route.params.slug;
       this.setName(this.slug);
-      if (!SUPPORTED_NETWORK.has(this.network)) {
+      if (!SUPPORTED_NETWORK.hasOwnProperty(this.network)) {
         this.$router.push({ path: "/nft" });
         Notify.create({
           color: "red",
