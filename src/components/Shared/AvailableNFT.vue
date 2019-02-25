@@ -2,14 +2,15 @@
   <div class="row justify-center q-pt-lg">
     <q-card class="col col-6">
       <q-card-section>
-        <span class="text-h5">Supported NFTs</span>
+        <router-link class="text-h5" :to="`/nft/${ethNetwork}`">{{
+          ethNetwork
+        }}</router-link>
       </q-card-section>
-
       <q-list>
         <q-item
-          v-for="(c, key) in contractsData"
+          v-for="(c, key) in contractsData[ethNetwork]"
           :key="key"
-          :to="`/nft/${c.slug}`"
+          :to="`/nft/${ethNetwork}/${c.slug}`"
         >
           <q-item-section avatar>
             <q-avatar square>
@@ -35,12 +36,20 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { ActionsName } from "src/store";
 import { mapActions, mapState } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
 
-export default {
+export default Vue.extend({
   name: "AvailableNFTComponent",
+  props: {
+    ethNetwork: {
+      type: String,
+      require: true,
+      default: ""
+    }
+  },
   data() {
     return {
       loading: true
@@ -57,10 +66,12 @@ export default {
     }),
     generateImageHolder: generateImageHolder
   },
-  mounted() {
-    this.loadAllJson();
+  async mounted() {
+    this.loading = true;
+    await this.loadAllJson(this.ethNetwork);
+    this.loading = false;
   }
-};
+});
 </script>
 
 <style>

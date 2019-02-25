@@ -40,9 +40,6 @@ export default Vue.extend({
       default: "index"
     }
   },
-  data() {
-    return {};
-  },
   methods: {
     ...mapActions({
       updateBalance: ActionsName.contract.updateBalance,
@@ -72,8 +69,7 @@ export default Vue.extend({
     identicon() {
       return generateImageHolder(this.currentAddress, 50);
     }
-  },
-  async mounted() {}
+  }
 });
 </script>
 

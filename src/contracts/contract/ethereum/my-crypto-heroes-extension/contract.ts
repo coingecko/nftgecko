@@ -1,7 +1,7 @@
-import { genImgFunc, genNFTFunc, getSupportImgShortcutFunc } from "~/src/types/contract";
+import { genImgFunc, genNFTFunc, getSupportImgShortcutFunc } from "src/types/contract";
 
 export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
-  return false;
+  return true;
 };
 
 /** A function to get NFT's image
@@ -9,12 +9,9 @@ export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
  * @param {{id: number}} payload
  * @returns string
  */
-export const genImg: genImgFunc = ({ id }, jsonData = null) => {
-  if (jsonData && jsonData.properties) {
-    return jsonData.properties.image.description;
-  } else {
-    return "";
-  }
+export const genImg: genImgFunc = ({ id }) => {
+  const formattedId = `${id}`.slice(0, 4);
+  return `https://www.mycryptoheroes.net/images/extensions/2000/${formattedId}.png`;
 };
 
 /** A function to get NFT's data

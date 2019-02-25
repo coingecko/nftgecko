@@ -4,16 +4,18 @@ export interface ContractState {
   compKey: number;
   address: string;
   loading: boolean;
-  contractsData: ContractJson[];
+  contractsData: { [network: string]: ContractJson[] };
   names: string[];
   contractDetails: {
-    [contract: string]: {
-      address: string;
-      name: string;
-      abi: string;
-      balance: number;
-      ids: Array<{ id: number; image: string }>;
-      thumb: string;
+    [network: string]: {
+      [contract: string]: {
+        address: string;
+        name: string;
+        abi: string;
+        balance: number;
+        ids: Array<{ id: number; image: string }>;
+        thumb: string;
+      };
     };
   };
   name: string;
@@ -23,7 +25,7 @@ export default {
   compKey: 0,
   address: "",
   loading: true,
-  contractsData: [],
+  contractsData: {},
   names: [],
   contractDetails: {},
   name: ""

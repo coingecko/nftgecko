@@ -20,64 +20,84 @@ const mutations: MutationTree<ContractState> = {
   // Mutations to set contracts data
   [ContractMutationName.setContractsData](
     state,
-    contracts: { contracts: ContractJson[]; names: string[] }
+    {
+      contracts,
+      names,
+      network
+    }: { contracts: ContractJson[]; names: string[]; network: string }
   ) {
-    state.contractsData = contracts.contracts;
-    state.names = contracts.names;
-    contracts.names.forEach((name, key) => {
-      Vue.set(state.contractDetails, name, {
-        ...state.contractDetails[name],
-        name,
-        thumb: contracts.contracts[key].image.thumb,
-        address: contracts.contracts[key].contract.contract_address,
-        abi: contracts.contracts[key].abi,
-        balance: 0,
-        ids: []
+    Vue.set(state.contractsData, network, contracts);
+    names.forEach((name, key) => {
+      Vue.set(state.contractDetails, network, {
+        ...state.contractDetails[network],
+        [name]: {
+          ...state.contractDetails[name],
+          name,
+          thumb: contracts[key].image.thumb,
+          address: contracts[key].contract.contract_address,
+          abi: contracts[key].abi,
+          balance: 0,
+          ids: []
+        }
       });
     });
   },
   [ContractMutationName.setSpecificContractData](
     state,
-    payload: { contract: ContractJson; name: string }
+    {
+      contract,
+      name,
+      network
+    }: { contract: ContractJson; name: string; network: string }
   ) {
-    state.contractDetails = {
-      ...state.contractDetails,
-      [payload.name]: {
-        name: payload.name,
-        address: payload.contract.contract.contract_address,
-        abi: payload.contract.abi,
+    Vue.set(state.contractDetails, network, {
+      ...state.contractDetails[network],
+      [name]: {
+        name,
+        address: contract.contract.contract_address,
+        abi: contract.abi,
         balance: 0,
         ids: [],
-        thumb: payload.contract.image.thumb
+        thumb: contract.image.thumb
       }
-    };
+    });
   },
   // Mutation to set Contract Balance
   [ContractMutationName.setContractsBalance](
     state,
-    { name, bal }: { name: string; bal: number }
+    { name, bal, network }: { name: string; bal: number; network: string }
   ) {
-    Vue.set(state.contractDetails, name, {
-      ...state.contractDetails[name],
+    // return {
+    //   ...state.contractDetails[network],
+    //   [network]: {
+    //     ...state.contractDetails[network][name],
+    //     balance: bal
+    //   }
+    // }
+    Vue.set(state.contractDetails[network], name, {
+      ...state.contractDetails[network][name],
       balance: bal
     });
   },
   // action to add nfts
   [ContractMutationName.addNftIds](
     state,
-    { name, id }: { name: string; id: number }
+    { name, id, network }: { name: string; id: number; network: string }
   ) {
-    Vue.set(state.contractDetails, name, {
-      ...state.contractDetails[name],
-      ids: [...state.contractDetails[name].ids, { id, image: "" }]
+    Vue.set(state.contractDetails, network, {
+      ...state.contractDetails[network],
+      [name]: {
+        ...state.contractDetails[network][name],
+        ids: [...state.contractDetails[network][name].ids, { id, image: "" }]
+      }
     });
   },
   // action to set img (Need to add id first)
   [ContractMutationName.setNftImages](
     state,
-    { id, image }: { id: number; image: string }
+    { id, image, network }: { id: number; image: string; network: string }
   ) {
-    const contractDetails = state.contractDetails[state.name];
+    const contractDetails = state.contractDetails[network][state.name];
     const idKey = contractDetails.ids.findIndex((el) => el.id === id);
     const formattedKey = idKey === -1 ? NaN : idKey;
     const beforeIds = contractDetails.ids.slice(
@@ -87,10 +107,12 @@ const mutations: MutationTree<ContractState> = {
     const afterIds = isNaN(formattedKey)
       ? []
       : contractDetails.ids.slice(formattedKey + 1, contractDetails.ids.length);
-
-    Vue.set(state.contractDetails, state.name, {
-      ...contractDetails,
-      ids: [...beforeIds, { id, image }, ...afterIds]
+    Vue.set(state.contractDetails, network, {
+      ...state.contractDetails[network],
+      [state.name]: {
+        ...contractDetails,
+        ids: [...beforeIds, { id, image }, ...afterIds]
+      }
     });
   },
   // set name

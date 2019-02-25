@@ -17,7 +17,6 @@ export class Web3Class {
    */
   public setWeb3(web3: any) {
     this.web3 = new Web3(web3);
-    return;
   }
 
   // ==========ACTIONS==========
@@ -31,11 +30,11 @@ export class Web3Class {
   }
 
   /** setContract: Setup this.token
-   * @param {{abiAddress: string, address: string, acc: string}} payload
+   * @param {{abi: string, address: string, acc: string}} payload
    * @memberof Web3Class
    */
-  public async setContract({ abiAddress, address, acc }: {abiAddress: string, address: string, acc: string}) {
-    const res = await fetch(`abi/${abiAddress}`);
+  public async setContract({ abi, address, acc }: {abi: string, address: string, acc: string}) {
+    const res = await fetch(`abi/${abi}`);
     const abiJson = await res.json();
     this.token = new this.web3.eth.Contract(abiJson, address, {
       from: acc,
@@ -67,5 +66,9 @@ export class Web3Class {
 
   public getURI(tokenId: number) {
     return this.token!.methods.tokenURI(tokenId).call();
+  }
+
+  public getId() {
+    return this.web3.eth.net.getId();
   }
 }

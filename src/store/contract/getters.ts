@@ -13,16 +13,19 @@ const getters: GetterTree<ContractState, any> = {
   },
   // get all the contract addresses
   [ContractGetterName.getContractAdresses](state) {
-    return state.contractsData.map((c) => c.contract.contract_address);
+    return (network: string) => state.contractsData[network].map((c) => c.contract.contract_address);
   },
   // get contract ContractDetails
   [ContractGetterName.getContractDetails](state) {
-    return Object.keys(state.contractDetails).map((key) => {
-      return state.contractDetails[key];
-    });
+    return (network: string) => Object.keys(state.contractDetails[network]).map((key) =>
+       state.contractDetails[network][key]
+    );
   },
   [ContractGetterName.getNFTImages](state) {
-    return state.contractDetails[state.name].ids;
+    return (network: string) => state.contractDetails[network][state.name].ids;
+  },
+  [ContractGetterName.getCompKey](state) {
+    return state.compKey;
   }
 };
 

@@ -15,6 +15,13 @@ import {
 import web3 from "./web3";
 import { Web3ActionName, Web3GetterName, Web3MutationName } from "./web3/names";
 
+export interface RootState {
+  settings: typeof settings.state;
+  web3: typeof web3.state;
+  contract: typeof contract.state;
+  route: any;
+}
+
 const VuexStoreProperties = {
     modules: {
       settings,

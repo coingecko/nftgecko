@@ -4,15 +4,16 @@
       <q-spinner-gears size="90px" color="primary" />
       <p class="Loading__Text">{{ message }}</p>
     </q-inner-loading>
-    <auth-component v-else-if="status === 'login'" />
+    <auth-component v-else-if="auth" />
     <not-auth-component v-else />
   </q-page>
 </template>
 
 <script>
 import Vue from "vue";
-import { mapActions, mapGetters } from "vuex";
-import { ActionsName, GettersName } from "src/store";
+import { mapGetters } from "vuex";
+import { GettersName } from "src/store";
+import { W3iMixin } from "src/mixins/W3iMixin";
 
 Vue.component(
   "auth-component",
@@ -27,21 +28,15 @@ Vue.component(
 
 export default Vue.extend({
   name: "PageIndex",
+  mixins: [W3iMixin],
   computed: {
     ...mapGetters({
-      loading: GettersName.web3.web3Loading,
-      message: GettersName.web3.web3LoadingMessage,
-      status: GettersName.web3.web3Status,
-      isInitialized: GettersName.web3.web3Initialize
+      status: GettersName.web3.web3Status
     })
   },
-  methods: {
-    ...mapActions({ initializeWeb3: ActionsName.web3.initializeWeb3 })
-  },
-  mounted() {
-    if (!this.isInitialized) {
-      this.initializeWeb3();
-    }
+  async created() {
+    await this.w3i();
+    await this.networkCheck();
   }
 });
 </script>

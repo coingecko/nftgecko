@@ -14,7 +14,8 @@ export const ContractGetterName = {
   getCurrentAddress: "getCurrentAddress",
   getContractAdresses: "getContractAdresses",
   getContractDetails: "getContractDetails",
-  getNFTImages: "getNFTImages"
+  getNFTImages: "getNFTImages",
+  getCompKey: "getCompKey"
 };
 
 export const ContractMutationName = {

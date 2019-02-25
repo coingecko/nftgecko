@@ -4,11 +4,11 @@
       <div class="col col-6 q-pb-md">
         <current-address />
       </div>
-      <div class="row" :key="compKey">
+      <div class="row" :key="compKey" v-if="showAddress">
         <q-table
           :key="compKey"
           title="NFTs"
-          :data="contractDetails"
+          :data="contractDetails(networkName)"
           :columns="contractColumns"
           row-key="name"
           :loading="loading"
@@ -51,14 +51,16 @@
 import Vue from "vue";
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapState, mapGetters } from "vuex";
-import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
 import { generateImageHolder } from "src/helper/utils";
+
+Vue.component(
+  "current-address",
+  // The `import` function returns a Promise.
+  () => import("src/components/Shared/CurrentAddress.vue")
+);
 
 export default Vue.extend({
   name: "AuthComponent",
-  components: {
-    "current-address": CurrentAddressVue
-  },
   data() {
     return {
       contractColumns: [
@@ -78,7 +80,8 @@ export default Vue.extend({
           field: "balance",
           sortable: true
         }
-      ]
+      ],
+      showAddress: false
     };
   },
   computed: {
@@ -88,7 +91,8 @@ export default Vue.extend({
     ...mapGetters({
       loading: GettersName.contract.getLoading,
       contractDetails: GettersName.contract.getContractDetails,
-      currentAddress: GettersName.contract.getCurrentAddress
+      currentAddress: GettersName.contract.getCurrentAddress,
+      networkName: GettersName.web3.web3NetworkName
     })
   },
   methods: {
@@ -96,12 +100,14 @@ export default Vue.extend({
       loadAllContracts: ActionsName.contract.loadAllContracts
     }),
     rowClick(val) {
-      this.$router.push({ path: `/nft/${val.name}` });
+      this.$router.push({ path: `/nft/${this.networkName}/${val.name}` });
     },
     generateImageHolder: generateImageHolder
   },
-  mounted() {
-    this.loadAllContracts();
+  async mounted() {
+    this.showAddress = false;
+    await this.loadAllContracts(this.networkName);
+    this.showAddress = true;
   }
 });
 </script>

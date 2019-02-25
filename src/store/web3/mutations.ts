@@ -1,3 +1,4 @@
+import { SUPPORTED_NETWORK } from "src/contracts/contract";
 import { MutationTree } from "vuex";
 import { Web3MutationName } from "./names";
 import { Web3State } from "./state";
@@ -19,6 +20,10 @@ const mutations: MutationTree<Web3State> = {
   [Web3MutationName.setMessage](state, message: string) {
     state.message = message;
   },
+  [Web3MutationName.setNetwork](state, network: number) {
+    state.network = network;
+    state.networkName = SUPPORTED_NETWORK[network] || "";
+  }
 };
 
 export default mutations;
