@@ -1,6 +1,11 @@
 <template>
   <q-page padding>
-    <available-nft-component v-for="f in fileNames" :key="f" :eth-network="f" />
+    <available-nft-component
+      class="q-py-sm"
+      v-for="f in fileNames"
+      :key="f"
+      :eth-network="f"
+    />
   </q-page>
 </template>
 

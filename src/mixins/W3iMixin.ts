@@ -23,7 +23,7 @@ import { ActionsName, GettersName, MutationsName } from "../store/indexts";
       updateCompKey: MutationsName.contract.updateCompKey
     }),
     ...mapActions({
-      initializedWeb3: ActionsName.web3.initializeWeb3,
+      initializeWeb3: ActionsName.web3.initializeWeb3,
       loadAllContracts: ActionsName.contract.loadAllContracts
     })
   }
@@ -38,7 +38,7 @@ export class W3iMixin extends Vue {
   public networkId!: number;
   public networkName!: string;
   // actions method
-  public initializedWeb3!: () => void;
+  public initializeWeb3!: () => void;
   public loadAllContracts!: (network?: string) => void;
   // mutation method
   public updateCompKey!: () => void;
@@ -46,12 +46,11 @@ export class W3iMixin extends Vue {
   public pushTo(path: string) {
     this.$router.push({ path });
   }
-  //
-  public async mounted() {
+  public async created() {
     // W3Initialized
     if (!this.isInitialized) {
       try {
-        await this.initializedWeb3();
+        await this.initializeWeb3();
       } catch (err) {
         console.error(err);
       }
@@ -80,7 +79,7 @@ export class W3iMixin extends Vue {
       if (this.$route.params.network) {
         if (SUPPORTED_NETWORK.hasOwnProperty(this.$route.params.network)) {
           this.ethNetwork = this.$route.params.network;
-          this.auth = false;
+          this.auth = true;
         } else {
           errorNotification(
             `Network ${this.networkId ||

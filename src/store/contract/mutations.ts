@@ -67,11 +67,16 @@ const mutations: MutationTree<ContractState> = {
     state,
     { name, bal, network }: { name: string; bal: number; network: string }
   ) {
-    Vue.set(state.contractDetails, network, {
-      [name]: {
-        ...state.contractDetails[network][name],
-        balance: bal
-      }
+    // return {
+    //   ...state.contractDetails[network],
+    //   [network]: {
+    //     ...state.contractDetails[network][name],
+    //     balance: bal
+    //   }
+    // }
+    Vue.set(state.contractDetails[network], name, {
+      ...state.contractDetails[network][name],
+      balance: bal
     });
   },
   // action to add nfts
@@ -102,7 +107,6 @@ const mutations: MutationTree<ContractState> = {
     const afterIds = isNaN(formattedKey)
       ? []
       : contractDetails.ids.slice(formattedKey + 1, contractDetails.ids.length);
-
     Vue.set(state.contractDetails, network, {
       ...state.contractDetails[network],
       [state.name]: {

@@ -31,10 +31,6 @@
               </div>
             </div>
           </div>
-          <!-- <div inline class="col col-12 q-px-md q-py-sm">
-          <span class="text-h5 text-bold">About</span>
-          <p>{{ jsonData.description }}</p>
-        </div> -->
 
           <div class="col col-12 q-px-md q-py-sm">
             <current-address
@@ -46,11 +42,16 @@
         </q-card-section>
       </q-card>
 
-      <nft-list class="q-my-md" v-if="showNftList" :name="slug" />
+      <nft-list
+        class="q-my-md"
+        v-if="showNftList"
+        :name="slug"
+        :network="ethNetwork"
+      />
       <div class="row full-width q-mt-lg bg-grey-2" v-else>
         <div class="col-12 q-pa-lg row">
           <span class="text-h5 text-center col-12">
-            No NFTs available
+            No NFTs available 2
           </span>
         </div>
       </div>
@@ -75,10 +76,10 @@ export default {
   },
   data() {
     return {
-      loading: true,
       slug: "",
       jsonData: {},
-      showNftList: false
+      showNftList: false,
+      loading: true
     };
   },
   methods: {
@@ -94,21 +95,28 @@ export default {
   computed: {
     ...mapGetters({
       currentAddress: GettersName.contract.getCurrentAddress,
-      isInitialized: GettersName.web3.web3Initialize,
-      network: GettersName.web3.web3Network
-    })
+      network: GettersName.web3.web3NetworkName,
+      isInitialized: GettersName.web3.web3Initialize
+    }),
+    ethNetwork: function() {
+      return this.network || this.$route.params.network;
+    }
   },
   async mounted() {
-    // Load Web3
-    if (this.currentAddress === "" && this.isInitialized === false) {
-      await this.initializeWeb3();
+    // W3Initialized
+    if (!this.isInitialized) {
+      try {
+        await this.initializeWeb3();
+      } catch (err) {
+        console.error(err);
+      }
     }
+    const network = this.network || this.$route.params.network;
     // Check Route
-    this.loading = true;
     if (this.$route.params.slug) {
       this.slug = this.$route.params.slug;
       this.setName(this.slug);
-      if (!SUPPORTED_NETWORK.hasOwnProperty(this.network)) {
+      if (!SUPPORTED_NETWORK.hasOwnProperty(network)) {
         this.$router.push({ path: "/nft" });
         Notify.create({
           color: "red",
@@ -116,7 +124,7 @@ export default {
         });
         return;
       }
-      if (FILE[this.network].filename.indexOf(this.slug) === -1) {
+      if (FILE[network].filename.indexOf(this.slug) === -1) {
         this.$router.push({ path: "/nft" });
         Notify.create({
           color: "red",
@@ -134,13 +142,12 @@ export default {
     }
 
     // fetch json data
-    this.jsonData = await import(`src/contracts/contract/${
+    this.jsonData = await import(`src/contracts/contract/${network}/${
       this.slug
     }/contract.json`);
-    this.loading = false;
-
-    await this.loadSpecificContract(this.slug);
+    await this.loadSpecificContract({ name: this.slug, network });
     this.showNftList = true;
+    this.loading = false;
   }
 };
 </script>

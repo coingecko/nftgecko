@@ -55,9 +55,8 @@ export const loadAllContract = async (network: string) => {
 };
 
 export const loadSpecificContract = async (
-  network: number,
+  network: string,
   nftName: string
 ) => {
-  const { name } = FILE[network];
-  return import(`./${name}/${nftName}/contract.json`);
+  return import(`./${network}/${nftName}/contract.json`);
 };

@@ -27,25 +27,29 @@ import { GettersName } from "src/store";
 import { mapGetters, mapState } from "vuex";
 import NFTImageVue from "src/components/NFT/NFTImage.vue";
 export default {
-  props: { name: { type: String, default: "" } },
+  props: {
+    name: { type: String, default: "" },
+    network: { type: String, default: "" }
+  },
   components: {
     "nft-img": NFTImageVue
   },
   computed: {
     ...mapState({
       nftIds: function(state) {
-        return state.contract.contractDetails[this.name].ids;
+        return state.contract.contractDetails[this.network][this.name].ids;
       }
     }),
     ...mapGetters({
       contractDetails: GettersName.contract.getContractDetails
     }),
     exist() {
-      return this.contractDetails.length > 0;
+      return this.contractDetails(this.network).length > 0;
     },
     bal() {
-      return this.contractDetails.filter(data => data.name === this.name)[0]
-        .balance;
+      return this.contractDetails(this.network).filter(
+        data => data.name === this.name
+      )[0].balance;
     }
   }
 };

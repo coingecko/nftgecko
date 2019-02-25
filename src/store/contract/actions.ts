@@ -40,12 +40,13 @@ const actions: ActionTree<ContractState, RootState> = {
     } = await import(`src/contracts/contract/${currentNetworkName}/${name}/contract.ts`);
     numArr.forEach(async (key) => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
-      commit(ContractMutationName.addNftIds, { name, id: tokenId });
+      commit(ContractMutationName.addNftIds, { name, id: tokenId, network: currentNetworkName });
       if (getSupportImgShortcut()) {
         // if shortcut exist
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
-          image: genImg({ id: tokenId })
+          image: genImg({ id: tokenId }),
+          network: currentNetworkName
         });
       } else {
         // if shorcut not exist, make RPC call
@@ -72,25 +73,27 @@ const actions: ActionTree<ContractState, RootState> = {
   /** Load Specific JSON Contract data */
   async [ContractActionName.loadSpecificJson](
     { commit, rootState },
-    name: string
+    {name, network}: {name: string,
+    network: string}
   ) {
-    const jsonData = await loadSpecificContract(rootState.web3.network!, name);
+    const jsonData = await loadSpecificContract(network || rootState.web3.networkName!, name);
+    //
     commit(ContractMutationName.setSpecificContractData, {
       name,
-      contract: jsonData
+      contract: jsonData,
+      network
     });
   },
   /** Update an array NFTs on balance (use in main page) */
   async [ContractActionName.updateBalance]({ state, commit , rootState}) {
     const networkName = rootState.web3.networkName;
     const acc = state.address;
-    for (const contract of Object.keys(state.contractDetails[networkName])) {
-      const cData = state.contractDetails[networkName][contract];
-      const { address: contractAddress, name: contractName, abi } =  cData;
-      await web3Instance.setContract({ abiAddress: abi, address: contractAddress, acc });
+    Object.keys(state.contractDetails[networkName]).forEach(async (contract) => {
+      const {name, address, abi} = state.contractDetails[networkName][contract];
+      await web3Instance.setContract({ abi, address , acc });
       const bal = await web3Instance.getBalance(acc);
-      commit(ContractMutationName.setContractsBalance, { name: contractName, bal, network: networkName });
-    }
+      commit(ContractMutationName.setContractsBalance, { name , bal, network: networkName });
+    });
   },
   /** Load all JSON Contract data */
   async [ContractActionName.loadAllContracts]({ state, commit, dispatch }, network?: string) {
@@ -111,13 +114,14 @@ const actions: ActionTree<ContractState, RootState> = {
   },
   async [ContractActionName.loadSpecificContract](
     { state, commit, dispatch, rootState},
-    name: string
+    {name, network}: { name: string,
+    network?: string; }
   ) {
-    const networkName = rootState.web3.networkName;
+    const networkName = network || rootState.web3.networkName;
     if (state.address === "") {
       await dispatch(ContractActionName.setupAddress);
     }
-    await dispatch(ContractActionName.loadSpecificJson, name);
+    await dispatch(ContractActionName.loadSpecificJson, {name, network});
     const acc = state.address;
     if (acc === "") {
       errorNotification("contract.error.no_acc");
@@ -125,9 +129,9 @@ const actions: ActionTree<ContractState, RootState> = {
       return;
     }
     const { address, abi } = state.contractDetails[networkName][name];
-    await web3Instance.setContract({ abiAddress: abi, address, acc });
+    await web3Instance.setContract({ abi, address, acc });
     const bal = await web3Instance.getBalance(acc);
-    commit(ContractMutationName.setContractsBalance, { name, bal });
+    commit(ContractMutationName.setContractsBalance, { name, bal, network });
     if (bal === 0) {
       return;
     }

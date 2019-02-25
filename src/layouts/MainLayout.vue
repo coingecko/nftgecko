@@ -64,19 +64,20 @@ import { openURL } from "quasar";
 
 export default {
   name: "MyLayout",
-  data() {
-    return {
-      tab: ""
-    };
+  computed: {
+    tab: {
+      get() {
+        const urlPath = this.$route.path.split("/").filter(d => d !== "");
+        return urlPath.length >= 1 ? `/${urlPath[0]}` : "/";
+      },
+      set(val) {}
+    }
   },
   methods: {
     openURL,
     setHomeTab: function() {
       this.tab = "/";
     }
-  },
-  created() {
-    this.tab = this.$route.path;
   }
 };
 </script>

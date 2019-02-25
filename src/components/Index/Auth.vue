@@ -4,7 +4,7 @@
       <div class="col col-6 q-pb-md">
         <current-address />
       </div>
-      <div class="row" :key="compKey">
+      <div class="row" :key="compKey" v-if="showAddress">
         <q-table
           :key="compKey"
           title="NFTs"
@@ -80,7 +80,8 @@ export default Vue.extend({
           field: "balance",
           sortable: true
         }
-      ]
+      ],
+      showAddress: false
     };
   },
   computed: {
@@ -103,8 +104,10 @@ export default Vue.extend({
     },
     generateImageHolder: generateImageHolder
   },
-  mounted() {
-    this.loadAllContracts(this.networkName);
+  async mounted() {
+    this.showAddress = false;
+    await this.loadAllContracts(this.networkName);
+    this.showAddress = true;
   }
 });
 </script>
