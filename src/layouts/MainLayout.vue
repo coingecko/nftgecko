@@ -3,9 +3,9 @@
     <q-header elevated class="bg-primary">
       <q-toolbar>
         <q-toolbar-title>
-          <router-link to="/" class="q-pl-sm" @click.native="setHomeTab">
-            {{ $t("app.name") }}
-          </router-link>
+          <router-link to="/" class="q-pl-sm" @click.native="setHomeTab">{{
+            $t("app.name")
+          }}</router-link>
         </q-toolbar-title>
         <div class="relative-position Layout__Settings" v-ripple>
           <router-link to="/settings">
@@ -17,7 +17,7 @@
     <q-page-container class="q-py-sm">
       <router-view />
       <div class="row">
-        <span class="col Footer__Text text-white text-center"> </span>
+        <span class="col Footer__Text text-white text-center"></span>
       </div>
     </q-page-container>
     <q-footer>
@@ -27,7 +27,7 @@
         <q-tabs v-model="tab" class="Footer__Text text-white col text-center">
           <router-link to="/">
             <q-tab
-              class="text-green"
+              class="text-white"
               name="/"
               icon="fas fa-wallet"
               label="Wallet"
@@ -35,7 +35,7 @@
           </router-link>
           <router-link to="/nft">
             <q-tab
-              class="text-orange"
+              class="text-white"
               name="/nft"
               icon="fas fa-coins"
               label="Supported NFTs"
