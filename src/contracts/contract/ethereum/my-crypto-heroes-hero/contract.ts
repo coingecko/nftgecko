@@ -1,4 +1,4 @@
-import { genImgFunc, genNFTFunc, getSupportImgShortcutFunc } from "~/src/types/contract";
+import { genImgFunc, genNFTFunc, getSupportImgShortcutFunc } from "src/types/contract";
 
 export const getSupportImgShortcut: getSupportImgShortcutFunc = () => {
   return true;

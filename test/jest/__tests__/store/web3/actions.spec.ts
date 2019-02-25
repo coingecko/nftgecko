@@ -1,9 +1,9 @@
 import W3Actions from "src/store/web3/actions";
 import W3Mutations from "src/store/web3/mutations";
+import { Web3ActionName } from "src/store/web3/names";
 import W3State from "src/store/web3/state";
 import Vue from "vue";
 import Vuex, { Store } from "vuex";
-import { Web3ActionName } from "~/src/store/web3/names";
 
 Vue.use(Vuex);
 

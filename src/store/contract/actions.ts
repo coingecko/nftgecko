@@ -60,11 +60,13 @@ const actions: ActionTree<ContractState, RootState> = {
     });
   },
   /** Load all JSON Contract JSON data */
-  async [ContractActionName.loadAllJson]({ state, commit, rootState }) {
-    const jsonData = await loadAllContract(rootState.web3.network!);
+  async [ContractActionName.loadAllJson]({ state, commit, rootState }, nw: string) {
+    const network = nw || rootState.web3.networkName!;
+    const jsonData = await loadAllContract(network);
     commit(ContractMutationName.setContractsData, {
       contracts: jsonData,
-      names: FILE
+      names: FILE[network].filename,
+      network
     });
   },
   /** Load Specific JSON Contract data */

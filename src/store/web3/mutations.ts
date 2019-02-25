@@ -22,7 +22,7 @@ const mutations: MutationTree<Web3State> = {
   },
   [Web3MutationName.setNetwork](state, network: number) {
     state.network = network;
-    state.networkName = SUPPORTED_NETWORK[network];
+    state.networkName = SUPPORTED_NETWORK[network] || "";
   }
 };
 

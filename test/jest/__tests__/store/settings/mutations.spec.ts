@@ -1,6 +1,6 @@
 import mutations from "src/store/settings/mutations";
 import { SettingsMutationName } from "src/store/settings/names";
-import { SettingsState } from "~/src/store/settings/state";
+import { SettingsState } from "src/store/settings/state";
 
 describe("[Settings Mutations]", () => {
 

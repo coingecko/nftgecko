@@ -27,7 +27,6 @@ const mutations: MutationTree<ContractState> = {
     }: { contracts: ContractJson[]; names: string[]; network: string }
   ) {
     Vue.set(state.contractsData, network, contracts);
-    state.names = names;
     names.forEach((name, key) => {
       Vue.set(state.contractDetails, network, {
         ...state.contractDetails[network],

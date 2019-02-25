@@ -13,7 +13,7 @@ export default async ({ app, router, Vue }: BootInput) => {
   // Vuex Watch for sign in
 
   let tempAccInterval: any = null;
-  store.watch((newValue: any, oldValue: any) => {
+  store.watch(() => {}, (newValue: any, oldValue: any) => {
     if (!(oldValue.web3 && newValue.web3.status === oldValue.web3.status)) {
       // if account switch
       if (newValue.web3.status === "login") {

@@ -9,7 +9,8 @@ export const Web3GetterName = {
   web3Loading: "web3Loading",
   web3LoadingMessage: "web3LoadingMessage",
   web3Status: "web3Status",
-  web3Network: "web3Network"
+  web3Network: "web3Network",
+  web3NetworkName: "web3NetworkName"
 };
 
 export const Web3MutationName = {

@@ -2,7 +2,7 @@ import cgJson from "src/contracts/contract/ethereum/coingecko/contract.json";
 import marbleJson from "src/contracts/contract/ethereum/marble-nft/contract.json";
 import getters from "src/store/contract/getters";
 import { ContractGetterName } from "src/store/contract/names";
-import { ContractState } from "~/src/store/contract/state";
+import { ContractState } from "src/store/contract/state";
 
 const contractsData = [cgJson, marbleJson];
 

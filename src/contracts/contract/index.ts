@@ -7,7 +7,9 @@ const ETHEREUM_FILENAME = [
   "gods-unchained"
 ];
 const TOMOCHAIN_FILENAME: string[] = [];
-const TOMOCHAIN_TESTNET_FILENAME: string[] = [];
+const TOMOCHAIN_TESTNET_FILENAME: string[] = [
+  "coingecko"
+];
 
 interface IFile {
   [chainNo: string]: {
@@ -44,10 +46,12 @@ export enum SUPPORTED_NETWORK {
 /**
  * @returns {Promise<Array<ContractJson>>}
  */
-export const loadAllContract = async (network: number) => {
+export const loadAllContract = async (network: string) => {
   const { filename, name } = FILE[network];
-  const loadJson = filename.map((nftName) =>
-    import(`./${name}/${nftName}/contract.json`)
+  const loadJson = filename.map((nftName) => {
+    console.log(`./${name}/${nftName}/contract.json`);
+    return import(`./${name}/${nftName}/contract.json`);
+  }
   );
   return Promise.all([...loadJson]);
 };

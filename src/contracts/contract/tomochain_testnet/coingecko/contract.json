@@ -1,0 +1,16 @@
+{
+  "name": "CoinGecko TOMO",
+  "slug": "coingecko",
+  "description": "CoinGecko first NFT on TOMO.",
+  "official_site": "",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "img/contract/coingecko/thumb.png",
+    "small": "img/contract/coingecko/small.png",
+    "large": "img/contract/coingecko/large.png"
+  },
+  "contract": {
+    "contract_address": "0xd04141B6D18709061aC34168CBba53ec62a23739",
+    "standard": "openzeppelin"
+  }
+}
