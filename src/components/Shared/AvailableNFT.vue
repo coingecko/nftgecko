@@ -2,7 +2,9 @@
   <div class="row justify-center">
     <q-card class="col col-6 ">
       <q-card-section>
-        <span class="text-h5">{{ ethNetwork }}</span>
+        <router-link class="text-h5" :to="`/nft/${ethNetwork}`">{{
+          ethNetwork
+        }}</router-link>
       </q-card-section>
       <q-list>
         <q-item

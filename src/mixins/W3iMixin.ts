@@ -12,7 +12,7 @@ import { ActionsName, GettersName } from "../store/indexts";
     ...mapGetters({
       isInitialized: GettersName.web3.web3Initialize,
       networkId: GettersName.web3.web3Network,
-      networkName: GettersName.web3.web3NetworkName,
+      networkName: GettersName.web3.web3NetworkName
     })
   },
   methods: {
@@ -25,13 +25,14 @@ export class W3iMixin extends Vue {
   // VUE
   public loading = false;
   public auth = false;
+  public ethNetwork = "";
   // VUEX
   // getters data
   public isInitialized!: boolean;
   public networkId!: number;
   public networkName!: string;
   // actions method
-  public initializeWeb3!: () => void;
+  public initializedWeb3!: () => void;
   // method
   public pushTo(path: string) {
     this.$router.push({ path });
@@ -40,7 +41,11 @@ export class W3iMixin extends Vue {
   public async mounted() {
     // W3Initialized
     if (!this.isInitialized) {
-      await this.initializeWeb3();
+      try {
+      await this.initializedWeb3();
+      } catch (err) {
+        console.error(err);
+      }
     }
     // Check Network
     if (SUPPORTED_NETWORK.hasOwnProperty(this.networkId)) {
@@ -56,13 +61,21 @@ export class W3iMixin extends Vue {
           this.auth = true;
         }
       } else {
-          this.loading = false;
-          this.auth = true;
+        this.loading = false;
+        this.auth = true;
       }
     } else {
-      errorNotification(`Netowrk ${this.networkId} not supported`);
-      this.loading = false;
-      this.auth = false;
+      // if network route exist
+      if (SUPPORTED_NETWORK.hasOwnProperty(this.$route.params.network)) {
+        this.ethNetwork = this.$route.params.network;
+        this.loading = false;
+        this.auth = false;
+      } else {
+        errorNotification(`Network ${this.networkId || this.$route.params.network} not supported`);
+        this.pushTo(`/nft`);
+        this.loading = false;
+        this.auth = false;
+      }
     }
   }
 }
