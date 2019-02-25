@@ -33,6 +33,10 @@ export default Vue.extend({
     ...mapGetters({
       status: GettersName.web3.web3Status
     })
+  },
+  async created() {
+    await this.w3i();
+    await this.networkCheck();
   }
 });
 </script>

@@ -1,9 +1,9 @@
 <template>
   <q-page class="flex flex-center" padding>
-    <q-inner-loading :showing="loading">
+    <q-inner-loading :showing="showLoading">
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
-    <div class="q-pa-xs" v-show="!loading" v-if="!loading">
+    <div class="q-pa-xs" v-show="!showLoading" v-if="!showLoading">
       <q-card class="q-my-md">
         <q-card-section class="">
           <div class="row">
@@ -67,9 +67,11 @@ import NFTListVue from "src/components/NFT/NFTList.vue";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import { GettersName, ActionsName, MutationsName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
+import { W3iMixin } from "src/mixins/W3iMixin";
 
 export default {
   name: "NFTComponent",
+  mixins: [W3iMixin],
   components: {
     "current-address": CurrentAddressVue,
     "nft-list": NFTListVue
@@ -79,7 +81,7 @@ export default {
       slug: "",
       jsonData: {},
       showNftList: false,
-      loading: true
+      showLoading: true
     };
   },
   methods: {
@@ -97,20 +99,12 @@ export default {
       currentAddress: GettersName.contract.getCurrentAddress,
       network: GettersName.web3.web3NetworkName,
       isInitialized: GettersName.web3.web3Initialize
-    }),
-    ethNetwork: function() {
-      return this.network || this.$route.params.network;
-    }
+    })
   },
   async mounted() {
-    // W3Initialized
-    if (!this.isInitialized) {
-      try {
-        await this.initializeWeb3();
-      } catch (err) {
-        console.error(err);
-      }
-    }
+    this.showLoading = true;
+    await this.w3i();
+    await this.networkCheck();
     const network = this.network || this.$route.params.network;
     // Check Route
     if (this.$route.params.slug) {
@@ -140,14 +134,13 @@ export default {
       this.$router.push({ path: "/" });
       return;
     }
-
+    this.showLoading = false;
     // fetch json data
     this.jsonData = await import(`src/contracts/contract/${network}/${
       this.slug
     }/contract.json`);
     await this.loadSpecificContract({ name: this.slug, network });
     this.showNftList = true;
-    this.loading = false;
   }
 };
 </script>

@@ -23,6 +23,10 @@ Vue.component("available-nft-component", () =>
 
 export default {
   name: "AvailableNFT",
-  mixins: [W3iMixin]
+  mixins: [W3iMixin],
+  async created() {
+    await this.w3i();
+    await this.networkCheck();
+  }
 };
 </script>

@@ -46,7 +46,7 @@ export class W3iMixin extends Vue {
   public pushTo(path: string) {
     this.$router.push({ path });
   }
-  public async created() {
+  public async w3i() {
     // W3Initialized
     if (!this.isInitialized) {
       try {
@@ -55,6 +55,8 @@ export class W3iMixin extends Vue {
         console.error(err);
       }
     }
+  }
+  public async networkCheck() {
     // Check Network
     if (SUPPORTED_NETWORK.hasOwnProperty(this.networkId)) {
       // if network route exist
@@ -89,7 +91,7 @@ export class W3iMixin extends Vue {
           this.auth = false;
         }
       } else {
-        this.auth = false;
+        this.auth = true;
       }
     }
   }
