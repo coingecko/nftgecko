@@ -67,7 +67,6 @@ describe("[Contract Mutations]", () => {
     };
     mutations[ContractMutationName.setContractsData](state, payload);
     expect(state.contractsData[payload.network]).toEqual(payload.contracts);
-    expect(state.names).toEqual(payload.names);
     expect(state.contractDetails.ethereum).toEqual({
       coingecko: {
         abi: cgJson.abi,

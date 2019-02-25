@@ -41,14 +41,6 @@
               label="Supported NFTs"
             />
           </router-link>
-          <router-link to="/settings">
-            <q-tab
-              class="text-teal"
-              name="/settings"
-              icon="fas fa-cog"
-              label="Settings"
-            />
-          </router-link>
           <a
             href="https://github.com/coingecko/nft-manager"
             rel="noreferrer"
