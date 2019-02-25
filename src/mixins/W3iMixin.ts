@@ -49,24 +49,30 @@ export class W3iMixin extends Vue {
     }
     // Check Network
     if (SUPPORTED_NETWORK.hasOwnProperty(this.networkId)) {
+      console.log("HERE 1");
       // if network route exist
       if (this.$route.params.network) {
         // network and route not match
         if (this.$route.params.network !== this.networkName) {
           errorNotification(`Rerouting to ${this.networkName}`, false);
           this.pushTo(`/nft/${this.networkName}`);
+          // TODO: temporary hack, remove this later
+          location.reload();
           return;
         } else {
+          this.ethNetwork = this.$route.params.network;
           this.loading = false;
           this.auth = true;
         }
       } else {
+        this.ethNetwork = this.networkName;
         this.loading = false;
         this.auth = true;
       }
     } else {
       // if network route exist
       if (SUPPORTED_NETWORK.hasOwnProperty(this.$route.params.network)) {
+        console.log("HERE 2");
         this.ethNetwork = this.$route.params.network;
         this.loading = false;
         this.auth = false;

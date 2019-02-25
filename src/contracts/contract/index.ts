@@ -48,10 +48,8 @@ export enum SUPPORTED_NETWORK {
  */
 export const loadAllContract = async (network: string) => {
   const { filename, name } = FILE[network];
-  const loadJson = filename.map((nftName) => {
-    console.log(`./${name}/${nftName}/contract.json`);
-    return import(`./${name}/${nftName}/contract.json`);
-  }
+  const loadJson = filename.map((nftName) =>
+    import(`./${name}/${nftName}/contract.json`)
   );
   return Promise.all([...loadJson]);
 };

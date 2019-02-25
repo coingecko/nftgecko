@@ -61,7 +61,7 @@ const actions: ActionTree<ContractState, RootState> = {
   },
   /** Load all JSON Contract JSON data */
   async [ContractActionName.loadAllJson]({ state, commit, rootState }, nw: string) {
-    const network = nw || rootState.web3.networkName!;
+    const network = nw || rootState.web3.networkName! || rootState.route.params.network;
     const jsonData = await loadAllContract(network);
     commit(ContractMutationName.setContractsData, {
       contracts: jsonData,
