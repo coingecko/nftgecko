@@ -1,6 +1,7 @@
 {
   "name": "NFT NAME",
   "slug": "nft-short-name-slug",
+  "symbol": "NFT",
   "description": "nft description",
   "official_site": "NFT_SITE_HERE",
   "abi": "ABI_JSON_LOCATION_IN_ASSETS/ABI",

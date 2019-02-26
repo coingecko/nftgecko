@@ -31,7 +31,7 @@ import { ActionsName, GettersName, MutationsName } from "../store";
 })
 export class W3iMixin extends Vue {
   // VUE
-  public auth = false;
+  public auth = true;
   public ethNetwork = "";
   // VUEX
   // getters data

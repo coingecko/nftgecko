@@ -12,18 +12,19 @@ describe("[Contract Getters]", () => {
     address: "0xabc",
     loading: true,
     contractsData: {
-      ethereum: contractsData,
+      ethereum: contractsData
     },
     names: [],
     contractDetails: {
       ethereum: {
-        "coingecko": {
+        coingecko: {
           abi: "openzeppelin.abi.json",
           address: "0xfd98724f1c8a36c7be155cddce51b456eb1eb08d",
           balance: 0,
           ids: [{ id: 123, image: "" }],
           name: "coingecko",
           thumb: "",
+          symbol: "CG"
         },
         "marble-nft": {
           abi: "openzeppelin.abi.json",
@@ -32,47 +33,54 @@ describe("[Contract Getters]", () => {
           ids: [{ id: 234, image: "" }],
           name: "marble-nft",
           thumb: "",
-        },
-      },
+          symbol: "MARBLE"
+        }
+      }
     },
-    name: "",
+    name: ""
   };
   const network = "ethereum";
 
   it("[Getters] getLoading", () => {
     expect(
-      getters[ContractGetterName.getLoading](state, {}, {} as any, {}),
+      getters[ContractGetterName.getLoading](state, {}, {} as any, {})
     ).toBe(state.loading);
   });
 
   it("[Getters] getCurrentAddress", () => {
     expect(
-      getters[ContractGetterName.getCurrentAddress](state, {}, {} as any, {}),
+      getters[ContractGetterName.getCurrentAddress](state, {}, {} as any, {})
     ).toBe(state.address);
   });
 
   it("[Getters] getContractAdresses", () => {
     expect(
-      getters[ContractGetterName.getContractAdresses](state, {}, {} as any, {})(network),
+      getters[ContractGetterName.getContractAdresses](state, {}, {} as any, {})(
+        network
+      )
     ).toEqual([
       cgJson.contract.contract_address,
-      marbleJson.contract.contract_address,
+      marbleJson.contract.contract_address
     ]);
   });
 
   it("[Getters] getContractDetails", () => {
     expect(
-      getters[ContractGetterName.getContractDetails](state, {}, {} as any, {})(network),
+      getters[ContractGetterName.getContractDetails](state, {}, {} as any, {})(
+        network
+      )
     ).toEqual([
       state.contractDetails[network].coingecko,
-      state.contractDetails[network]["marble-nft"],
+      state.contractDetails[network]["marble-nft"]
     ]);
   });
 
   it("[Getters] getNFTImages", () => {
     state.name = "coingecko";
     expect(
-      getters[ContractGetterName.getNFTImages](state, {}, {} as any, {})(network),
+      getters[ContractGetterName.getNFTImages](state, {}, {} as any, {})(
+        network
+      )
     ).toEqual(state.contractDetails[network].coingecko.ids);
   });
 });

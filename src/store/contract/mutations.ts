@@ -37,7 +37,8 @@ const mutations: MutationTree<ContractState> = {
           address: contracts[key].contract.contract_address,
           abi: contracts[key].abi,
           balance: 0,
-          ids: []
+          ids: [],
+          symbol: contracts[key].symbol
         }
       });
     });
@@ -58,7 +59,8 @@ const mutations: MutationTree<ContractState> = {
         abi: contract.abi,
         balance: 0,
         ids: [],
-        thumb: contract.image.thumb
+        thumb: contract.image.thumb,
+        symbol: contract.symbol
       }
     });
   },

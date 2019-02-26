@@ -1,17 +1,17 @@
 {
-    "name": "Su Squares",
-    "slug": "su-squares",
-    "description": "Su Squares (SU)",
-    "official_site": "https://tenthousandsu.com",
-    "abi": "openzeppelin.abi.json",
-    "image": {
-      "thumb": "",
-      "small": "",
-      "large": ""
-    },
-    "contract": {
-      "contract_address": "0xe9e3f9cfc1a64dfca53614a0182cfad56c10624f",
-      "standard": "openzeppelin"
-    }
+  "name": "Su Squares",
+  "slug": "su-squares",
+  "symbol": "SU",
+  "description": "Su Squares (SU)",
+  "official_site": "https://tenthousandsu.com",
+  "abi": "openzeppelin.abi.json",
+  "image": {
+    "thumb": "",
+    "small": "",
+    "large": ""
+  },
+  "contract": {
+    "contract_address": "0xe9e3f9cfc1a64dfca53614a0182cfad56c10624f",
+    "standard": "openzeppelin"
   }
-  
+}

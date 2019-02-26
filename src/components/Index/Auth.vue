@@ -38,7 +38,7 @@
               </span>
             </q-td>
             <q-td class="text-right">
-              <span>{{ props.row.balance }} XYZ</span>
+              <span>{{ props.row.balance }} {{ props.row.symbol }}</span>
             </q-td>
           </q-tr>
         </q-table>

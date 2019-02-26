@@ -2,7 +2,7 @@
   <q-card>
     <q-card-section v-if="currentAddress !== ''">
       <q-input
-        class=""
+        class
         type="text"
         label="Address"
         max-height="100"
@@ -50,7 +50,7 @@ import { Prop, Component, Vue } from "vue-property-decorator";
 })
 class CurrentAddress extends Vue {
   @Prop(String) slug: string;
-  @Prop(String) type = "index";
+  @Prop(String) type: string;
 
   setAddress: (addr: string) => void;
   setLoading: (loading: boolean) => void;

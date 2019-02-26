@@ -1,6 +1,7 @@
 {
   "name": "CoinGecko Xmas 2018 NFToken",
   "slug": "coingecko",
+  "symbol": "GECKOX18",
   "description": "CoinGecko first NFT.",
   "official_site": "https://xmas2018.coingecko.com/",
   "abi": "openzeppelin.abi.json",

@@ -15,6 +15,7 @@ export interface ContractState {
         balance: number;
         ids: { id: number; image: string }[];
         thumb: string;
+        symbol: string;
       };
     };
   };
