@@ -4,10 +4,10 @@
 init:
 	@[ "${MODE}" ] || (echo ">> MODE is not set"; exit 1)
 ifeq ($(MODE), yarn)
-	@yarn global add @quasar/cli
+	@yarn global add @quasar/cli snyk snyk-to-html
 	@yarn
 else
-	@npm install -g @quasar/cli
+	@npm install -g @quasar/cli snyk snyk-to-html
 	@yarn
 endif
 
@@ -39,3 +39,4 @@ report:
 	@yarn audit:lighthouse
 	@yarn test --coverage
 	@yarn audit:node_modules
+	@yarn audit:snyk
