@@ -217,7 +217,11 @@ Currently we only use jest for unit testing. (Cypress e2e testing are still WIP)
 
 ### Audit
 
-Currently we only audit a few
+Currently we only audit a few categories
+
+- Lighthouse
+- Yarn audit
+- Jest coverage report
 
 ## Translation
 

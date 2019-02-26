@@ -61,6 +61,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": false,
     "@typescript-eslint/explicit-function-return-type": false,
     "@typescript-eslint/no-non-null-assertion": false,
-    "@typescript-eslint/camelcase": false
+    "@typescript-eslint/camelcase": false,
+    "@typescript-eslint/no-var-requires": false
   }
 };

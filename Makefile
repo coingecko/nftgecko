@@ -21,6 +21,10 @@ lint:
 lint-fix:
 	@yarn eslint --ext .js,.vue,.ts src --fix
 
+test:
+	@yarn test
+	@yarn test:e2e:CI
+
 # Generate contract from template
 contract:
 	@[ "${CONTRACT}" ] || (echo ">> CONTRACT is not set"; exit 1)
