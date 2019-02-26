@@ -27,7 +27,15 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Tomo testnet
 
+| Name                        | Slug      | Status                                                         |
+| --------------------------- | --------- | -------------------------------------------------------------- |
+| CoinGecko Xmas 2018 NFToken | coingecko | [Complete](src/contracts/contract/tomochain_testnet/coingecko) |
+
 ## Tomo
+
+| Name | Slug | Status |
+| ---- | ---- | ------ |
+|      |      |        |
 
 # Feature shipped
 
@@ -46,7 +54,7 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 - [x] Add test to test all contracts/contract/<nft>/contracts.json for validity
 - [x] Test/Specs development using any address as input
 - [x] ERC-721 view only. Group by contract and contract name
-- [ ] Network selector: Ethereum mainnet, ropsten, rinkeby, kovan
+- [x] Network selector: Ethereum mainnet, ropsten, rinkeby, kovan
 
 ## Phase 2
 
@@ -67,3 +75,7 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 - [ ] Trezor support
 - [ ] Walletconnect support
 - [ ] Network selector: Other EVM compatible networks
+
+# License
+
+MIT
