@@ -41,8 +41,7 @@ describe("[Web3 actions]", () => {
       .then((res) => {
         expect(store.state.network).toEqual(testId);
         done();
-      })
-      .catch((err) => console.error(err));
+      });
   });
 
   it("setNetwork with without id", async () => {

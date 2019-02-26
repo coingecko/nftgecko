@@ -101,9 +101,9 @@ class NFTComponent extends mixins(W3iMixin) {
   showLoading = true;
 
   // Vuex
-  network!: string;
-  setName!: (name: string) => void;
-  loadSpecificContract!: (payload: {name: string, network: string}) => void;
+  network: string;
+  setName: (name: string) => void;
+  loadSpecificContract: (payload: { name: string; network: string }) => void;
 
   async mounted() {
     this.showLoading = true;
