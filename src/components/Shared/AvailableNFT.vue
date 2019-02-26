@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-center q-pt-lg">
-    <q-card class="col col-6">
+    <q-card class="col col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-sm">
       <q-card-section>
-        <router-link class="text-h5" :to="`/nft/${ethNetwork}`">{{
-          ethNetwork
+        <router-link class="text-h5 text-bold" :to="`/nft/${ethNetwork}`">{{
+          formattedTitle
         }}</router-link>
       </q-card-section>
       <q-list>
@@ -61,6 +61,13 @@ class AvailableNFT extends Vue {
 
   loading = true;
   generateImageHolder = generateImageHolder;
+
+  get formattedTitle() {
+    return this.ethNetwork
+      .split("_")
+      .map(d => d.charAt(0).toUpperCase() + d.substr(1))
+      .join(" ");
+  }
 
   async mounted() {
     this.loading = true;

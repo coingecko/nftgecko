@@ -45,31 +45,34 @@ const actions: ActionTree<ContractState, RootState> = {
       genImg,
       getSupportImgShortcut
     } = await import(`src/contracts/contract/${currentNetworkName}/${name}/contract.ts`);
-    numArr.forEach(async key => {
-      const tokenId = await web3Instance.getTokenWithId(state.address, key);
-      commit(ContractMutationName.addNftIds, {
-        name,
-        id: tokenId,
-        network: currentNetworkName
-      });
-      if (getSupportImgShortcut()) {
-        // if shortcut exist
-        commit(ContractMutationName.setNftImages, {
+    await Promise.all(
+      numArr.map(async key => {
+        const tokenId = await web3Instance.getTokenWithId(state.address, key);
+        commit(ContractMutationName.addNftIds, {
+          name,
           id: tokenId,
-          image: genImg({ id: tokenId }),
           network: currentNetworkName
         });
-      } else {
-        // if shorcut not exist, make RPC call
-        const uri = await web3Instance.getURI(tokenId);
-        const res = await fetch(uri);
-        const jsonData = await res.json();
-        commit(ContractMutationName.setNftImages, {
-          id: tokenId,
-          image: genImg({ id: tokenId }, jsonData)
-        });
-      }
-    });
+        if (getSupportImgShortcut()) {
+          // if shortcut exist
+          commit(ContractMutationName.setNftImages, {
+            id: tokenId,
+            image: genImg({ id: tokenId }),
+            network: currentNetworkName
+          });
+        } else {
+          // if shorcut not exist, make RPC call
+          const uri = await web3Instance.getURI(tokenId);
+          const res = await fetch(uri);
+          const jsonData = await res.json();
+          commit(ContractMutationName.setNftImages, {
+            id: tokenId,
+            image: genImg({ id: tokenId }, jsonData),
+            network: currentNetworkName
+          });
+        }
+      })
+    );
   },
   /** Load all JSON Contract JSON data */
   async [ContractActionName.loadAllJson](
@@ -105,18 +108,20 @@ const actions: ActionTree<ContractState, RootState> = {
   async [ContractActionName.updateBalance]({ state, commit, rootState }) {
     const networkName = rootState.web3.networkName;
     const acc = state.address;
-    Object.keys(state.contractDetails[networkName]).forEach(async contract => {
-      const { name, address, abi } = state.contractDetails[networkName][
-        contract
-      ];
-      await web3Instance.setContract({ abi, address, acc });
-      const bal = await web3Instance.getBalance(acc);
-      commit(ContractMutationName.setContractsBalance, {
-        name,
-        bal,
-        network: networkName
-      });
-    });
+    Promise.all(
+      Object.keys(state.contractDetails[networkName]).map(async contract => {
+        const { name, address, abi } = state.contractDetails[networkName][
+          contract
+        ];
+        await web3Instance.setContract({ abi, address, acc });
+        const bal = await web3Instance.getBalance(acc);
+        commit(ContractMutationName.setContractsBalance, {
+          name,
+          bal,
+          network: networkName
+        });
+      })
+    );
   },
   /** Load all JSON Contract data */
   async [ContractActionName.loadAllContracts](

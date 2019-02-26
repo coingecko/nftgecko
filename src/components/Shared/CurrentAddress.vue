@@ -32,7 +32,8 @@ import { Prop, Component, Vue } from "vue-property-decorator";
   name: "CurrentAdressComponent",
   computed: {
     ...mapGetters({
-      currentAddress: GettersName.contract.getCurrentAddress
+      currentAddress: GettersName.contract.getCurrentAddress,
+      network: GettersName.web3.web3NetworkName
     })
   },
   methods: {
@@ -55,8 +56,9 @@ class CurrentAddress extends Vue {
   setAddress: (addr: string) => void;
   setLoading: (loading: boolean) => void;
   updateBalance: () => void;
-  loadSpecificContract: (name: string) => void;
+  loadSpecificContract: (payload: { name: string; network: string }) => void;
   currentAddress: string;
+  network: string;
 
   async handleAddressChange(e: { target: HTMLInputElement }) {
     const val = e.target.value.trim();
@@ -64,7 +66,10 @@ class CurrentAddress extends Vue {
     this.setLoading(true);
     await this.updateBalance();
     if (this.type === "nft") {
-      await this.loadSpecificContract(this.slug);
+      await this.loadSpecificContract({
+        name: this.slug,
+        network: this.network
+      });
     }
     this.setLoading(false);
   }

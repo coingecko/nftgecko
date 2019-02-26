@@ -1,11 +1,12 @@
 <template>
   <div class="row justify-center q-pt-lg">
-    <q-card class="">
-      <div class="col col-6 q-pb-md">
+    <q-card class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg bg-grey-3">
+      <div class="q-pb-md">
         <current-address />
       </div>
-      <div class="row" :key="compKey" v-if="showAddress">
+      <div class="col" :key="compKey" v-if="showAddress">
         <q-table
+          class="NFT__Table"
           :key="compKey"
           title="NFTs"
           :data="contractDetails(networkName)"
@@ -27,7 +28,7 @@
               />
             </q-td>
             <q-td>
-              <span class>
+              <div class="text-subtitle1 flex items-center">
                 <img
                   class="Table__Img float-left"
                   :src="
@@ -35,10 +36,12 @@
                   "
                 />
                 <span class="q-ml-md column inline">{{ props.row.name }}</span>
-              </span>
+              </div>
             </q-td>
             <q-td class="text-right">
-              <span>{{ props.row.balance }} {{ props.row.symbol }}</span>
+              <span class="text-subtitle1"
+                >{{ props.row.balance }} {{ props.row.symbol }}</span
+              >
             </q-td>
           </q-tr>
         </q-table>
@@ -112,7 +115,16 @@ export default Vue.extend({
 
 <style>
 .Table__Img {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
+}
+
+.NFT__Table > .q-table__top > .q-table__control > .q-table__title {
+  padding-top: 10px;
+  font-size: 28px;
+}
+
+.NFT__Table > .q-table__middle.scroll > table > thead > tr > th.sortable {
+  font-size: 17px;
 }
 </style>
