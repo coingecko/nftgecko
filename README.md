@@ -3,8 +3,10 @@
 [![Build Status](https://travis-ci.org/coingecko/nft-manager.svg?branch=master)](https://travis-ci.org/coingecko/nft-manager)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/08b82cd8-2d1f-4e5c-a921-cdec960554bd/deploy-status)](https://app.netlify.com/sites/nft-manager/deploys)
 
-
 NFT Manager is a web interface to manage CryptoCollectibles and ERC-721 tokens.
+
+- [Checkout Docs and Reports](https://coingecko.github.io/nft-manager/)
+- [Checkout Master branch site](https://nft-manager.netlify.com)
 
 # Contributing
 
@@ -12,14 +14,20 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Supported Contract
 
-| Name                        | Slug                       | Status                                              |
-| --------------------------- | -------------------------- | --------------------------------------------------- |
-| CoinGecko Xmas 2018 NFToken | coingecko                  | [Complete](src/contracts/contract/coingecko)        |
-| CryptoKitties               | cryptokitties              | [WIP](src/contracts/contract/cryptokitties)         |
-| Gods Unchained              | gods-unchained             | [WIP](src/contracts/contract/gods-unchained)        |
-| Marble Cards                | marble-nft                 | [Complete](src/contracts/contract/marble-nft)       |
-| MyCryptoHeroes:Extension    | my-crypto-heroes-extension | [Complete](src/contracts/contract/my-crypto-heroes-extension) |
-| MyCryptoHeroes:Hero         | my-crypto-heroes-hero      | [Complete](src/contracts/contract/my-crypto-heroes-hero) |
+## Ethereum
+
+| Name                        | Slug                       | Status                                                                 |
+| --------------------------- | -------------------------- | ---------------------------------------------------------------------- |
+| CoinGecko Xmas 2018 NFToken | coingecko                  | [Complete](src/contracts/contract/ethereum/coingecko)                  |
+| CryptoKitties               | cryptokitties              | [WIP](src/contracts/contract/ethereum/cryptokitties)                   |
+| Gods Unchained              | gods-unchained             | [Complete](src/contracts/contract/ethereum/gods-unchained)             |
+| Marble Cards                | marble-nft                 | [Complete](src/contracts/contract/ethereum/marble-nft)                 |
+| MyCryptoHeroes:Extension    | my-crypto-heroes-extension | [Complete](src/contracts/contract/ethereum/my-crypto-heroes-extension) |
+| MyCryptoHeroes:Hero         | my-crypto-heroes-hero      | [Complete](src/contracts/contract/ethereum/my-crypto-heroes-hero)      |
+
+## Tomo testnet
+
+## Tomo
 
 # Feature shipped
 
@@ -34,10 +42,10 @@ For contribution, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## Phase 1
 
-- [/] Metamask support
-- [/] Add test to test all contracts/contract/<nft>/contracts.json for validity
-- [/] Test/Specs development using any address as input
-- [/] ERC-721 view only. Group by contract and contract name
+- [x] Metamask support
+- [x] Add test to test all contracts/contract/<nft>/contracts.json for validity
+- [x] Test/Specs development using any address as input
+- [x] ERC-721 view only. Group by contract and contract name
 - [ ] Network selector: Ethereum mainnet, ropsten, rinkeby, kovan
 
 ## Phase 2
