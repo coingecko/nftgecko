@@ -75,6 +75,8 @@
     "ajv": "6.8.1"
   },
   "husky": {
-    "pre-commit": "yarn test && yarn lint --fix"
+    "hooks": {
+      "pre-commit": "yarn test && yarn lint --fix"
+    }
   }
 }
