@@ -3,12 +3,12 @@ import {
   FILE,
   loadAllContract,
   loadSpecificContract,
-  SUPPORTED_NETWORK
+  SUPPORTED_NETWORK,
 } from "src/contracts/contract";
 import { errorNotification } from "src/helper/notifications";
 import { range } from "src/helper/utils";
 import { ActionTree } from "vuex";
-import { RootState } from "../indexts";
+import { RootState } from "..";
 import { ContractActionName, ContractMutationName } from "./names";
 import { ContractState } from "./state";
 
@@ -36,7 +36,7 @@ const actions: ActionTree<ContractState, RootState> = {
     // load function from contract.ts
     const {
       genImg,
-      getSupportImgShortcut
+      getSupportImgShortcut,
     } = await import(`src/contracts/contract/${currentNetworkName}/${name}/contract.ts`);
     numArr.forEach(async (key) => {
       const tokenId = await web3Instance.getTokenWithId(state.address, key);
@@ -46,7 +46,7 @@ const actions: ActionTree<ContractState, RootState> = {
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
           image: genImg({ id: tokenId }),
-          network: currentNetworkName
+          network: currentNetworkName,
         });
       } else {
         // if shorcut not exist, make RPC call
@@ -55,7 +55,7 @@ const actions: ActionTree<ContractState, RootState> = {
         const jsonData = await res.json();
         commit(ContractMutationName.setNftImages, {
           id: tokenId,
-          image: genImg({ id: tokenId }, jsonData)
+          image: genImg({ id: tokenId }, jsonData),
         });
       }
     });
@@ -67,21 +67,21 @@ const actions: ActionTree<ContractState, RootState> = {
     commit(ContractMutationName.setContractsData, {
       contracts: jsonData,
       names: FILE[network].filename,
-      network
+      network,
     });
   },
   /** Load Specific JSON Contract data */
   async [ContractActionName.loadSpecificJson](
     { commit, rootState },
     {name, network}: {name: string,
-    network: string}
+    network: string},
   ) {
     const jsonData = await loadSpecificContract(network || rootState.web3.networkName!, name);
     //
     commit(ContractMutationName.setSpecificContractData, {
       name,
       contract: jsonData,
-      network
+      network,
     });
   },
   /** Update an array NFTs on balance (use in main page) */
@@ -115,7 +115,7 @@ const actions: ActionTree<ContractState, RootState> = {
   async [ContractActionName.loadSpecificContract](
     { state, commit, dispatch, rootState},
     {name, network}: { name: string,
-    network?: string; }
+    network?: string; },
   ) {
     const networkName = network || rootState.web3.networkName;
     if (state.address === "") {
@@ -136,7 +136,7 @@ const actions: ActionTree<ContractState, RootState> = {
       return;
     }
     dispatch(ContractActionName.loadAllNfts, name);
-  }
+  },
 };
 
 export default actions;

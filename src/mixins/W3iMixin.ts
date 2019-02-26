@@ -5,7 +5,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import { SUPPORTED_NETWORK } from "../contracts/contract";
-import { ActionsName, GettersName, MutationsName } from "../store/indexts";
+import { ActionsName, GettersName, MutationsName } from "../store";
 
 @Component({
   computed: {
@@ -15,18 +15,19 @@ import { ActionsName, GettersName, MutationsName } from "../store/indexts";
       isInitialized: GettersName.web3.web3Initialize,
       networkId: GettersName.web3.web3Network,
       networkName: GettersName.web3.web3NetworkName,
-      compKey: GettersName.contract.getCompKey
-    })
+      compKey: GettersName.contract.getCompKey,
+      loginStatus: GettersName.web3.web3Status,
+    }),
   },
   methods: {
     ...mapMutations({
-      updateCompKey: MutationsName.contract.updateCompKey
+      updateCompKey: MutationsName.contract.updateCompKey,
     }),
     ...mapActions({
       initializeWeb3: ActionsName.web3.initializeWeb3,
-      loadAllContracts: ActionsName.contract.loadAllContracts
-    })
-  }
+      loadAllContracts: ActionsName.contract.loadAllContracts,
+    }),
+  },
 })
 export class W3iMixin extends Vue {
   // VUE
@@ -37,6 +38,8 @@ export class W3iMixin extends Vue {
   public isInitialized!: boolean;
   public networkId!: number;
   public networkName!: string;
+  public loginStatus!: string;
+
   // actions method
   public initializeWeb3!: () => void;
   public loadAllContracts!: (network?: string) => void;
@@ -51,12 +54,17 @@ export class W3iMixin extends Vue {
     if (!this.isInitialized) {
       try {
         await this.initializeWeb3();
+        this.auth = true;
+        this.auth = !(this.loginStatus === "logout");
       } catch (err) {
-        console.error(err);
+        this.auth = false;
       }
     }
   }
   public async networkCheck() {
+    if (!this.auth) {
+      this.pushTo("/");
+    }
     // Check Network
     if (SUPPORTED_NETWORK.hasOwnProperty(this.networkId)) {
       // if network route exist
@@ -70,11 +78,9 @@ export class W3iMixin extends Vue {
           return;
         } else {
           this.ethNetwork = this.$route.params.network;
-          this.auth = true;
         }
       } else {
         this.ethNetwork = this.networkName;
-        this.auth = true;
       }
     } else {
       // if network route exist
@@ -85,13 +91,11 @@ export class W3iMixin extends Vue {
         } else {
           errorNotification(
             `Network ${this.networkId ||
-              this.$route.params.network} not supported`
+              this.$route.params.network} not supported`,
           );
           this.pushTo(`/nft`);
-          this.auth = false;
         }
       } else {
-        this.auth = true;
       }
     }
   }

@@ -11,7 +11,7 @@ export default async ({ app, Vue }: BootInput) => {
   app.i18n = new VueI18n({
     locale: "en-us",
     fallbackLocale: "en-us",
-    messages
+    messages,
   });
 
   i18n = app.i18n;

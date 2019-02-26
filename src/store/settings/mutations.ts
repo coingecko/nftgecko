@@ -13,7 +13,7 @@ const mutations: MutationTree<SettingsState> = {
   },
   [SettingsMutationName.setDeferredPrompt](state, installBanner: boolean) {
     state.installBanner = installBanner;
-  }
+  },
 };
 
 export default mutations;

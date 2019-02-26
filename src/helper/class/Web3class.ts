@@ -38,7 +38,7 @@ export class Web3Class {
     const abiJson = await res.json();
     this.token = new this.web3.eth.Contract(abiJson, address, {
       from: acc,
-      gasPrice: "20000000000"
+      gasPrice: "20000000000",
     } as any);
     return;
   }

@@ -1,14 +1,13 @@
 import { Web3Class } from "src/helper/class/Web3Class";
 // @ts-ignore
 import store from "src/store";
-import { ActionsName } from "../store/indexts";
 import { BootInput } from "../types/boot";
 
 let web3Instance: Web3Class;
 let currentWeb3Address = "";
 
 // leave the export, even if you don't use it
-export default async ({ app, router, Vue }: BootInput) => {
+export default async ({}: BootInput) => {
   web3Instance = new Web3Class();
   // Vuex Watch for sign in
 

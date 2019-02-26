@@ -9,7 +9,7 @@ describe("[Web3 Getters]", () => {
     message: "rng",
     initialized: false,
     network: 69,
-    networkName: "ethereum"
+    networkName: "ethereum",
   };
 
   it("[Getters] web3Loading", () => {
@@ -18,13 +18,13 @@ describe("[Web3 Getters]", () => {
 
   it("[Getters] web3Initialize", () => {
     expect(getters[Web3GetterName.web3Initialize](state, getters, {} as any, {})).toBe(
-      state.initialized
+      state.initialized,
     );
   });
 
   it("[Getters] web3LoadingMessage", () => {
     expect(getters[Web3GetterName.web3LoadingMessage](state, getters, {} as any, {})).toBe(
-      state.message
+      state.message,
     );
   });
 

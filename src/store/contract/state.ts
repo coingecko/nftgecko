@@ -28,5 +28,5 @@ export default {
   contractsData: {},
   names: [],
   contractDetails: {},
-  name: ""
+  name: "",
 } as ContractState;

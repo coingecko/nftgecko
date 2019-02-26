@@ -20,7 +20,7 @@
   </q-page>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
 import { mapGetters } from "vuex";
 import { GettersName } from "src/store";

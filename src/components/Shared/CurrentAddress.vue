@@ -22,23 +22,18 @@
   </q-card>
 </template>
 
-<script>
-import Vue from "vue";
+<script lang="ts">
 import { mapActions, mapMutations, mapGetters } from "vuex";
 import { ActionsName, MutationsName, GettersName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
+import { Prop, Component, Vue } from "vue-property-decorator";
 
-export default Vue.extend({
+@Component({
   name: "CurrentAdressComponent",
-  props: {
-    slug: {
-      type: String,
-      default: ""
-    },
-    type: {
-      type: String,
-      default: "index"
-    }
+  computed: {
+    ...mapGetters({
+      currentAddress: GettersName.contract.getCurrentAddress
+    })
   },
   methods: {
     ...mapActions({
@@ -50,27 +45,34 @@ export default Vue.extend({
     ...mapMutations({
       setAddress: MutationsName.contract.setAddress,
       setLoading: MutationsName.contract.setLoading
-    }),
-    async handleAddressChange(e) {
-      const val = e.target.value.trim();
-      this.setAddress(val);
-      this.setLoading(true);
-      await this.updateBalance();
-      if (this.type === "nft") {
-        await this.loadSpecificContract(this.slug);
-      }
-      this.setLoading(false);
-    }
-  },
-  computed: {
-    ...mapGetters({
-      currentAddress: GettersName.contract.getCurrentAddress
-    }),
-    identicon() {
-      return generateImageHolder(this.currentAddress, 50);
-    }
+    })
   }
-});
+})
+class CurrentAddress extends Vue {
+  @Prop(String) slug: string;
+  @Prop(String) type = "index";
+
+  setAddress: (addr: string) => void;
+  setLoading: (loading: boolean) => void;
+  updateBalance: () => void;
+  loadSpecificContract: (name: string) => void;
+  currentAddress: string;
+
+  async handleAddressChange(e: { target: HTMLInputElement }) {
+    const val = e.target.value.trim();
+    this.setAddress(val);
+    this.setLoading(true);
+    await this.updateBalance();
+    if (this.type === "nft") {
+      await this.loadSpecificContract(this.slug);
+    }
+    this.setLoading(false);
+  }
+  get identicon(): string {
+    return generateImageHolder(this.currentAddress, 50);
+  }
+}
+export default CurrentAddress;
 </script>
 
 <style></style>

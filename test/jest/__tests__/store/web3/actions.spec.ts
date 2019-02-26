@@ -13,14 +13,14 @@ jest.mock("src/boot/web3", () => ({
     getId() {
       return 77;
     },
-    setWeb3() {}
-  }
+    setWeb3() {},
+  },
 }));
 
 // mock
 jest.mock("src/helper/notifications", () => ({
   errorNotification: jest.fn(),
-  successNotification: jest.fn()
+  successNotification: jest.fn(),
 }));
 
 describe("[Web3 actions]", () => {
@@ -30,7 +30,7 @@ describe("[Web3 actions]", () => {
     store = new Vuex.Store({
       state: W3State,
       actions: W3Actions,
-      mutations: W3Mutations
+      mutations: W3Mutations,
     });
   });
 
@@ -41,8 +41,7 @@ describe("[Web3 actions]", () => {
       .then((res) => {
         expect(store.state.network).toEqual(testId);
         done();
-      })
-      .catch((err) => console.error(err));
+      });
   });
 
   it("setNetwork with without id", async () => {

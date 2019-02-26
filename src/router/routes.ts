@@ -1,4 +1,4 @@
-const routes = [
+let routes: any = [
   {
     path: "/",
     component: () => import("src/layouts/MainLayout.vue"),
@@ -7,20 +7,23 @@ const routes = [
       { path: "/nft", component: () => import("pages/ShowAllNFT.vue") },
       {
         path: "/nft/:network",
-        component: () => import("pages/ShowNetworkNFT.vue")
+        component: () => import("pages/ShowNetworkNFT.vue"),
       },
       { path: "/nft/:network/:slug", component: () => import("pages/NFT.vue") },
-      { path: "/settings", component: () => import("pages/Settings.vue") }
-    ]
-  }
+      { path: "/settings", component: () => import("pages/Settings.vue") },
+    ],
+  },
 ];
 
 // Always leave this as last one
 if (process.env.MODE !== "ssr") {
-  routes.push({
+  routes = [
+    ...routes,
+    {
     path: "*",
-    component: () => import("pages/Error404.vue")
-  });
+    component: () => import("pages/Error404.vue"),
+    children: [],
+  }];
 }
 
 export default routes;

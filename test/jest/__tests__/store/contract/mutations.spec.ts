@@ -16,18 +16,18 @@ describe("[Contract Mutations]", () => {
       address: "0xabc",
       loading: true,
       contractsData: {
-        [network]: contractsData
+        [network]: contractsData,
       },
       names: [],
       contractDetails: {
         [network]: {
-          coingecko: {
+          "coingecko": {
             abi: "openzeppelin.abi.json",
             address: "0xfd98724f1c8a36c7be155cddce51b456eb1eb08d",
             balance: 0,
             ids: [{ id: 123, image: "" }],
             name: "coingecko",
-            thumb: ""
+            thumb: "",
           },
           "marble-nft": {
             abi: "openzeppelin.abi.json",
@@ -35,11 +35,11 @@ describe("[Contract Mutations]", () => {
             balance: 0,
             ids: [{ id: 123, image: "" }],
             name: "marble-nft",
-            thumb: ""
-          }
-        }
+            thumb: "",
+          },
+        },
       },
-      name: "coingecko"
+      name: "coingecko",
     };
   });
 
@@ -63,18 +63,18 @@ describe("[Contract Mutations]", () => {
     const payload = {
       contracts: [marbleJson, cgJson],
       names: ["marble-nft", "coingecko"],
-      network
+      network,
     };
     mutations[ContractMutationName.setContractsData](state, payload);
     expect(state.contractsData[payload.network]).toEqual(payload.contracts);
     expect(state.contractDetails.ethereum).toEqual({
-      coingecko: {
+      "coingecko": {
         abi: cgJson.abi,
         address: cgJson.contract.contract_address,
         balance: 0,
         ids: [],
         name: payload.names[1],
-        thumb: cgJson.image.thumb
+        thumb: cgJson.image.thumb,
       },
       "marble-nft": {
         abi: marbleJson.abi,
@@ -82,8 +82,8 @@ describe("[Contract Mutations]", () => {
         balance: 0,
         ids: [],
         name: payload.names[0],
-        thumb: marbleJson.image.thumb
-      }
+        thumb: marbleJson.image.thumb,
+      },
     });
   });
 
@@ -92,7 +92,7 @@ describe("[Contract Mutations]", () => {
     const payload = {
       name: "coingecko",
       contract: cgJson,
-      network
+      network,
     };
     mutations[ContractMutationName.setSpecificContractData](state, payload);
     expect(state.contractDetails[payload.network]).toEqual({
@@ -102,8 +102,8 @@ describe("[Contract Mutations]", () => {
         balance: 0,
         ids: [],
         name: payload.name,
-        thumb: cgJson.image.thumb
-      }
+        thumb: cgJson.image.thumb,
+      },
     });
   });
 
@@ -111,7 +111,7 @@ describe("[Contract Mutations]", () => {
     mutations[ContractMutationName.setContractsBalance](state, {
       name: "coingecko",
       bal: 6,
-      network
+      network,
     });
     expect(state.contractDetails[network].coingecko.balance).toBe(6);
   });
@@ -121,17 +121,17 @@ describe("[Contract Mutations]", () => {
     mutations[ContractMutationName.addNftIds](state, {
       name: "coingecko",
       id: 5,
-      network
+      network,
     });
     expect(state.contractDetails[network].coingecko.ids).toEqual([{ id: 5, image: "" }]);
     mutations[ContractMutationName.addNftIds](state, {
       name: "coingecko",
       id: 6,
-      network
+      network,
     });
     expect(state.contractDetails[network].coingecko.ids).toEqual([
       { id: 5, image: "" },
-      { id: 6, image: "" }
+      { id: 6, image: "" },
     ]);
   });
 
@@ -141,12 +141,12 @@ describe("[Contract Mutations]", () => {
     mutations[ContractMutationName.addNftIds](state, {
       name: "coingecko",
       id: 5,
-      network
+      network,
     });
     mutations[ContractMutationName.setNftImages](state, {
       id: 5,
       image: "img5a",
-      network
+      network,
     });
     expect(state.contractDetails.ethereum.coingecko.ids).toEqual([
       { id: 5, image: "img5a" },
@@ -154,31 +154,31 @@ describe("[Contract Mutations]", () => {
     mutations[ContractMutationName.addNftIds](state, {
       name: "coingecko",
       id: 6,
-      network
+      network,
     });
     mutations[ContractMutationName.setNftImages](state, {
       id: 6,
       image: "img6b",
-      network
-    });
-    expect(state.contractDetails.ethereum.coingecko.ids).toEqual([
-      { id: 5, image: "img5a" },
-      { id: 6, image: "img6b" }
-    ]);
-    mutations[ContractMutationName.addNftIds](state, {
-      name: "coingecko",
-      id: 7,
-      network
-    });
-    mutations[ContractMutationName.setNftImages](state, {
-      id: 7,
-      image: "img7c",
-      network
+      network,
     });
     expect(state.contractDetails.ethereum.coingecko.ids).toEqual([
       { id: 5, image: "img5a" },
       { id: 6, image: "img6b" },
-      { id: 7, image: "img7c" }
+    ]);
+    mutations[ContractMutationName.addNftIds](state, {
+      name: "coingecko",
+      id: 7,
+      network,
+    });
+    mutations[ContractMutationName.setNftImages](state, {
+      id: 7,
+      image: "img7c",
+      network,
+    });
+    expect(state.contractDetails.ethereum.coingecko.ids).toEqual([
+      { id: 5, image: "img5a" },
+      { id: 6, image: "img6b" },
+      { id: 7, image: "img7c" },
     ]);
   });
 

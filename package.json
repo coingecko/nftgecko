@@ -27,21 +27,23 @@
     "audit:lighthouse": "lighthouse http://localhost:4000 view --output-path=./test/lighthouse/reports/index.html --config-path=./test/lighthouse/configs/full-config.js"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.1.0",
     "dotenv": "^6.2.0",
     "identicon.js": "^2.3.3",
-    "quasar": "^1.0.0-beta.1",
+    "quasar": "^1.0.0-beta.4",
     "vue-class-component": "^7.0.1",
     "vue-i18n": "^7.3.3",
+    "vue-property-decorator": "^7.3.0",
     "vuex-router-sync": "^5.0.0",
     "web3": "^1.0.0-beta.46"
   },
   "devDependencies": {
-    "@quasar/app": "^1.0.0-beta.0",
-    "@quasar/quasar-app-extension-testing": "^1.0.0-beta.5",
+    "@quasar/app": "^1.0.0-beta.8",
+    "@quasar/quasar-app-extension-testing": "^1.0.0-beta.6",
     "@quasar/quasar-app-extension-testing-e2e-cypress": "^1.0.0-beta.3",
-    "@quasar/quasar-app-extension-testing-quality": "^1.0.0-beta.2",
-    "@quasar/quasar-app-extension-testing-unit-jest": "^1.0.0-beta.4",
+    "@quasar/quasar-app-extension-testing-quality": "^1.0.0-beta.4",
+    "@quasar/quasar-app-extension-testing-unit-jest": "^1.0.0-beta.9",
+    "@types/node": "11.9.5",
     "@types/web3": "^1.0.18",
     "@vue/eslint-config-prettier": "^4.0.0",
     "babel-eslint": "^10.0.1",
@@ -52,8 +54,8 @@
     "strip-ansi": "=3.0.1",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.3"
+    "tslint": "^5.13.0",
+    "typescript": "^3.3.3333"
   },
   "engines": {
     "node": ">= 8.9.0",

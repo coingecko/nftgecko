@@ -1,5 +1,5 @@
 import { GetterTree } from "vuex";
-import { RootState } from "../indexts";
+import { RootState } from "..";
 import { SettingsGetterName } from "./names";
 import { SettingsState } from "./state";
 
@@ -10,7 +10,7 @@ const getters: GetterTree<SettingsState, RootState> = {
   },
   [SettingsGetterName.getDeferredPrompt](state) {
     return state.installBanner;
-  }
+  },
 };
 
 export default getters;

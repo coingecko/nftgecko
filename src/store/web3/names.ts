@@ -1,7 +1,7 @@
 // Types
 export const Web3ActionName = {
   initializeWeb3: "initializeWeb3",
-  setNetwork: "setNetwork"
+  setNetwork: "setNetwork",
 };
 
 export const Web3GetterName = {
@@ -10,7 +10,7 @@ export const Web3GetterName = {
   web3LoadingMessage: "web3LoadingMessage",
   web3Status: "web3Status",
   web3Network: "web3Network",
-  web3NetworkName: "web3NetworkName"
+  web3NetworkName: "web3NetworkName",
 };
 
 export const Web3MutationName = {
@@ -18,5 +18,5 @@ export const Web3MutationName = {
   setLoading: "setLoading",
   setStatus: "setStatus",
   setMessage: "setMessage",
-  setNetwork: "setNetwork"
+  setNetwork: "setNetwork",
 };

@@ -6,11 +6,11 @@ const ETHEREUM_FILENAME = [
   "my-crypto-heroes-extension",
   "marble-nft",
   "coingecko",
-  "su-squares"
+  "su-squares",
 ];
 const TOMOCHAIN_FILENAME: string[] = [];
 const TOMOCHAIN_TESTNET_FILENAME: string[] = [
-  "coingecko"
+  "coingecko",
 ];
 
 interface IFile {
@@ -25,24 +25,24 @@ export const FILE: IFile = {
   ethereum: {
     filename: ETHEREUM_FILENAME,
     name: "ethereum",
-    id: 1
+    id: 1,
   },
   tomochain: {
     filename: TOMOCHAIN_FILENAME,
     name: "tomochain",
-    id: 88
+    id: 88,
   },
   tomochain_testnet: {
     filename: TOMOCHAIN_TESTNET_FILENAME,
     name: "tomochain_testnet",
-    id: 89
-  }
+    id: 89,
+  },
 };
 
 export enum SUPPORTED_NETWORK {
   ethereum = 1,
   tomochain = 88,
-  tomochain_testnet = 89
+  tomochain_testnet = 89,
 }
 
 /**
@@ -51,14 +51,14 @@ export enum SUPPORTED_NETWORK {
 export const loadAllContract = async (network: string) => {
   const { filename, name } = FILE[network];
   const loadJson = filename.map((nftName) =>
-    import(`./${name}/${nftName}/contract.json`)
+    import(`./${name}/${nftName}/contract.json`),
   );
   return Promise.all([...loadJson]);
 };
 
 export const loadSpecificContract = async (
   network: string,
-  nftName: string
+  nftName: string,
 ) => {
   return import(`./${network}/${nftName}/contract.json`);
 };

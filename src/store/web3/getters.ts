@@ -1,5 +1,5 @@
 import { GetterTree } from "vuex";
-import { RootState } from "../indexts";
+import { RootState } from "..";
 import { Web3GetterName } from "./names";
 import { Web3State } from "./state";
 
@@ -25,7 +25,7 @@ const getters: GetterTree<Web3State, RootState> = {
   },
   [Web3GetterName.web3NetworkName](state) {
     return state.networkName;
-  }
+  },
 };
 
 export default getters;

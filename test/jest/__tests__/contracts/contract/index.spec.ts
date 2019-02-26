@@ -17,7 +17,7 @@ describe("Test for all contracts.json", () => {
     FILENAME.forEach((file) => {
       const jsonFile = fs.readFileSync(
         path.join(location, network, file, "contract.json"),
-        "utf-8"
+        "utf-8",
       );
       files.push(JSON.parse(jsonFile));
     });
@@ -26,7 +26,7 @@ describe("Test for all contracts.json", () => {
   it("shows valid json", async () => {
     const validJson = await readFile(
       path.join("templates/contracts/contract/contract.json"),
-      "utf-8"
+      "utf-8",
     );
     const parsedJson = JSON.parse(validJson);
     files.forEach((file) => {
@@ -41,7 +41,7 @@ describe("Test for all contracts.json", () => {
       files.map((file) => {
         const loc = path.join("src/contracts/assets/abi", file.abi);
         return stat(loc);
-      })
+      }),
     );
     res.forEach((fileStat) => {
       // @ts-ignore

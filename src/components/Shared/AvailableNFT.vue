@@ -35,43 +35,40 @@
   </div>
 </template>
 
-<script>
-import Vue from "vue";
-import { ActionsName } from "src/store";
+<script lang="ts">
+import { ActionsName, RootState } from "src/store";
 import { mapActions, mapState } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
+import { Prop, Component, Vue } from "vue-property-decorator";
 
-export default Vue.extend({
+@Component({
   name: "AvailableNFTComponent",
-  props: {
-    ethNetwork: {
-      type: String,
-      require: true,
-      default: ""
-    }
-  },
-  data() {
-    return {
-      loading: true
-    };
-  },
   computed: {
     ...mapState({
-      contractsData: state => state.contract.contractsData
+      contractsData: (state: RootState) => state.contract.contractsData
     })
   },
   methods: {
     ...mapActions({
       loadAllJson: ActionsName.contract.loadAllJson
-    }),
-    generateImageHolder: generateImageHolder
-  },
+    })
+  }
+})
+class AvailableNFT extends Vue {
+  @Prop(String) ethNetwork: string;
+
+  loadAllJson: (network: string) => void;
+
+  loading = true;
+  generateImageHolder = generateImageHolder;
+
   async mounted() {
     this.loading = true;
     await this.loadAllJson(this.ethNetwork);
     this.loading = false;
   }
-});
+}
+export default AvailableNFT;
 </script>
 
 <style>
