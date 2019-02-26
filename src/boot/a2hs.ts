@@ -1,6 +1,6 @@
 // @ts-ignore
 import store from "src/store";
-import { MutationsName } from "../store/indexts";
+import { MutationsName } from "../store";
 import { BootInput } from "../types/boot";
 
 export default async ({ app, router, Vue }: BootInput) => {

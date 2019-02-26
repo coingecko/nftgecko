@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 // import AvailableNFTComponent from "src/components/Shared/AvailableNFT.vue";
 import LandingVue from "src/components/Landing/Landing.vue";
 

@@ -14,7 +14,8 @@
       "src/*": ["src/*"]
     },
     "types": ["node", "jest"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "test/**/*.ts"],
   "exclude": [".quasar", "dist", "node_modules"]

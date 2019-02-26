@@ -59,18 +59,19 @@
   </q-layout>
 </template>
 
-<script>
+<script lang="ts">
 import { openURL } from "quasar";
+import Vue from "vue";
 
-export default {
+export default Vue.extend({
   name: "MyLayout",
   computed: {
     tab: {
-      get() {
+      get(): string {
         const urlPath = this.$route.path.split("/").filter(d => d !== "");
         return urlPath.length >= 1 ? `/${urlPath[0]}` : "/";
       },
-      set(val) {}
+      set(val: any) {}
     }
   },
   methods: {
@@ -79,7 +80,7 @@ export default {
       this.tab = "/";
     }
   }
-};
+});
 </script>
 
 <style>

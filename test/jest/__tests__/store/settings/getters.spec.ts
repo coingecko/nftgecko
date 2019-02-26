@@ -7,7 +7,7 @@ describe("[Settings Getters]", () => {
 
   it("[Getters] getDarkMode", () => {
     expect(
-      getters[SettingsGetterName.getDarkMode](state, {}, {} as any, {})
+      getters[SettingsGetterName.getDarkMode](state, {}, {} as any, {}),
     ).toBe(state.darkMode);
   });
 

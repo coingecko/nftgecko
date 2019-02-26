@@ -5,5 +5,5 @@ export interface SettingsState {
 
 export default {
   darkMode: false,
-  installBanner: false
+  installBanner: false,
 } as SettingsState;

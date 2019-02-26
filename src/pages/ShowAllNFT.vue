@@ -9,7 +9,7 @@
   </q-page>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
 import { FILE } from "src/contracts/contract";
 

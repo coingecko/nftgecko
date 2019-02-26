@@ -13,5 +13,5 @@ export default {
   message: "",
   initialized: false,
   network: null,
-  networkName: ""
+  networkName: "",
 } as Web3State;

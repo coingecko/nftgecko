@@ -47,10 +47,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from "vue";
 import { ActionsName, GettersName } from "src/store";
-import { mapActions, mapState, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
 
 Vue.component(
@@ -85,21 +85,19 @@ export default Vue.extend({
     };
   },
   computed: {
-    ...mapState({
-      compKey: state => state.contract.compKey
-    }),
     ...mapGetters({
       loading: GettersName.contract.getLoading,
       contractDetails: GettersName.contract.getContractDetails,
       currentAddress: GettersName.contract.getCurrentAddress,
-      networkName: GettersName.web3.web3NetworkName
+      networkName: GettersName.web3.web3NetworkName,
+      compKey: GettersName.contract.getCompKey
     })
   },
   methods: {
     ...mapActions({
       loadAllContracts: ActionsName.contract.loadAllContracts
     }),
-    rowClick(val) {
+    rowClick(val: any) {
       this.$router.push({ path: `/nft/${this.networkName}/${val.name}` });
     },
     generateImageHolder: generateImageHolder

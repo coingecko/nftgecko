@@ -18,7 +18,7 @@ const getters: GetterTree<ContractState, any> = {
   // get contract ContractDetails
   [ContractGetterName.getContractDetails](state) {
     return (network: string) => Object.keys(state.contractDetails[network]).map((key) =>
-       state.contractDetails[network][key]
+       state.contractDetails[network][key],
     );
   },
   [ContractGetterName.getNFTImages](state) {
@@ -26,7 +26,7 @@ const getters: GetterTree<ContractState, any> = {
   },
   [ContractGetterName.getCompKey](state) {
     return state.compKey;
-  }
+  },
 };
 
 export default getters;

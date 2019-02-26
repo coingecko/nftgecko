@@ -22,35 +22,43 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { GettersName } from "src/store";
 import { mapGetters, mapState } from "vuex";
 import NFTImageVue from "src/components/NFT/NFTImage.vue";
-export default {
-  props: {
-    name: { type: String, default: "" },
-    network: { type: String, default: "" }
-  },
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+@Component({
   components: {
     "nft-img": NFTImageVue
   },
   computed: {
     ...mapState({
-      nftIds: function(state) {
+      nftIds: function(state: any) {
         return state.contract.contractDetails[this.network][this.name].ids;
       }
     }),
     ...mapGetters({
       contractDetails: GettersName.contract.getContractDetails
-    }),
-    exist() {
-      return this.contractDetails(this.network).length > 0;
-    },
-    bal() {
-      return this.contractDetails(this.network).filter(
-        data => data.name === this.name
-      )[0].balance;
-    }
+    })
   }
-};
+})
+class NFTList extends Vue {
+  @Prop(String) name: string;
+  @Prop(String) network: string;
+
+  contractDetails: (network: string) => any[];
+
+  get exist(): boolean {
+    const contractDetails = this.contractDetails(this.network);
+    return Object.keys(contractDetails).length > 0;
+  }
+  get bal(): number {
+    return this.contractDetails(this.network).filter(
+      data => data.name === this.name
+    )[0].balance;
+  }
+}
+
+export default NFTList;
 </script>

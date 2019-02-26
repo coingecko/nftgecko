@@ -26,7 +26,7 @@ export function loadScripts(srcAry: Array<{src: string, integrity: string}>) {
     promises.push(
       new Promise((resolve, reject) => {
         loadScript(srcObj, resolve, reject);
-      })
+      }),
     );
   });
   return Promise.all(promises);
@@ -35,7 +35,7 @@ export function loadScripts(srcAry: Array<{src: string, integrity: string}>) {
 export function loadScript(
   srcObj: {src: string, integrity: string},
   resolve: any = () => {},
-  reject: any = () => {}
+  reject: any = () => {},
 ) {
   const js = document.createElement("script");
   js.src = srcObj.src;

@@ -18,6 +18,12 @@ const extendTypescriptToWebpack = config => {
 /* eslint no-undef: "off" */
 module.exports = function(ctx) {
   return {
+    // Quasar looks for *.js files by default
+    sourceFiles: {
+      router: "src/router/index.ts",
+      store: "src/store/index.ts"
+    },
+
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: ["i18n", "a2hs", "polyfill", "sync", "web3"],
@@ -32,7 +38,6 @@ module.exports = function(ctx) {
       "fontawesome-v5"
       // 'eva-icons'
     ],
-
     // framework: 'all', // --- includes everything; for dev only!
     framework: {
       components: [
@@ -109,14 +114,15 @@ module.exports = function(ctx) {
         );
       },
       chainWebpack(config) {
+        console.log("CHAINED");
         extendTypescriptToWebpack(config);
       }
     },
 
     devServer: {
       // https: true,
-      // port: 8080,
-      open: true // opens browser window automatically
+      port: 8081,
+      open: false // opens browser window automatically
     },
 
     // animations: 'all' --- includes all animations

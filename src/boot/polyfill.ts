@@ -7,8 +7,8 @@ export default async ({ app, router, Vue }: BootInput) => {
       {
         src: "https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js",
         integrity:
-          "sha384-2kkuqwSCFze1y7UcAejUH6wt2MpQ4naa++zWP0SxyUC/jnwq91SAfe14RAruXtnV"
-      }
+          "sha384-2kkuqwSCFze1y7UcAejUH6wt2MpQ4naa++zWP0SxyUC/jnwq91SAfe14RAruXtnV",
+      },
     ]);
   }
 };

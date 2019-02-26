@@ -59,7 +59,7 @@
   </q-page>
 </template>
 
-<script>
+<script lang="ts">
 import { FILE, SUPPORTED_NETWORK } from "src/contracts/contract";
 import { Notify } from "quasar";
 import CurrentAddressVue from "src/components/Shared/CurrentAddress.vue";
@@ -68,25 +68,16 @@ import { mapGetters, mapActions, mapMutations } from "vuex";
 import { GettersName, ActionsName, MutationsName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
 import { W3iMixin } from "src/mixins/W3iMixin";
+import Component, { mixins } from "vue-class-component";
 
-export default {
+@Component({
   name: "NFTComponent",
-  mixins: [W3iMixin],
   components: {
     "current-address": CurrentAddressVue,
     "nft-list": NFTListVue
   },
-  data() {
-    return {
-      slug: "",
-      jsonData: {},
-      showNftList: false,
-      showLoading: true
-    };
-  },
   methods: {
     ...mapActions({
-      initializeWeb3: ActionsName.web3.initializeWeb3,
       loadSpecificContract: ActionsName.contract.loadSpecificContract
     }),
     ...mapMutations({
@@ -100,7 +91,20 @@ export default {
       network: GettersName.web3.web3NetworkName,
       isInitialized: GettersName.web3.web3Initialize
     })
-  },
+  }
+})
+class NFTComponent extends mixins(W3iMixin) {
+  // Data
+  slug = "";
+  jsonData = {};
+  showNftList = false;
+  showLoading = true;
+
+  // Vuex
+  network!: string;
+  setName!: (name: string) => void;
+  loadSpecificContract!: (payload: {name: string, network: string}) => void;
+
   async mounted() {
     this.showLoading = true;
     await this.w3i();
@@ -142,7 +146,9 @@ export default {
     await this.loadSpecificContract({ name: this.slug, network });
     this.showNftList = true;
   }
-};
+}
+
+export default NFTComponent;
 </script>
 
 <style>

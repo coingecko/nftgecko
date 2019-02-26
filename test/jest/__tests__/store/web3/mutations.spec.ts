@@ -9,7 +9,7 @@ describe("[Web3 Mutations]", () => {
     message: "",
     initialized: false,
     network: 70,
-    networkName: "ethereum"
+    networkName: "ethereum",
   };
 
   it("[Mutations] setInitialized", () => {
