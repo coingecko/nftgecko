@@ -16,12 +16,10 @@ dev:
 	@quasar dev
 
 lint:
-	@yarn eslint --ext .js,.vue src
-	@yarn tslint --project tsconfig.json
+	@yarn eslint --ext .js,.vue,.ts src
 
 lint-fix:
-	@yarn eslint --ext .js,.vue src --fix
-	@yarn tslint --project tsconfig.json --fix
+	@yarn eslint --ext .js,.vue,.ts src --fix
 
 # Generate contract from template
 contract:
@@ -32,3 +30,8 @@ contract:
 lighthouse: 
 	@quasar serve dist/pwa &
 	@yarn audit:lighthouse
+
+report:
+	@yarn audit:lighthouse
+	@yarn test --coverage
+	@yarn audit:node_modules

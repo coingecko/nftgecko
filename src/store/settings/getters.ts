@@ -10,7 +10,7 @@ const getters: GetterTree<SettingsState, RootState> = {
   },
   [SettingsGetterName.getDeferredPrompt](state) {
     return state.installBanner;
-  },
+  }
 };
 
 export default getters;

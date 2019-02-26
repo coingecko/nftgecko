@@ -9,7 +9,7 @@ module.exports = {
   cache: false,
   verbose: true,
   collectCoverage: false,
-  coverageDirectory: "<rootDir>/test/jest/coverage",
+  coverageDirectory: "<rootDir>/docs/unit-test",
   collectCoverageFrom: [
     "<rootDir>/src/**/*.vue",
     "<rootDir>/src/**/*.js",
@@ -24,6 +24,7 @@ module.exports = {
       //  statements: 50
     }
   },
+  coverageReporters: ["json", "lcov", "text", "clover"],
   testMatch: [
     "<rootDir>/test/jest/__tests__/**/*.spec.ts",
     "<rootDir>/test/jest/__tests__/**/*.test.ts",

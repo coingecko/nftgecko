@@ -7,11 +7,13 @@ export interface Web3State {
   networkName: string;
 }
 
-export default {
+const state: Web3State = {
   loading: true,
   status: "loading",
   message: "",
   initialized: false,
   network: null,
-  networkName: "",
-} as Web3State;
+  networkName: ""
+};
+
+export default state;

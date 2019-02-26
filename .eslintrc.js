@@ -1,19 +1,28 @@
 module.exports = {
   root: true,
-
+  parser: "vue-eslint-parser",
   parserOptions: {
-    parser: "babel-eslint",
+    parser: "@typescript-eslint/parser",
+    ecmaVersoin: 2018,
     sourceType: "module"
   },
 
   env: {
     browser: true,
-    jest: true
+    jest: true,
+    node: true
   },
 
   // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
   // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-  extends: ["plugin:vue/strongly-recommended", "@vue/prettier"],
+  extends: [
+    "plugin:vue/strongly-recommended",
+    "@vue/prettier",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "@vue/eslint-config-typescript"
+  ],
 
   // required to lint *.vue files
   plugins: ["vue"],
@@ -44,6 +53,14 @@ module.exports = {
         endTag: "never",
         selfClosingTag: "always"
       }
-    ]
+    ],
+
+    "no-unused-vars": "off",
+
+    "@typescript-eslint/no-explicit-any": false,
+    "@typescript-eslint/no-unused-vars": false,
+    "@typescript-eslint/explicit-function-return-type": false,
+    "@typescript-eslint/no-non-null-assertion": false,
+    "@typescript-eslint/camelcase": false
   }
 };

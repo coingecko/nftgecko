@@ -10,7 +10,7 @@ export function successNotification(message: string, i18nString = true) {
   Notify.create({
     color: "green",
     message: i18nString ? i18n.t(message) : message,
-    position: "top-right",
+    position: "top-right"
   });
 }
 
@@ -23,7 +23,7 @@ export function errorNotification(message: string, i18nString = true) {
   Notify.create({
     color: "red",
     message: i18nString ? i18n.t(message) : message,
-    position: "top-right",
+    position: "top-right"
   });
 }
 
@@ -36,6 +36,6 @@ export function infoNotification(message: string, i18nString = true) {
   Notify.create({
     color: "blue",
     message: i18nString ? i18n.t(message) : message,
-    position: "top-right",
+    position: "top-right"
   });
 }
