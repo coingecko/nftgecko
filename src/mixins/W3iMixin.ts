@@ -60,11 +60,11 @@ export class W3iMixin extends Vue {
         this.auth = false;
       }
     }
-  }
-  public async networkCheck() {
     if (!this.auth) {
       this.pushTo("/");
     }
+  }
+  public async networkCheck() {
     // Check Network
     if (SUPPORTED_NETWORK.hasOwnProperty(this.networkId)) {
       // if network route exist
