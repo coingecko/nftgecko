@@ -13,7 +13,7 @@
     "paths": {
       "src/*": ["src/*"]
     },
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "cypress"],
     "resolveJsonModule": true,
     "strictPropertyInitialization": false
   },

@@ -118,7 +118,6 @@ module.exports = function(ctx) {
         );
       },
       chainWebpack(config) {
-        console.log("CHAINED");
         extendTypescriptToWebpack(config);
       }
     },

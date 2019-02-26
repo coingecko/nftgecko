@@ -1,13 +1,17 @@
-import * as ctx from  '../../../quasar.conf.js'
+// import * as ctx from "../../../quasar.conf.js";
 
-describe('Landing', () => {
+describe("/", () => {
   beforeEach(() => {
-    cy.visit('/')
-  })
-  it('.should() - assert that <title> is correct', () => {
-    cy.title().should('include', 'Quasar')
-  })
-})
+    cy.visit("/");
+  });
+  it(".should() - assert that <title> is correct", () => {
+    cy.title().should("include", "NFTBox");
+  });
+
+  it(".should() - assert that <img> is correct", () => {
+    cy.get(".Metamask__Img").should("have.attr", "alt");
+  });
+});
 
 // describe('Home page tests', () => {
 //   beforeEach(() => {

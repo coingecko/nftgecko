@@ -3,6 +3,10 @@ test/lighthouse/reports/index.html
 **/coverage
 test/audits/snyk.json
 
+# cypress
+videos/
+screenshots/
+
 .quasar
 .DS_Store
 .thumbs.db
