@@ -38,9 +38,6 @@ export default Vue.extend({
       });
     }
   },
-  created() {
-    window.dispatchEvent(new Event("beforeinstallprompt"));
-  },
   destroyed() {
     window.removeEventListener("beforeinstallprompt", () => {});
   }

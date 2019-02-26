@@ -4,7 +4,7 @@
       <q-spinner-gears size="90px" color="primary" />
       <p class="Loading__Text">{{ message }}</p>
     </q-inner-loading>
-    <auth-component v-else-if="auth" />
+    <auth-component v-else-if="auth && loginStatus !== 'logout'" />
     <not-auth-component v-else />
   </q-page>
 </template>
