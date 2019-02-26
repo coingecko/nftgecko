@@ -1,6 +1,7 @@
 {
-  "name": "Marble NFT",    
+  "name": "Marble NFT",
   "slug": "marble-nft",
+  "symbol": "MRBLNFT",
   "description": "Every web page can only be marbled once and by one person only. Once a card is created, that URL is claimed forever. Now go create some classics!",
   "official_site": "https://marble.cards",
   "abi": "openzeppelin.abi.json",

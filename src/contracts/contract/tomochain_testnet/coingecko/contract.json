@@ -1,6 +1,7 @@
 {
   "name": "CoinGecko TOMO",
   "slug": "coingecko",
+  "symbol": "GECKOX18",
   "description": "CoinGecko first NFT on TOMO.",
   "official_site": "",
   "abi": "openzeppelin.abi.json",
