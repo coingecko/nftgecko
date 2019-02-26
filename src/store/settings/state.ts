@@ -3,7 +3,9 @@ export interface SettingsState {
   installBanner: boolean;
 }
 
-export default {
+const state: SettingsState = {
   darkMode: false,
-  installBanner: false,
-} as SettingsState;
+  installBanner: false
+};
+
+export default state;

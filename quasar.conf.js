@@ -109,6 +109,10 @@ module.exports = function(ctx) {
             {
               from: path.resolve(__dirname, "src/contracts/assets/img"),
               to: "img/contract"
+            },
+            {
+              from: path.resolve(__dirname, "src/assets/robots.txt"),
+              to: "robots.txt"
             }
           ])
         );

@@ -23,8 +23,8 @@ const mutations: MutationTree<ContractState> = {
     {
       contracts,
       names,
-      network,
-    }: { contracts: ContractJson[]; names: string[]; network: string },
+      network
+    }: { contracts: ContractJson[]; names: string[]; network: string }
   ) {
     Vue.set(state.contractsData, network, contracts);
     names.forEach((name, key) => {
@@ -37,8 +37,8 @@ const mutations: MutationTree<ContractState> = {
           address: contracts[key].contract.contract_address,
           abi: contracts[key].abi,
           balance: 0,
-          ids: [],
-        },
+          ids: []
+        }
       });
     });
   },
@@ -47,8 +47,8 @@ const mutations: MutationTree<ContractState> = {
     {
       contract,
       name,
-      network,
-    }: { contract: ContractJson; name: string; network: string },
+      network
+    }: { contract: ContractJson; name: string; network: string }
   ) {
     Vue.set(state.contractDetails, network, {
       ...state.contractDetails[network],
@@ -58,14 +58,14 @@ const mutations: MutationTree<ContractState> = {
         abi: contract.abi,
         balance: 0,
         ids: [],
-        thumb: contract.image.thumb,
-      },
+        thumb: contract.image.thumb
+      }
     });
   },
   // Mutation to set Contract Balance
   [ContractMutationName.setContractsBalance](
     state,
-    { name, bal, network }: { name: string; bal: number; network: string },
+    { name, bal, network }: { name: string; bal: number; network: string }
   ) {
     // return {
     //   ...state.contractDetails[network],
@@ -76,33 +76,33 @@ const mutations: MutationTree<ContractState> = {
     // }
     Vue.set(state.contractDetails[network], name, {
       ...state.contractDetails[network][name],
-      balance: bal,
+      balance: bal
     });
   },
   // action to add nfts
   [ContractMutationName.addNftIds](
     state,
-    { name, id, network }: { name: string; id: number; network: string },
+    { name, id, network }: { name: string; id: number; network: string }
   ) {
     Vue.set(state.contractDetails, network, {
       ...state.contractDetails[network],
       [name]: {
         ...state.contractDetails[network][name],
-        ids: [...state.contractDetails[network][name].ids, { id, image: "" }],
-      },
+        ids: [...state.contractDetails[network][name].ids, { id, image: "" }]
+      }
     });
   },
   // action to set img (Need to add id first)
   [ContractMutationName.setNftImages](
     state,
-    { id, image, network }: { id: number; image: string; network: string },
+    { id, image, network }: { id: number; image: string; network: string }
   ) {
     const contractDetails = state.contractDetails[network][state.name];
-    const idKey = contractDetails.ids.findIndex((el) => el.id === id);
+    const idKey = contractDetails.ids.findIndex(el => el.id === id);
     const formattedKey = idKey === -1 ? NaN : idKey;
     const beforeIds = contractDetails.ids.slice(
       0,
-      isNaN(formattedKey) ? contractDetails.ids.length - 1 : formattedKey,
+      isNaN(formattedKey) ? contractDetails.ids.length - 1 : formattedKey
     );
     const afterIds = isNaN(formattedKey)
       ? []
@@ -111,14 +111,14 @@ const mutations: MutationTree<ContractState> = {
       ...state.contractDetails[network],
       [state.name]: {
         ...contractDetails,
-        ids: [...beforeIds, { id, image }, ...afterIds],
-      },
+        ids: [...beforeIds, { id, image }, ...afterIds]
+      }
     });
   },
   // set name
   [ContractMutationName.setName](state, name: string) {
     state.name = name;
-  },
+  }
 };
 
 export default mutations;

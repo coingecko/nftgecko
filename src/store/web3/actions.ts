@@ -1,7 +1,7 @@
 import web3, { web3Instance } from "src/boot/web3";
 import {
   errorNotification,
-  successNotification,
+  successNotification
 } from "src/helper/notifications";
 import { ActionTree } from "vuex";
 import { Web3ActionName, Web3MutationName } from "./names";
@@ -24,7 +24,7 @@ const actions: ActionTree<Web3State, any> = {
         // LOADING MESSAGE => APPROVAL_MESSAGE
         commit(
           Web3MutationName.setMessage,
-          "Waiting for approval to connect to your account...",
+          "Waiting for approval to connect to your account..."
         );
         // Request account access if needed
         await window.ethereum.enable();
@@ -50,10 +50,10 @@ const actions: ActionTree<Web3State, any> = {
       errorNotification("web3.error.web3_err");
     }
   },
-  async [Web3ActionName.setNetwork]({state, commit}, network?: string) {
-    const selectedNetwork = network || await web3Instance.getId();
+  async [Web3ActionName.setNetwork]({ state, commit }, network?: string) {
+    const selectedNetwork = network || (await web3Instance.getId());
     commit(Web3MutationName.setNetwork, selectedNetwork);
-  },
+  }
 };
 
 export default actions;

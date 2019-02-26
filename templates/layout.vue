@@ -71,21 +71,16 @@
 </template>
 
 <script>
-import Vue from "vue";
+import { Component, Vue } from "vue-property-decorator";
 
-export default Vue.extend({
-  // name: 'LayoutName',
-  data() {
-    return {
-      leftdrawer: true
-    };
-  },
-  methods: {},
-  computed: {},
-  watch: {},
-  created() {},
-  mounted() {}
-});
+@Component({
+  name: "ComponentName"
+})
+class ComponentName extends Vue {
+  leftdrawer = true;
+}
+
+export default ComponentName;
 </script>
 
 <style></style>

@@ -16,18 +16,18 @@ import { ActionsName, GettersName, MutationsName } from "../store";
       networkId: GettersName.web3.web3Network,
       networkName: GettersName.web3.web3NetworkName,
       compKey: GettersName.contract.getCompKey,
-      loginStatus: GettersName.web3.web3Status,
-    }),
+      loginStatus: GettersName.web3.web3Status
+    })
   },
   methods: {
     ...mapMutations({
-      updateCompKey: MutationsName.contract.updateCompKey,
+      updateCompKey: MutationsName.contract.updateCompKey
     }),
     ...mapActions({
       initializeWeb3: ActionsName.web3.initializeWeb3,
-      loadAllContracts: ActionsName.contract.loadAllContracts,
-    }),
-  },
+      loadAllContracts: ActionsName.contract.loadAllContracts
+    })
+  }
 })
 export class W3iMixin extends Vue {
   // VUE
@@ -91,11 +91,12 @@ export class W3iMixin extends Vue {
         } else {
           errorNotification(
             `Network ${this.networkId ||
-              this.$route.params.network} not supported`,
+              this.$route.params.network} not supported`
           );
           this.pushTo(`/nft`);
         }
       } else {
+        //
       }
     }
   }

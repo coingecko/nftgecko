@@ -2,20 +2,15 @@
   <div>Component</div>
 </template>
 
-<script>
-import Vue from "vue";
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
 
-export default Vue.extend({
-  // name: 'ComponentName',
-  data() {
-    return {};
-  },
-  methods: {},
-  computed: {},
-  watch: {},
-  created() {},
-  mounted() {}
-});
+@Component({
+  name: "ComponentName"
+})
+class ComponentName extends Vue {}
+
+export default ComponentName;
 </script>
 
 <style></style>

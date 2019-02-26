@@ -8,34 +8,16 @@ import Identicon from "identicon.js";
  */
 export function nameFactory<T>(name: string, obj: T): T {
   const temp: any = {};
-  Object.keys(obj).forEach((objName) => {
+  Object.keys(obj).forEach(objName => {
     temp[objName] = `${name}/${objName}`;
   });
   return temp;
 }
 
-/** Load html script tag
- * @export
- * @param {Array<{src: string, integrity: string}>} srcAry
- * @returns
- */
-export function loadScripts(srcAry: Array<{src: string, integrity: string}>) {
-  // Browser supports Promises
-  const promises: Array<Promise<any>> = [];
-  srcAry.forEach((srcObj) => {
-    promises.push(
-      new Promise((resolve, reject) => {
-        loadScript(srcObj, resolve, reject);
-      }),
-    );
-  });
-  return Promise.all(promises);
-}
-
 export function loadScript(
-  srcObj: {src: string, integrity: string},
+  srcObj: { src: string; integrity: string },
   resolve: any = () => {},
-  reject: any = () => {},
+  reject: any = () => {}
 ) {
   const js = document.createElement("script");
   js.src = srcObj.src;
@@ -46,6 +28,24 @@ export function loadScript(
     reject(new Error("Failed to load script " + srcObj.src));
   };
   document.head.appendChild(js);
+}
+
+/** Load html script tag
+ * @export
+ * @param {Array<{src: string, integrity: string}>} srcAry
+ * @returns
+ */
+export function loadScripts(srcAry: { src: string; integrity: string }[]) {
+  // Browser supports Promises
+  const promises: Promise<any>[] = [];
+  srcAry.forEach(srcObj => {
+    promises.push(
+      new Promise((resolve, reject) => {
+        loadScript(srcObj, resolve, reject);
+      })
+    );
+  });
+  return Promise.all(promises);
 }
 
 export function range(start = 0, end = 0, step = 1) {

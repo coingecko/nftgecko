@@ -3,9 +3,9 @@ import { Contract } from "web3-eth-contract/types";
 
 export class Web3Class {
   public web3: Web3;
-  public token: Contract|null;
+  public token: Contract | null;
 
-  constructor() {
+  public constructor() {
     this.web3 = window.web3;
     this.token = null;
   }
@@ -33,12 +33,20 @@ export class Web3Class {
    * @param {{abi: string, address: string, acc: string}} payload
    * @memberof Web3Class
    */
-  public async setContract({ abi, address, acc }: {abi: string, address: string, acc: string}) {
+  public async setContract({
+    abi,
+    address,
+    acc
+  }: {
+    abi: string;
+    address: string;
+    acc: string;
+  }) {
     const res = await fetch(`abi/${abi}`);
     const abiJson = await res.json();
     this.token = new this.web3.eth.Contract(abiJson, address, {
       from: acc,
-      gasPrice: "20000000000",
+      gasPrice: "20000000000"
     } as any);
     return;
   }
@@ -48,8 +56,7 @@ export class Web3Class {
    * @returns {number} balance
    */
   public getBalance(acc: string) {
-    return this.token!.methods
-      .balanceOf(acc)
+    return this.token!.methods.balanceOf(acc)
       .call()
       .catch(() => 0);
   }

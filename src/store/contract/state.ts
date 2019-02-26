@@ -13,7 +13,7 @@ export interface ContractState {
         name: string;
         abi: string;
         balance: number;
-        ids: Array<{ id: number; image: string }>;
+        ids: { id: number; image: string }[];
         thumb: string;
       };
     };
@@ -21,12 +21,14 @@ export interface ContractState {
   name: string;
 }
 
-export default {
+const state: ContractState = {
   compKey: 0,
   address: "",
   loading: true,
   contractsData: {},
   names: [],
   contractDetails: {},
-  name: "",
-} as ContractState;
+  name: ""
+};
+
+export default state;
