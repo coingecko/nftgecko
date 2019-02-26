@@ -1,13 +1,12 @@
 <template>
-  <q-page padding>
-    <q-card>
+  <q-page padding class="row flex justify-center">
+    <q-card class="col-xs-12 col-sm-10 col-md-8 col-lg-6 ">
       <div class="row q-px-md">
-        <div class="col col-12 q-py-sm">
-          <span class="text-h2">Settings</span>
+        <div class="col col-12 q-py-md">
+          <span class="text-h3">Settings</span>
         </div>
-        <div class="col col-12 q-py-sm" v-if="deferredPrompt">
-          <span class="text-h5">Add To Homescreen</span>
-          <br />
+        <div class="col col-12 q-py-sm flex column" v-if="deferredPrompt">
+          <span class="text-h5 q-pb-sm">Add To Homescreen</span>
           <q-btn
             @click="addToHomeScreen"
             icon="fas fa-home"
@@ -38,6 +37,9 @@ export default Vue.extend({
         window.deferredPrompt = null;
       });
     }
+  },
+  created() {
+    window.dispatchEvent(new Event("beforeinstallprompt"));
   },
   destroyed() {
     window.removeEventListener("beforeinstallprompt", () => {});

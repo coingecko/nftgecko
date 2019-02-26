@@ -13,7 +13,6 @@ export default async ({ Vue }: BootInput) => {
 
   let tempAccInterval: any = null;
   store.watch(
-    () => {},
     (newValue: any, oldValue: any) => {
       if (!(oldValue.web3 && newValue.web3.status === oldValue.web3.status)) {
         // if account switch
@@ -30,7 +29,7 @@ export default async ({ Vue }: BootInput) => {
                 // If Metamask account change, reload.
                 location.reload();
               }
-            }, 2500);
+            }, 2000);
           tempAccInterval = checkAccInterval();
         } else if (newValue.web3.status === "logout") {
           if (tempAccInterval !== null) {
@@ -38,7 +37,8 @@ export default async ({ Vue }: BootInput) => {
           }
         }
       }
-    }
+    },
+    () => {}
   );
 };
 

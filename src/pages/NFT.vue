@@ -1,10 +1,10 @@
 <template>
-  <q-page class="flex flex-center" padding>
+  <q-page padding>
     <q-inner-loading :showing="showLoading">
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
-    <div class="q-pa-xs" v-show="!showLoading" v-if="!showLoading">
-      <q-card class="q-my-md">
+    <div class="q-pa-xs col-xs-12" v-show="!showLoading" v-if="!showLoading">
+      <q-card class="q-my-md full-width">
         <q-card-section class="">
           <div class="row">
             <img
