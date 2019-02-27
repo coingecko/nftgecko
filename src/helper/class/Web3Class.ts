@@ -2,13 +2,8 @@ import Web3 from "web3";
 import { Contract } from "web3-eth-contract/types";
 
 export class Web3Class {
-  public web3: Web3;
-  public token: Contract | null;
-
-  public constructor() {
-    this.web3 = window.web3;
-    this.token = null;
-  }
+  public web3: Web3 | null = null;
+  public token: Contract | null = null;
 
   // ==========MUTATIONS==========
   /** Change web3
@@ -25,8 +20,23 @@ export class Web3Class {
    * @returns {Promise<string[]>}
    * @memberof Web3Class
    */
-  public getAvailableAddress() {
-    return this.web3.eth.getAccounts();
+  public getAvailableAddress(): Promise<string[]> {
+    return new Promise((resolve, reject) => {
+      // v1
+      this.web3!.eth.getAccounts((err1, res1) => {
+        if (err1) {
+          // < v1
+          window.web3.eth.getAccounts((err2, res2: any) => {
+            if (err2) {
+              reject(err2);
+            }
+            resolve([res2]);
+          });
+        } else {
+          resolve(res1);
+        }
+      });
+    });
   }
 
   /** setContract: Setup this.token
@@ -44,7 +54,7 @@ export class Web3Class {
   }) {
     const res = await fetch(`abi/${abi}`);
     const abiJson = await res.json();
-    this.token = new this.web3.eth.Contract(abiJson, address, {
+    this.token = new this.web3!.eth.Contract(abiJson, address, {
       from: acc,
       gasPrice: "20000000000"
     } as any);
@@ -58,7 +68,10 @@ export class Web3Class {
   public getBalance(acc: string) {
     return this.token!.methods.balanceOf(acc)
       .call()
-      .catch(() => 0);
+      .catch((err: any) => {
+        alert(err);
+        return 0;
+      });
   }
 
   /** getTokenWithId:
@@ -75,7 +88,22 @@ export class Web3Class {
     return this.token!.methods.tokenURI(tokenId).call();
   }
 
-  public getId() {
-    return this.web3.eth.net.getId();
+  public getId(): Promise<number> {
+    return new Promise((resolve, reject) => {
+      // v1
+      this.web3!.eth.net.getId((err1, res1) => {
+        if (err1) {
+          // < v1
+          (window.web3!.version as any).getNetwork((err2: any, res2: any) => {
+            if (err2) {
+              reject(err2);
+            }
+            resolve(res2);
+          });
+        } else {
+          resolve(res1);
+        }
+      });
+    });
   }
 }

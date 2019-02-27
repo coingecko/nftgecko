@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Web3</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+    <script>
+      var web3Instance;
+      window.onload = async function() {
+        if (window.ethereum) {
+          alert(window.web3.version.api);
+          try {
+            await window.ethereum.enable();
+            web3Instance = new Web3(window.ethereum);
+            alert(web3Instance.version);
+            alert(await web3Instance.eth.net.getNetworkType());
+            alert(await web3Instance.eth.net.getId());
+          } catch (err) {
+            alert(err);
+          }
+        } else if (typeof window.web3 !== "undefined") {
+          try {
+            web3Instance = new Web3(window.web3.currentProvider);
+            alert(web3Instance);
+          } catch (err) {
+            alert(err);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

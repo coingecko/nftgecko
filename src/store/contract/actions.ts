@@ -77,7 +77,7 @@ const actions: ActionTree<ContractState, RootState> = {
   /** Load all JSON Contract JSON data */
   async [ContractActionName.loadAllJson](
     { state, commit, rootState },
-    nw: string
+    nw?: string
   ) {
     const network =
       nw || rootState.web3.networkName || rootState.route.params.network;
@@ -115,6 +115,7 @@ const actions: ActionTree<ContractState, RootState> = {
         ];
         await web3Instance.setContract({ abi, address, acc });
         const bal = await web3Instance.getBalance(acc);
+        alert(bal);
         commit(ContractMutationName.setContractsBalance, {
           name,
           bal,

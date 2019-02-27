@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-card-section v-if="currentAddress !== ''">
+    <q-card-section :v-if="currentAddress > 1">
       <q-input
         class
         type="text"
@@ -73,8 +73,9 @@ class CurrentAddress extends Vue {
     }
     this.setLoading(false);
   }
+
   get identicon(): string {
-    return generateImageHolder(this.currentAddress, 50);
+    return generateImageHolder(`${this.currentAddress}`, 50);
   }
 }
 export default CurrentAddress;
