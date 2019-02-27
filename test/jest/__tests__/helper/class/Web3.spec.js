@@ -9,7 +9,7 @@ describe("Web3 class", () => {
   // const provider = new Web3.providers.HttpProvider(process.env.INFURA_ENDPOINT);
 
   it("initialize web3", () => {
-    expect(w3.web3).toBe(undefined);
+    expect(w3.web3).toBe(null);
     expect(w3.token).toEqual(null);
   });
 
