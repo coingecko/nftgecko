@@ -3,7 +3,7 @@
   "slug": "coingecko",
   "symbol": "GECKOX18",
   "description": "CoinGecko first NFT on TOMO.",
-  "official_site": "",
+  "official_site": "https://coingecko.com",
   "abi": "openzeppelin.abi.json",
   "image": {
     "thumb": "img/contract/coingecko/thumb.png",

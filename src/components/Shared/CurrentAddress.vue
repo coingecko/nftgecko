@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-card-section :v-if="currentAddress > 1">
+    <q-card-section :v-if="currentAddress.length > 1">
       <q-input
         class
         type="text"

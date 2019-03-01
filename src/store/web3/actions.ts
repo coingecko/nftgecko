@@ -30,11 +30,11 @@ const actions: ActionTree<Web3State, any> = {
         );
         // Request account access if needed
         await window.ethereum.enable();
+        const network = await web3Instance.getId();
         successNotification("web3.success.sign_in");
+        commit(Web3MutationName.setNetwork, network);
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "login");
-        const network = await web3Instance.getId();
-        commit(Web3MutationName.setNetwork, network);
       } catch (err) {
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "logout");
