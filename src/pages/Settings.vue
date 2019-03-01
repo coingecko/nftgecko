@@ -20,28 +20,28 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import { mapGetters } from "vuex";
 import { GettersName } from "src/store";
-export default Vue.extend({
+import { Component, Vue, Mixins } from "vue-property-decorator";
+
+@Component({
   name: "SettingsPage",
   computed: {
     ...mapGetters({
       deferredPrompt: GettersName.settings.getDeferredPrompt
     })
-  },
-  methods: {
-    addToHomeScreen: function() {
-      window.deferredPrompt.prompt();
-      window.deferredPrompt.userChoice.then(() => {
-        window.deferredPrompt = null;
-      });
-    }
-  },
-  destroyed() {
-    window.removeEventListener("beforeinstallprompt", () => {});
   }
-});
+})
+class SettingsPage extends Vue {
+  public addToHomeScreen() {
+    window.deferredPrompt.prompt();
+    window.deferredPrompt.userChoice.then(() => {
+      window.deferredPrompt = null;
+    });
+  }
+}
+
+export default SettingsPage;
 </script>
 
 <style></style>

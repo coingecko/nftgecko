@@ -1,8 +1,7 @@
 // Web3Initialize
 
 import { errorNotification, infoNotification } from "src/helper/notifications";
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Component, Vue } from "vue-property-decorator";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import { SUPPORTED_NETWORK } from "../contracts/contract";
 import { ActionsName, GettersName, MutationsName } from "../store";

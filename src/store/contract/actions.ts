@@ -115,7 +115,6 @@ const actions: ActionTree<ContractState, RootState> = {
         ];
         await web3Instance.setContract({ abi, address, acc });
         const bal = await web3Instance.getBalance(acc);
-        alert(bal);
         commit(ContractMutationName.setContractsBalance, {
           name,
           bal,

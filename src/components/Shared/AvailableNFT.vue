@@ -19,7 +19,7 @@
                   c.image.large ||
                     generateImageHolder(c.contract.contract_address, 300)
                 "
-                class="NFT-Card__Image"
+                class="card-image"
                 :alt="c.name"
               />
             </q-avatar>
@@ -54,7 +54,7 @@ import { Prop, Component, Vue } from "vue-property-decorator";
     })
   }
 })
-class AvailableNFT extends Vue {
+class AvailableNFTComponent extends Vue {
   @Prop(String) ethNetwork: string;
 
   loadAllJson: (network: string) => void;
@@ -75,19 +75,14 @@ class AvailableNFT extends Vue {
     this.loading = false;
   }
 }
-export default AvailableNFT;
+export default AvailableNFTComponent;
 </script>
 
-<style>
-.NFT-Card__Description {
-  padding: 10px;
-}
-.NFT-Card__Image {
+<style scoped>
+.card-image {
   padding: 10px;
   width: 100%;
   max-width: 400px;
   max-height: 400px;
-}
-.NFT-Card__Image-Wrapper {
 }
 </style>

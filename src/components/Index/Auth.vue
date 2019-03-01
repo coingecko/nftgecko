@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapGetters } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
@@ -62,31 +62,8 @@ Vue.component(
   () => import("src/components/Shared/CurrentAddress.vue")
 );
 
-export default Vue.extend({
+@Component({
   name: "AuthComponent",
-  data() {
-    return {
-      contractColumns: [
-        {
-          name: "name",
-          required: true,
-          label: "Asset",
-          align: "left",
-          field: "name",
-          sortable: true
-        },
-        {
-          name: "balance",
-          required: true,
-          label: "Balance",
-          align: "right",
-          field: "balance",
-          sortable: true
-        }
-      ],
-      showAddress: false
-    };
-  },
   computed: {
     ...mapGetters({
       loading: GettersName.contract.getLoading,
@@ -99,18 +76,50 @@ export default Vue.extend({
   methods: {
     ...mapActions({
       loadAllContracts: ActionsName.contract.loadAllContracts
-    }),
-    rowClick(val: any) {
-      this.$router.push({ path: `/nft/${this.networkName}/${val.name}` });
+    })
+  }
+})
+class AuthComponent extends Vue {
+  // data
+  public contractColumns = [
+    {
+      name: "name",
+      required: true,
+      label: "Asset",
+      align: "left",
+      field: "name",
+      sortable: true
     },
-    generateImageHolder: generateImageHolder
-  },
+    {
+      name: "balance",
+      required: true,
+      label: "Balance",
+      align: "right",
+      field: "balance",
+      sortable: true
+    }
+  ];
+  public showAddress = false;
+
+  // vuex
+  public networkName: string;
+  public loadAllContracts: (network: string) => void;
+
+  // methods
+  public generateImageHolder = generateImageHolder;
+
+  public rowClick(val: any) {
+    this.$router.push({ path: `/nft/${this.networkName}/${val.name}` });
+  }
+
   async mounted() {
     this.showAddress = false;
     await this.loadAllContracts(this.networkName);
     this.showAddress = true;
   }
-});
+}
+
+export default AuthComponent;
 </script>
 
 <style>

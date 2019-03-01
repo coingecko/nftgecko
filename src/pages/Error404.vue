@@ -11,7 +11,12 @@
 </template>
 
 <script lang="ts">
-export default {
-  name: "Error404"
-};
+import { Component, Vue } from "vue-property-decorator";
+
+@Component({
+  name: "Error404Page"
+})
+class Error404Page extends Vue {}
+
+export default Error404Page;
 </script>

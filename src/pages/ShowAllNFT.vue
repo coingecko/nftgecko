@@ -10,18 +10,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import { FILE } from "src/contracts/contract";
+import { Component, Vue } from "vue-property-decorator";
 
 Vue.component("available-nft-component", () =>
   import("src/components/Shared/AvailableNFT.vue")
 );
 
-export default Vue.extend({
-  data: function() {
-    return {
-      fileNames: Object.keys(FILE)
-    };
-  }
-});
+@Component({
+  name: "ShowAllNFTPage"
+})
+class ShowAllNFTPage extends Vue {
+  public fileNames = Object.keys(FILE);
+}
+
+export default ShowAllNFTPage;
 </script>

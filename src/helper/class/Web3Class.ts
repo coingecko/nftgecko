@@ -69,7 +69,6 @@ export class Web3Class {
     return this.token!.methods.balanceOf(acc)
       .call()
       .catch((err: any) => {
-        alert(err);
         return 0;
       });
   }
