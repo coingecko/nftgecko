@@ -25,7 +25,7 @@ Vue.component("available-nft-component", () =>
   name: "ShowNetworkNFTPage"
 })
 class ShowNetworkNFTPage extends Mixins(W3iMixin) {
-  async created() {
+  async mounted() {
     await this.w3i();
     await this.networkCheck();
   }

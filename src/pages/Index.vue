@@ -35,7 +35,7 @@ Vue.component(
   }
 })
 class IndexPage extends Mixins(W3iMixin) {
-  async created() {
+  async mounted() {
     await this.w3i();
     await this.networkCheck();
   }

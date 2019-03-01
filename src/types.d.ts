@@ -12,9 +12,11 @@ declare global {
     ethereum: any;
     web3: web3;
     deferredPrompt: any;
+    Trust: any;
   }
 }
 
 window.ethereum = window.ethereum || {};
 window.web3 = window.web3 || {};
 window.deferredPrompt = window.deferredPrompt || {};
+window.Trust = window.Trust || {};

@@ -39,12 +39,20 @@ const actions: ActionTree<Web3State, any> = {
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "logout");
         errorNotification("web3.error.connect_eth_acc");
+        errorNotification(err.message, false);
       }
     } else if (typeof w3 !== "undefined") {
-      web3Instance.setWeb3(w3.currentProvider);
-      successNotification("web3.success.sign_in");
-      commit(Web3MutationName.setLoading, false);
-      commit(Web3MutationName.setStatus, "login");
+      try {
+        web3Instance.setWeb3(w3.currentProvider);
+        successNotification("web3.success.sign_in");
+        commit(Web3MutationName.setLoading, false);
+        commit(Web3MutationName.setStatus, "login");
+      } catch (err) {
+        commit(Web3MutationName.setLoading, false);
+        commit(Web3MutationName.setStatus, "logout");
+        errorNotification("web3.error.connect_eth_acc");
+        errorNotification(err.message, false);
+      }
     } else {
       commit(Web3MutationName.setLoading, false);
       commit(Web3MutationName.setStatus, "logout");

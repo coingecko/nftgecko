@@ -5,6 +5,9 @@ import { Component, Vue } from "vue-property-decorator";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import { SUPPORTED_NETWORK } from "../contracts/contract";
 import { ActionsName, GettersName, MutationsName } from "../store";
+import { dom } from "quasar";
+
+const { ready } = dom;
 
 @Component({
   computed: {
@@ -49,19 +52,28 @@ export class W3iMixin extends Vue {
     this.$router.push({ path });
   }
   public async w3i() {
-    // W3Initialized
-    if (!this.isInitialized) {
-      try {
-        await this.initializeWeb3();
-        this.auth = true;
-        this.auth = !(this.loginStatus === "logout");
-      } catch (err) {
-        this.auth = false;
-      }
-    }
-    if (!this.auth) {
-      this.pushTo("/");
-    }
+    return new Promise((resolve, reject) => {
+      // W3Initialized
+      ready(async () => {
+        if (!this.isInitialized) {
+          try {
+            await this.initializeWeb3();
+            this.auth = !(this.loginStatus === "logout");
+          } catch (err) {
+            errorNotification(
+              err.message || "Unable to initialize web3",
+              false
+            );
+            this.auth = false;
+            reject("Cannot initialize web3");
+          }
+        }
+        if (!this.auth) {
+          this.pushTo("/");
+        }
+        resolve();
+      });
+    });
   }
   public async networkCheck() {
     // Check Network
