@@ -1,6 +1,9 @@
 <template>
   <div class="row justify-center q-pt-lg">
-    <q-card class="col col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-sm">
+    <q-card
+      v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
+      class="col col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-sm"
+    >
       <q-card-section>
         <router-link class="text-h5 text-bold" :to="`/nft/${ethNetwork}`">{{
           formattedTitle
@@ -40,9 +43,13 @@ import { ActionsName, RootState } from "src/store";
 import { mapActions, mapState } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
 import { Prop, Component, Vue } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
   name: "AvailableNFTComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   computed: {
     ...mapState({
       contractsData: (state: RootState) => state.contract.contractsData

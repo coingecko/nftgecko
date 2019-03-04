@@ -1,6 +1,6 @@
 <template>
   <div v-if="exist">
-    <div class="col-12 text-h5 text-bold text-center text-white q-my-md">
+    <div class="col-12 text-h5 text-bold text-center q-my-md">
       # NFTs available: {{ bal }}
     </div>
     <div class="row col-12" v-if="bal > 0">
@@ -12,7 +12,11 @@
         <nft-img :src="nft.image" :alt="nft.id" />
       </div>
     </div>
-    <div class="row q-mt-lg bg-grey-2" v-else>
+    <div
+      class="row q-mt-lg"
+      v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+      v-else
+    >
       <div class="col-12 q-pa-lg row">
         <span class="text-h5 text-center col-12">
           No NFTs available
@@ -27,9 +31,13 @@ import { GettersName } from "src/store";
 import { mapGetters, mapState } from "vuex";
 import NFTImageVue from "src/components/NFT/NFTImage.vue";
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
   name: "NFTListComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   components: {
     "nft-img": NFTImageVue
   },

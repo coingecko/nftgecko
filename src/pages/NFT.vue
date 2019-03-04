@@ -4,7 +4,10 @@
       <q-spinner-gears size="50px" color="primary" />
     </q-inner-loading>
     <div class="q-pa-xs col-xs-12" v-show="!showLoading" v-if="!showLoading">
-      <q-card class="q-my-md full-width">
+      <q-card
+        class="q-my-md full-width"
+        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+      >
         <q-card-section class="">
           <div class="row">
             <img
@@ -48,7 +51,11 @@
         :name="slug"
         :network="ethNetwork"
       />
-      <div class="row full-width q-mt-lg bg-grey-2" v-else>
+      <div
+        class="row full-width q-mt-lg"
+        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+        v-else
+      >
         <div class="col-12 q-pa-lg row">
           <span class="text-h5 text-center col-12">
             No NFTs available
@@ -69,9 +76,13 @@ import { GettersName, ActionsName, MutationsName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
 import { W3iMixin } from "src/mixins/W3iMixin";
 import { Component, Mixins } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
   name: "NFTPage",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   components: {
     "current-address": CurrentAddressVue,
     "nft-list": NFTListVue

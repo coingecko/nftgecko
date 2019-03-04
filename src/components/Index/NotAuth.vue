@@ -1,6 +1,9 @@
 <template>
   <div class="row q-mt-lg flex justify-center">
-    <q-card class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg">
+    <q-card
+      v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
+      class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg"
+    >
       <div class="q-pa-lg text-center">
         <div class="text-center q-pt-lg q-pb-md">
           <a href="https://metamask.io" rel="noreferrer" target="_blank">
@@ -31,9 +34,13 @@
 import { mapActions } from "vuex";
 import { ActionsName } from "src/store";
 import { Vue, Component, Prop } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
   name: "NotAuthComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   methods: {
     ...mapActions({ initializeWeb3: ActionsName.web3.initializeWeb3 })
   }
