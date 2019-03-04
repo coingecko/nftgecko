@@ -68,10 +68,10 @@ import { mapGetters, mapActions, mapMutations } from "vuex";
 import { GettersName, ActionsName, MutationsName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
 import { W3iMixin } from "src/mixins/W3iMixin";
-import Component, { mixins } from "vue-class-component";
+import { Component, Mixins } from "vue-property-decorator";
 
 @Component({
-  name: "NFTComponent",
+  name: "NFTPage",
   components: {
     "current-address": CurrentAddressVue,
     "nft-list": NFTListVue
@@ -93,7 +93,7 @@ import Component, { mixins } from "vue-class-component";
     })
   }
 })
-class NFTComponent extends mixins(W3iMixin) {
+class NFTPage extends Mixins(W3iMixin) {
   // Data
   slug = "";
   jsonData = {};
@@ -148,7 +148,7 @@ class NFTComponent extends mixins(W3iMixin) {
   }
 }
 
-export default NFTComponent;
+export default NFTPage;
 </script>
 
 <style>

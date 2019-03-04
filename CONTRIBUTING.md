@@ -2,13 +2,13 @@
 
 ## Introduction
 
-First of all, thank you for your interest to contribute to the NFT Manager project.
+First of all, thank you for your interest to contribute to the NFT Gecko project.
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, discord or any other method with us before making a change.
 
 Please read Pull Request Process and Code of Conduct before contributing.
 
-There are many ways to contribute! Our documentation surely has room for improvement, bug hunting, bug fixing, writing better walkthrough tutorials for our users, and even feature implementations. In this doc, we had written a few ways on contributing to NFT Manager.
+There are many ways to contribute! Our documentation surely has room for improvement, bug hunting, bug fixing, writing better walkthrough tutorials for our users, and even feature implementations. In this doc, we had written a few ways on contributing to NFT Gecko.
 
 - adding new contracts to the code base
 - contributing with development

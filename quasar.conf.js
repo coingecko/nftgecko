@@ -143,8 +143,8 @@ module.exports = function(ctx) {
         clientsClaim: true
       },
       manifest: {
-        name: "CoinGecko NFT Manager",
-        short_name: "CoinGecko NFT Manager",
+        name: "NFT Gecko",
+        short_name: "NFT Gecko",
         theme_color: "#8bc53f",
         background_color: "#8bc53f",
         display: "standalone",

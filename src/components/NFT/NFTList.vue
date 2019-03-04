@@ -29,6 +29,7 @@ import NFTImageVue from "src/components/NFT/NFTImage.vue";
 import { Vue, Component, Prop } from "vue-property-decorator";
 
 @Component({
+  name: "NFTListComponent",
   components: {
     "nft-img": NFTImageVue
   },
@@ -43,22 +44,23 @@ import { Vue, Component, Prop } from "vue-property-decorator";
     })
   }
 })
-class NFTList extends Vue {
+class NFTListComponent extends Vue {
   @Prop(String) name: string;
   @Prop(String) network: string;
 
-  contractDetails: (network: string) => any[];
+  public contractDetails: (network: string) => any[];
 
-  get exist(): boolean {
+  public get exist(): boolean {
     const contractDetails = this.contractDetails(this.network);
     return Object.keys(contractDetails).length > 0;
   }
-  get bal(): number {
+
+  public get bal(): number {
     return this.contractDetails(this.network).filter(
       data => data.name === this.name
     )[0].balance;
   }
 }
 
-export default NFTList;
+export default NFTListComponent;
 </script>

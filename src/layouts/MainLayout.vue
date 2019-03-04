@@ -58,26 +58,27 @@
 
 <script lang="ts">
 import { openURL } from "quasar";
-import Vue from "vue";
+import { Component, Vue } from "vue-property-decorator";
 
-export default Vue.extend({
-  name: "MyLayout",
-  computed: {
-    tab: {
-      get(): string {
-        const urlPath = this.$route.path.split("/").filter(d => d !== "");
-        return urlPath.length >= 1 ? `/${urlPath[0]}` : "/";
-      },
-      set(val: any) {}
-    }
-  },
-  methods: {
-    openURL,
-    setHomeTab: function() {
-      this.tab = "/";
-    }
+@Component({
+  name: "MyLayout"
+})
+class MainLayout extends Vue {
+  openURL = openURL;
+
+  get tab(): string {
+    const urlPath = this.$route.path.split("/").filter(d => d !== "");
+    return urlPath.length >= 1 ? `/${urlPath[0]}` : "/";
   }
-});
+
+  set tab(_val) {}
+
+  setHomeTab() {
+    this.tab = "/";
+  }
+}
+
+export default MainLayout;
 </script>
 
 <style>

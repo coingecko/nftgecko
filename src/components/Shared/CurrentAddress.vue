@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-card-section v-if="currentAddress !== ''">
+    <q-card-section :v-if="currentAddress.length > 1">
       <q-input
         class
         type="text"
@@ -49,7 +49,7 @@ import { Prop, Component, Vue } from "vue-property-decorator";
     })
   }
 })
-class CurrentAddress extends Vue {
+class CurrentAddressComponent extends Vue {
   @Prop(String) slug: string;
   @Prop(String) type: string;
 
@@ -73,11 +73,12 @@ class CurrentAddress extends Vue {
     }
     this.setLoading(false);
   }
+
   get identicon(): string {
-    return generateImageHolder(this.currentAddress, 50);
+    return generateImageHolder(`${this.currentAddress}`, 50);
   }
 }
-export default CurrentAddress;
+export default CurrentAddressComponent;
 </script>
 
 <style></style>

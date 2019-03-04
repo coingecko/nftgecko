@@ -5,7 +5,7 @@ describe("/", () => {
     cy.visit("/");
   });
   it(".should() - assert that <title> is correct", () => {
-    cy.title().should("include", "NFTBox");
+    cy.title().should("include", "NFTGecko");
   });
 
   it(".should() - assert that <img> is correct", () => {

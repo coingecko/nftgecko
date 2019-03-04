@@ -1,19 +1,23 @@
 <template>
-  <img class="NFT__Image" :title="alt" :src="src" :alt="alt" />
+  <img class="nft-img" :title="alt" :src="src" :alt="alt" />
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
-  props: {
-    src: { type: String, required: true },
-    alt: { type: String, required: true }
-  }
-});
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+@Component({
+  name: "NFTImageComponent"
+})
+class NFTImageComponent extends Vue {
+  @Prop(String) src: string;
+  @Prop(String) alt: string;
+}
+
+export default NFTImageComponent;
 </script>
 
-<style>
-.NFT__Image {
+<style scoped>
+.nft-img {
   max-width: 100%;
   object-fit: contain;
 }

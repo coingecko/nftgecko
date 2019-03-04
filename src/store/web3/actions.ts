@@ -1,4 +1,4 @@
-import web3, { web3Instance } from "src/boot/web3";
+import { web3Instance } from "src/boot/web3";
 import {
   errorNotification,
   successNotification
@@ -18,7 +18,9 @@ const actions: ActionTree<Web3State, any> = {
     commit(Web3MutationName.setStatus, "loading");
     // "" => MESSAGE
     commit(Web3MutationName.setMessage, "Loading web3...");
+    const w3 = window.web3;
     if (window.ethereum) {
+      web3Instance.setWeb3(window.ethereum);
       // if ethereum exist
       try {
         // LOADING MESSAGE => APPROVAL_MESSAGE
@@ -28,22 +30,29 @@ const actions: ActionTree<Web3State, any> = {
         );
         // Request account access if needed
         await window.ethereum.enable();
+        const network = await web3Instance.getId();
         successNotification("web3.success.sign_in");
+        commit(Web3MutationName.setNetwork, network);
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "login");
-        web3Instance.setWeb3(window.ethereum);
-        const network = await web3Instance.getId();
-        commit(Web3MutationName.setNetwork, network);
       } catch (err) {
         commit(Web3MutationName.setLoading, false);
         commit(Web3MutationName.setStatus, "logout");
         errorNotification("web3.error.connect_eth_acc");
+        errorNotification(err.message, false);
       }
-    } else if (typeof web3Instance.web3 !== "undefined") {
-      web3Instance.setWeb3(web3Instance.web3.currentProvider);
-      successNotification("web3.success.sign_in");
-      commit(Web3MutationName.setLoading, false);
-      commit(Web3MutationName.setStatus, "login");
+    } else if (typeof w3 !== "undefined") {
+      try {
+        web3Instance.setWeb3(w3.currentProvider);
+        successNotification("web3.success.sign_in");
+        commit(Web3MutationName.setLoading, false);
+        commit(Web3MutationName.setStatus, "login");
+      } catch (err) {
+        commit(Web3MutationName.setLoading, false);
+        commit(Web3MutationName.setStatus, "logout");
+        errorNotification("web3.error.connect_eth_acc");
+        errorNotification(err.message, false);
+      }
     } else {
       commit(Web3MutationName.setLoading, false);
       commit(Web3MutationName.setStatus, "logout");

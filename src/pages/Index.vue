@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
 import { mapGetters } from "vuex";
 import { GettersName } from "src/store";
 import { W3iMixin } from "src/mixins/W3iMixin";
+import { Component, Vue, Mixins } from "vue-property-decorator";
 
 Vue.component(
   "auth-component",
@@ -26,19 +26,22 @@ Vue.component(
   () => import("src/components/Index/NotAuth.vue")
 );
 
-export default Vue.extend({
+@Component({
   name: "PageIndex",
-  mixins: [W3iMixin],
   computed: {
     ...mapGetters({
       status: GettersName.web3.web3Status
     })
-  },
-  async created() {
+  }
+})
+class IndexPage extends Mixins(W3iMixin) {
+  async mounted() {
     await this.w3i();
     await this.networkCheck();
   }
-});
+}
+
+export default IndexPage;
 </script>
 
 <style>
