@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/15</span>
+        <span class='fraction'>0/16</span>
       </div>
     </div>
     <p class="quiet">
@@ -110,7 +110,17 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -123,6 +133,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,18 +167,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,6 +183,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -176,7 +196,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div v-if="exist"&gt;
-    &lt;div class="col-12 text-h5 text-bold text-center text-white q-my-md"&gt;
+    &lt;div class="col-12 text-h5 text-bold text-center q-my-md"&gt;
       # NFTs available: {{ bal }}
     &lt;/div&gt;
     &lt;div class="row col-12" v-if="bal &gt; 0"&gt;
@@ -188,7 +208,11 @@
         &lt;nft-img :src="nft.image" :alt="nft.id" /&gt;
       &lt;/div&gt;
     &lt;/div&gt;
-    &lt;div class="row q-mt-lg bg-grey-2" v-else&gt;
+    &lt;div
+      class="row q-mt-lg"
+      v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+      v-else
+    &gt;
       &lt;div class="col-12 q-pa-lg row"&gt;
         &lt;span class="text-h5 text-center col-12"&gt;
           No NFTs available
@@ -203,8 +227,13 @@
 <span class="cstat-no" title="statement not covered" >import { mapGetters, mapState } from "vuex";</span>
 <span class="cstat-no" title="statement not covered" >import NFTImageVue from "src/components/NFT/NFTImage.vue";</span>
 <span class="cstat-no" title="statement not covered" >import { Vue, Component, Prop } from "vue-property-decorator";</span>
+<span class="cstat-no" title="statement not covered" >import { darkModeClassDirectives } from "src/directives/darkModeClass";</span>
 &nbsp;
 @Component({
+  name: "NFTListComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   components: {
     "nft-img": NFTImageVue
   },
@@ -219,24 +248,25 @@
     })
   }
 })
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class NFTList extends Vue {</span></span></span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class NFTListComponent extends Vue {</span></span></span></span>
 <span class="cstat-no" title="statement not covered" >  @Prop(String) name: string;</span>
 <span class="cstat-no" title="statement not covered" >  @Prop(String) network: string;</span>
 &nbsp;
-  contractDetails: (network: string) =&gt; any[];
+  public contractDetails: (network: string) =&gt; any[];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  get exist(): boolean {</span>
+<span class="cstat-no" title="statement not covered" >  public get exist(): boolean {</span>
 <span class="cstat-no" title="statement not covered" >    const contractDetails = this.contractDetails(this.network);</span>
 <span class="cstat-no" title="statement not covered" >    return Object.keys(contractDetails).length &gt; 0;</span>
   }
-<span class="cstat-no" title="statement not covered" >  get bal(): number {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  public get bal(): number {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    return this.contractDetails(this.network).filter(</span></span>
 <span class="cstat-no" title="statement not covered" >      data =&gt; data.name === this.name</span>
     )[0].balance;
   }
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-export default NFTList;
+export default NFTListComponent;
 &lt;/script&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -244,7 +274,7 @@ export default NFTList;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 26 2019 16:32:36 GMT+0800 (Malaysia Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

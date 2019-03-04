@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/41</span>
+        <span class='fraction'>0/42</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/39</span>
+        <span class='fraction'>0/40</span>
       </div>
     </div>
     <p class="quiet">
@@ -205,7 +205,25 @@
 <a name='L157'></a><a href='#L157'>157</a>
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
-<a name='L160'></a><a href='#L160'>160</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,8 +294,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -365,12 +387,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;q-page class="flex flex-center" padding&gt;
+  &lt;q-page padding&gt;
     &lt;q-inner-loading :showing="showLoading"&gt;
       &lt;q-spinner-gears size="50px" color="primary" /&gt;
     &lt;/q-inner-loading&gt;
-    &lt;div class="q-pa-xs" v-show="!showLoading" v-if="!showLoading"&gt;
-      &lt;q-card class="q-my-md"&gt;
+    &lt;div class="q-pa-xs col-xs-12" v-show="!showLoading" v-if="!showLoading"&gt;
+      &lt;q-card
+        class="q-my-md full-width"
+        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+      &gt;
         &lt;q-card-section class=""&gt;
           &lt;div class="row"&gt;
             &lt;img
@@ -414,10 +439,14 @@
         :name="slug"
         :network="ethNetwork"
       /&gt;
-      &lt;div class="row full-width q-mt-lg bg-grey-2" v-else&gt;
+      &lt;div
+        class="row full-width q-mt-lg"
+        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+        v-else
+      &gt;
         &lt;div class="col-12 q-pa-lg row"&gt;
           &lt;span class="text-h5 text-center col-12"&gt;
-            No NFTs available 2
+            No NFTs available
           &lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -434,10 +463,14 @@
 <span class="cstat-no" title="statement not covered" >import { GettersName, ActionsName, MutationsName } from "src/store";</span>
 <span class="cstat-no" title="statement not covered" >import { generateImageHolder } from "src/helper/utils";</span>
 <span class="cstat-no" title="statement not covered" >import { W3iMixin } from "src/mixins/W3iMixin";</span>
-<span class="cstat-no" title="statement not covered" >import Component, { mixins } from "vue-class-component";</span>
+<span class="cstat-no" title="statement not covered" >import { Component, Mixins } from "vue-property-decorator";</span>
+<span class="cstat-no" title="statement not covered" >import { darkModeClassDirectives } from "src/directives/darkModeClass";</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >@Component({</span></span>
-  name: "NFTComponent",
+  name: "NFTPage",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   components: {
     "current-address": CurrentAddressVue,
     "nft-list": NFTListVue
@@ -459,7 +492,7 @@
     })
   }
 })
-<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class NFTComponent extends mixins(W3iMixin) {</span></span></span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class NFTPage extends Mixins(W3iMixin) {</span></span></span></span>
   // Data
 <span class="cstat-no" title="statement not covered" >  slug = "";</span>
 <span class="cstat-no" title="statement not covered" >  jsonData = {};</span>
@@ -514,7 +547,7 @@
   }
 <span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
-export default NFTComponent;
+export default NFTPage;
 &lt;/script&gt;
 &nbsp;
 &lt;style&gt;
@@ -529,7 +562,7 @@ export default NFTComponent;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 26 2019 16:32:36 GMT+0800 (Malaysia Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

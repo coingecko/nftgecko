@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/contracts/contract/ethereum/my-crypto-heroes-hero/contract.ts</title>
+    <title>Code coverage report for src/pages/Error404.vue</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../../../prettify.css" />
-    <link rel="stylesheet" href="../../../../../base.css" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../../../index.html">All files</a> / <a href="index.html">src/contracts/contract/ethereum/my-crypto-heroes-hero</a> contract.ts
+      <a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> Error404.vue
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/2</span>
       </div>
     </div>
     <p class="quiet">
@@ -68,27 +68,13 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -96,31 +82,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {
-  genImgFunc,
-  genNFTFunc,
-  getSupportImgShortcutFunc
-} from "src/types/contract";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;div class="fixed-center text-center"&gt;
+    &lt;p class="text-faded"&gt;
+      Sorry, nothing here...
+      &lt;strong&gt;(404)&lt;/strong&gt;
+    &lt;/p&gt;
+    &lt;q-btn color="primary" style="width:200px;" @click="$router.push('/')"
+      &gt;Go back&lt;/q-btn
+    &gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getSupportImgShortcut: getSupportImgShortcutFunc = <span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >  return true;</span>
-};
+&lt;script lang="ts"&gt;
+<span class="cstat-no" title="statement not covered" >import { Component, Vue } from "vue-property-decorator";</span>
 &nbsp;
-/** A function to get NFT's image
- *
- * @param {{id: number}} payload
- * @returns string
- */
-export const <span class="cstat-no" title="statement not covered" >genImg: genImgFunc = <span class="fstat-no" title="function not covered" >({</span> <span class="cstat-no" title="statement not covered" >id </span>}) =&gt; {</span>
-  const formattedId = <span class="cstat-no" title="statement not covered" >`${id}`.slice(0, 4);</span>
-<span class="cstat-no" title="statement not covered" >  return `https://www.mycryptoheroes.net/images/heroes/2000/${formattedId}.png`;</span>
-};
+@Component({
+  name: "Error404Page"
+})
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class Error404Page extends Vue {}</span></span></span>
 &nbsp;
-/** A function to get NFT's data
- *
- * @param {{id: number}} payload
- */
-export const <span class="cstat-no" title="statement not covered" >getNft: genNFTFunc = <span class="fstat-no" title="function not covered" >({</span> <span class="cstat-no" title="statement not covered" >id </span>}) =&gt; {};</span>
+export default Error404Page;
+&lt;/script&gt;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -130,7 +121,7 @@ export const <span class="cstat-no" title="statement not covered" >getNft: genNF
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
-<script src="../../../../../prettify.js"></script>
+<script src="../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -138,7 +129,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../../../sorter.js"></script>
-<script src="../../../../../block-navigation.js"></script>
+<script src="../../sorter.js"></script>
+<script src="../../block-navigation.js"></script>
 </body>
 </html>
