@@ -22,22 +22,22 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/19</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Branches</span>
         <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/5</span>
       </div>
     </div>
     <p class="quiet">
@@ -93,14 +93,10 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,23 +107,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,7 +138,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Web3Class } from "src/helper/class/Web3Class";</span>
 // @ts-ignore
-<span class="cstat-no" title="statement not covered" >import store from "src/store";</span>
+import store from "src/store";
 import { BootInput } from "../types/boot";
 &nbsp;
 let web3Instance: Web3Class;
@@ -149,35 +149,35 @@ let currentWeb3Address = <span class="cstat-no" title="statement not covered" >"
 <span class="cstat-no" title="statement not covered" >  web3Instance = new Web3Class();</span>
   // Vuex Watch for sign in
 &nbsp;
-  let <span class="cstat-no" title="statement not covered" >tempAccInterval: any = null;</span>
-<span class="cstat-no" title="statement not covered" >  store.watch(</span>
-<span class="fstat-no" title="function not covered" >    () =&gt; {}</span>,
-<span class="fstat-no" title="function not covered" >    (n</span>ewValue: any, oldValue: any) =&gt; {
-      if (!(oldValue.web3 &amp;&amp; newValue.web3.status === oldValue.web3.status)) {
-        // if account switch
-        if (newValue.web3.status === "login") {
-          const checkAccInterval = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt;</span></span>
-<span class="cstat-no" title="statement not covered" >            setInterval(async () =&gt; {</span>
-              const <span class="cstat-no" title="statement not covered" >addresses = <span class="cstat-no" title="statement not covered" >await web3Instance.getAvailableAddress();</span></span>
-              const <span class="cstat-no" title="statement not covered" >needUpdate =</span>
-                currentWeb3Address !== addresses[0] &amp;&amp;
-                currentWeb3Address !== "";
-<span class="cstat-no" title="statement not covered" >              currentWeb3Address = addresses[0];</span>
-              const <span class="cstat-no" title="statement not covered" >newAddress = newValue.contract.address;</span>
-              if (needUpdate &amp;&amp; newAddress !== currentWeb3Address) {
-                // If Metamask account change, reload.
-<span class="cstat-no" title="statement not covered" >                location.reload();</span>
-              }
-            }, 2500);
-<span class="cstat-no" title="statement not covered" >          tempAccInterval = checkAccInterval();</span>
-        } else if (newValue.web3.status === "logout") {
-          if (tempAccInterval !== null) {
-<span class="cstat-no" title="statement not covered" >            clearInterval(tempAccInterval);</span>
-          }
-        }
-      }
-    }
-  );
+  // let tempAccInterval: any = null;
+  // store.watch(
+  //   (newValue: any, oldValue: any) =&gt; {
+  //     if (!(oldValue.web3 &amp;&amp; newValue.web3.status === oldValue.web3.status)) {
+  //       // if account switch
+  //       if (newValue.web3.status === "login") {
+  //         const checkAccInterval = () =&gt;
+  //           setInterval(async () =&gt; {
+  //             const addresses = await web3Instance.getAvailableAddress();
+  //             const needUpdate =
+  //               currentWeb3Address !== addresses[0] &amp;&amp;
+  //               currentWeb3Address !== "";
+  //             currentWeb3Address = addresses[0];
+  //             const newAddress = newValue.contract.address;
+  //             if (needUpdate &amp;&amp; newAddress !== currentWeb3Address) {
+  //               // If Metamask account change, reload.
+  //               location.reload();
+  //             }
+  //           }, 2000);
+  //         tempAccInterval = checkAccInterval();
+  //       } else if (newValue.web3.status === "logout") {
+  //         if (tempAccInterval !== null) {
+  //           clearInterval(tempAccInterval);
+  //         }
+  //       }
+  //     }
+  //   },
+  //   () =&gt; {}
+  // );
 };
 &nbsp;
 export { <span class="cstat-no" title="statement not covered" >web3Instance </span>};
@@ -187,7 +187,7 @@ export { <span class="cstat-no" title="statement not covered" >web3Instance </sp
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 26 2019 16:32:36 GMT+0800 (Malaysia Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>0/15</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>0/13</span>
       </div>
     </div>
     <p class="quiet">
@@ -94,7 +94,31 @@
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -120,6 +144,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,6 +162,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -143,15 +179,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
-  &lt;q-page padding&gt;
-    &lt;q-card&gt;
+  &lt;q-page padding class="row flex justify-center"&gt;
+    &lt;q-card
+      class="col-xs-12 col-sm-10 col-md-8 col-lg-6 "
+      v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
+    &gt;
       &lt;div class="row q-px-md"&gt;
-        &lt;div class="col col-12 q-py-sm"&gt;
-          &lt;span class="text-h2"&gt;Settings&lt;/span&gt;
+        &lt;div class="col col-12 q-py-md"&gt;
+          &lt;span class="text-h3"&gt;Settings&lt;/span&gt;
         &lt;/div&gt;
-        &lt;div class="col col-12 q-py-sm" v-if="deferredPrompt"&gt;
-          &lt;span class="text-h5"&gt;Add To Homescreen&lt;/span&gt;
-          &lt;br /&gt;
+        &lt;div class="col col-12 q-py-sm flex column" v-if="deferredPrompt"&gt;
+          &lt;span class="text-h5 q-pb-sm"&gt;Add To Homescreen&lt;/span&gt;
           &lt;q-btn
             @click="addToHomeScreen"
             icon="fas fa-home"
@@ -159,34 +197,50 @@
             color="info"
           /&gt;
         &lt;/div&gt;
+        &lt;div&gt;
+          &lt;span class="text-h5 q-pb-sm"&gt;Dark Mode&lt;/span&gt;
+          &lt;q-toggle v-model="darkMode"&gt;&lt;/q-toggle&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/q-card&gt;
   &lt;/q-page&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script lang="ts"&gt;
-<span class="cstat-no" title="statement not covered" >import Vue from "vue";</span>
 <span class="cstat-no" title="statement not covered" >import { mapGetters } from "vuex";</span>
-<span class="cstat-no" title="statement not covered" >import { GettersName } from "src/store";</span>
-export default Vue.extend({
+<span class="cstat-no" title="statement not covered" >import { GettersName, ActionsName, MutationsName } from "src/store";</span>
+<span class="cstat-no" title="statement not covered" >import { Component, Vue, Mixins } from "vue-property-decorator";</span>
+<span class="cstat-no" title="statement not covered" >import { darkModeClassDirectives } from "src/directives/darkModeClass";</span>
+&nbsp;
+@Component({
   name: "SettingsPage",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   computed: {
     ...mapGetters({
       deferredPrompt: GettersName.settings.getDeferredPrompt
     })
-  },
-  methods: {
-<span class="fstat-no" title="function not covered" >    addToHomeScreen: function() {</span>
-<span class="cstat-no" title="statement not covered" >      window.deferredPrompt.prompt();</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      window.deferredPrompt.userChoice.then(() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >        window.deferredPrompt = null;</span>
-      });
-    }
-  },
-<span class="fstat-no" title="function not covered" >  destroyed() {</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    window.removeEventListener("beforeinstallprompt", () =&gt; {});</span></span>
   }
-});
+})
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >class SettingsPage extends Vue {</span></span></span></span>
+<span class="cstat-no" title="statement not covered" >  get darkMode() {</span>
+<span class="cstat-no" title="statement not covered" >    return this.$store.state.settings.darkMode;</span>
+  }
+&nbsp;
+  set darkMode(val: boolean) {
+<span class="cstat-no" title="statement not covered" >    this.$store.dispatch(ActionsName.settings.storeDarkMode, val);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  public addToHomeScreen() {</span></span>
+<span class="cstat-no" title="statement not covered" >    window.deferredPrompt.prompt();</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    window.deferredPrompt.userChoice.then(() =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >      window.deferredPrompt = null;</span>
+    });
+  }
+<span class="cstat-no" title="statement not covered" >}</span>
+&nbsp;
+export default SettingsPage;
 &lt;/script&gt;
 &nbsp;
 &lt;style&gt;&lt;/style&gt;
@@ -196,7 +250,7 @@ export default Vue.extend({
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 26 2019 16:32:36 GMT+0800 (Malaysia Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

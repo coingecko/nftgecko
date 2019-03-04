@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src/store/settings/actions.ts</title>
+    <title>Code coverage report for src/boot/storage.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">src/store/settings</a> actions.ts
+      <a href="../../index.html">All files</a> / <a href="index.html">src/boot</a> storage.ts
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>0/15</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>0/10</span>
       </div>
     </div>
     <p class="quiet">
@@ -62,38 +62,41 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import localforage from "localforage";</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// @ts-ignore
+<span class="cstat-no" title="statement not covered" >import { BootInput } from "../types/boot";</span>
+<span class="cstat-no" title="statement not covered" >import { dom } from "quasar";</span>
+<span class="cstat-no" title="statement not covered" >import localforage from "localforage";</span>
+<span class="cstat-no" title="statement not covered" >import { STORAGE_NAME } from "src/store/store";</span>
+<span class="cstat-no" title="statement not covered" >import { MutationsName } from "src/store";</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { SettingsActionName, SettingsMutationName } from "./names";</span>
-<span class="cstat-no" title="statement not covered" >import { STORAGE_NAME } from "../store";</span>
-import { ActionTree } from "vuex";
-import { RootState } from "..";
-import { SettingsState } from "./state";
+const { <span class="cstat-no" title="statement not covered" >ready </span>} = dom;
 &nbsp;
-const actions: ActionTree&lt;SettingsState, RootState&gt; = {
-  async [SettingsActionName.storeDarkMode]({ <span class="cstat-no" title="statement not covered" >state,</span> <span class="cstat-no" title="statement not covered" >commit </span>}, dm: boolean) {
-    const <span class="cstat-no" title="statement not covered" >val = <span class="cstat-no" title="statement not covered" >await localforage.setItem(STORAGE_NAME.DARKMODE, dm);</span></span>
-<span class="cstat-no" title="statement not covered" >    commit(SettingsMutationName.setDarkMode, val);</span>
-  }
+// sync VueX and Router
+// leave the export, even if you don't use it
+<span class="cstat-no" title="statement not covered" >export default async ({ <span class="cstat-no" title="statement not covered" >app,</span> <span class="cstat-no" title="statement not covered" >router,</span> <span class="cstat-no" title="statement not covered" >Vue,</span> <span class="cstat-no" title="statement not covered" >store </span>}: BootInput) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  ready(async () =&gt; {</span>
+    const <span class="cstat-no" title="statement not covered" >dm = <span class="cstat-no" title="statement not covered" >await localforage.getItem(STORAGE_NAME.DARKMODE);</span></span>
+<span class="cstat-no" title="statement not covered" >    store.commit(MutationsName.settings.setDarkMode, !!dm);</span>
+  });
 };
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export default actions;</span>
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
@@ -103,7 +106,7 @@ const actions: ActionTree&lt;SettingsState, RootState&gt; = {
   generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Mar 04 2019 16:59:28 GMT+0800 (Malaysia Time)
 </div>
 </div>
-<script src="../../../prettify.js"></script>
+<script src="../../prettify.js"></script>
 <script>
 window.onload = function () {
         if (typeof prettyPrint === 'function') {
@@ -111,7 +114,7 @@ window.onload = function () {
         }
 };
 </script>
-<script src="../../../sorter.js"></script>
-<script src="../../../block-navigation.js"></script>
+<script src="../../sorter.js"></script>
+<script src="../../block-navigation.js"></script>
 </body>
 </html>
