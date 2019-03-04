@@ -1,8 +1,8 @@
 {
-  "name": "nftbox",
+  "name": "nftgecko",
   "version": "0.0.1",
-  "description": "NFTBox allows you to manage all your crypto-collectibles in one unified interface. Connect Metamask and view all your ERC-721 Non-Fungible Tokens (NFT).",
-  "productName": "NFTBox",
+  "description": "NFT Gecko allows you to manage all your crypto-collectibles in one unified interface. Connect Metamask and view all your ERC-721 Non-Fungible Tokens (NFT).",
+  "productName": "NFT Gecko",
   "cordovaId": "org.cordova.quasar.app",
   "author": "CoinGecko <hello@coingecko.com>",
   "private": true,
