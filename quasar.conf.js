@@ -26,7 +26,7 @@ module.exports = function(ctx) {
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: ["storage", "i18n", "a2hs", "polyfill", "sync", "web3"],
+    boot: ["storage", "i18n", "a2hs", "polyfill", "sync", "web3", "pleaseWait"],
 
     css: ["app.styl"],
 
@@ -145,8 +145,8 @@ module.exports = function(ctx) {
         clientsClaim: true
       },
       manifest: {
-        name: "NFT Gecko",
-        short_name: "NFT Gecko",
+        name: "NFTGecko",
+        short_name: "NFTGecko",
         theme_color: "#8bc53f",
         background_color: "#8bc53f",
         display: "standalone",

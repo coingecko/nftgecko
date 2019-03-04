@@ -2,7 +2,18 @@
 <html>
   <head>
     <title><%= htmlWebpackPlugin.options.productName %></title>
-
+    <meta
+      property="og:title"
+      content="<%= htmlWebpackPlugin.options.productName %>"
+    />
+    <meta property="og:site_name" content="NFTGecko" />
+    <meta property="og:url" content="https://nftgecko.com" />
+    <meta
+      property="og:description"
+      content="<%= htmlWebpackPlugin.options.productDescription %>"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/statics/images/icons/icon-96x96.png" />
     <meta charset="utf-8" />
     <meta
       name="description"
@@ -15,15 +26,99 @@
       content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width<% if (htmlWebpackPlugin.options.ctx.mode.cordova) { %>, viewport-fit=cover<% } %>"
     />
 
-    <link rel="icon" href="statics/images/icons/icon-512x512.png" type="image/x-icon" />
+    <link
+      rel="icon"
+      href="statics/images/icons/icon-512x512.png"
+      type="image/x-icon"
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="72x72"
       href="statics/images/icons/icon-72x72.png"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.css"
+      integrity="sha256-jT4WTeGpcghHoAuB4p7xlJti/kyG+/rGKtXaLyq6OUg="
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .loading-message {
+        color: white;
+        font-size: 20px;
+      }
+      .spinner {
+        margin: 100px auto;
+        width: 120px;
+        height: 40px;
+        text-align: center;
+        font-size: 10px;
+      }
+      .spinner > div {
+        background-color: #fff;
+        height: 100%;
+        width: 12px;
+        margin: 0 2px;
+        display: inline-block;
+        -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+        animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      }
+      .spinner .rect2 {
+        -webkit-animation-delay: -1.1s;
+        animation-delay: -1.1s;
+      }
+      .spinner .rect3 {
+        -webkit-animation-delay: -1s;
+        animation-delay: -1s;
+      }
+      .spinner .rect4 {
+        -webkit-animation-delay: -0.9s;
+        animation-delay: -0.9s;
+      }
+      .spinner .rect5 {
+        -webkit-animation-delay: -0.8s;
+        animation-delay: -0.8s;
+      }
+      @-webkit-keyframes sk-stretchdelay {
+        0%,
+        40%,
+        100% {
+          -webkit-transform: scaleY(0.4);
+        }
+        20% {
+          -webkit-transform: scaleY(1);
+        }
+      }
+      @keyframes sk-stretchdelay {
+        0%,
+        40%,
+        100% {
+          transform: scaleY(0.4);
+          -webkit-transform: scaleY(0.4);
+        }
+        20% {
+          transform: scaleY(1);
+          -webkit-transform: scaleY(1);
+        }
+      }
+    </style>
   </head>
   <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/please-wait/0.0.5/please-wait.min.js"
+      integrity="sha256-VdpyBKkQpTaeKm6ZDxHfYXrnZKY6J+uMp0Ok1wq4Nn4="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      window.loading_screen = pleaseWait({
+        logo: "statics/images/icons/icon-152x152.png",
+        backgroundColor: "#8bc53f",
+        loadingHtml:
+          '<p class="loading-message">Loading all your NFTs!</p><div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>'
+      });
+    </script>
     <noscript>Please enable JavaScript to use this app</noscript>
     <!-- DO NOT touch the following DIV -->
     <div id="q-app"></div>
