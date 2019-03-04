@@ -1,6 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-primary">
+    <q-header
+      elevated
+      v-dm-class="{
+        dark: 'bg-primary text-white',
+        light: 'bg-green-4 text-black'
+      }"
+    >
       <q-toolbar>
         <q-toolbar-title>
           <router-link to="/" class="q-pl-sm" @click.native="setHomeTab">{{
@@ -14,41 +20,36 @@
         </div>
       </q-toolbar>
     </q-header>
-    <q-page-container class="q-py-sm">
+    <q-page-container
+      class="q-py-sm"
+      v-dm-class="{
+        dark: 'bg-black text-white',
+        light: 'bg-green-2 text-black'
+      }"
+    >
       <router-view />
     </q-page-container>
     <q-footer>
       <q-toolbar
-        class="Footer__Container shadow-2 rounded-borders bg-primary row"
+        class="shadow-2 rounded-borders row"
+        v-dm-class="{
+          dark: 'bg-primary text-white',
+          light: 'bg-green-3 text-black'
+        }"
       >
-        <q-tabs v-model="tab" class="Footer__Text text-white col text-center">
+        <q-tabs v-model="tab" class="Footer__Text col text-center">
           <router-link to="/">
-            <q-tab
-              class="text-white"
-              name="/"
-              icon="fas fa-wallet"
-              label="Wallet"
-            />
+            <q-tab name="/" icon="fas fa-wallet" label="Wallet" />
           </router-link>
           <router-link to="/nft">
-            <q-tab
-              class="text-white"
-              name="/nft"
-              icon="fas fa-coins"
-              label="Supported NFTs"
-            />
+            <q-tab name="/nft" icon="fas fa-coins" label="Supported NFTs" />
           </router-link>
           <a
             href="https://github.com/coingecko/nft-manager"
             rel="noreferrer"
             target="_blank"
           >
-            <q-tab
-              class="text-white"
-              name="github"
-              icon="fab fa-github"
-              label="GitHub"
-            />
+            <q-tab name="github" icon="fab fa-github" label="GitHub" />
           </a>
         </q-tabs>
       </q-toolbar>
@@ -59,9 +60,13 @@
 <script lang="ts">
 import { openURL } from "quasar";
 import { Component, Vue } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
-  name: "MyLayout"
+  name: "MyLayout",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  }
 })
 class MainLayout extends Vue {
   openURL = openURL;
@@ -82,10 +87,6 @@ export default MainLayout;
 </script>
 
 <style>
-body {
-  background: #2c2f38;
-}
-
 .Layout__Settings {
   width: 2rem;
   height: 2rem;
@@ -98,13 +99,5 @@ body {
 
 .Layout__Settings i {
   font-size: 1.4rem;
-}
-
-.Footer__Container {
-  background: #fff;
-}
-
-.Footer__Text {
-  color: black;
 }
 </style>

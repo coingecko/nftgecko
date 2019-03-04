@@ -1,11 +1,7 @@
-// @ts-ignore
-import store from "src/store";
 import { sync } from "vuex-router-sync";
 import { BootInput } from "../types/boot";
-// import { BootInput } from "../types/boot";
 
 // sync VueX and Router
-// leave the export, even if you don't use it
-export default async ({ app, router, Vue }: BootInput) => {
+export default async ({ app, router, Vue, store }: BootInput) => {
   sync(store, router);
 };

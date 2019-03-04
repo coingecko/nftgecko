@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }">
     <q-card-section :v-if="currentAddress.length > 1">
       <q-input
         class
@@ -11,6 +11,7 @@
         filled
         standout
         bottom-slots
+        :dark="darkMode"
       >
         <template v-slot:before>
           <q-avatar>
@@ -27,13 +28,18 @@ import { mapActions, mapMutations, mapGetters } from "vuex";
 import { ActionsName, MutationsName, GettersName } from "src/store";
 import { generateImageHolder } from "src/helper/utils";
 import { Prop, Component, Vue } from "vue-property-decorator";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 @Component({
   name: "CurrentAdressComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   computed: {
     ...mapGetters({
       currentAddress: GettersName.contract.getCurrentAddress,
-      network: GettersName.web3.web3NetworkName
+      network: GettersName.web3.web3NetworkName,
+      darkMode: GettersName.settings.getDarkMode
     })
   },
   methods: {

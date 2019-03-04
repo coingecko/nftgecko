@@ -1,5 +1,7 @@
 // types
-export const SettingsActionName = {};
+export const SettingsActionName = {
+  storeDarkMode: "storeDarkMode"
+};
 
 export const SettingsGetterName = {
   getDarkMode: "getDarkMode",

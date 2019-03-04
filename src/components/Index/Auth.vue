@@ -1,18 +1,23 @@
 <template>
   <div class="row justify-center q-pt-lg">
-    <q-card class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg bg-grey-3">
+    <q-card
+      class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg"
+      v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
+    >
       <div class="q-pb-md">
         <current-address />
       </div>
       <div class="col" :key="compKey" v-if="showAddress">
         <q-table
           class="NFT__Table"
+          v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
           :key="compKey"
           title="NFTs"
           :data="contractDetails(networkName)"
           :columns="contractColumns"
           row-key="name"
           :loading="loading"
+          :dark="darkMode"
         >
           <q-tr
             slot="body"
@@ -55,6 +60,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 import { ActionsName, GettersName } from "src/store";
 import { mapActions, mapGetters } from "vuex";
 import { generateImageHolder } from "src/helper/utils";
+import { darkModeClassDirectives } from "src/directives/darkModeClass";
 
 Vue.component(
   "current-address",
@@ -64,13 +70,17 @@ Vue.component(
 
 @Component({
   name: "AuthComponent",
+  directives: {
+    "dm-class": darkModeClassDirectives
+  },
   computed: {
     ...mapGetters({
       loading: GettersName.contract.getLoading,
       contractDetails: GettersName.contract.getContractDetails,
       currentAddress: GettersName.contract.getCurrentAddress,
       networkName: GettersName.web3.web3NetworkName,
-      compKey: GettersName.contract.getCompKey
+      compKey: GettersName.contract.getCompKey,
+      darkMode: GettersName.settings.getDarkMode
     })
   },
   methods: {

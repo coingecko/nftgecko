@@ -26,7 +26,7 @@ module.exports = function(ctx) {
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
-    boot: ["i18n", "a2hs", "polyfill", "sync", "web3"],
+    boot: ["storage", "i18n", "a2hs", "polyfill", "sync", "web3"],
 
     css: ["app.styl"],
 
@@ -69,7 +69,9 @@ module.exports = function(ctx) {
         "QSpace",
         "QTabs",
         "QTab",
-        "QRouteTab"
+        "QRouteTab",
+        "QToggle",
+        "QImg"
       ],
 
       directives: ["Ripple"],
