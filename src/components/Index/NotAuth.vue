@@ -5,7 +5,8 @@
       class="col-xs-12 col-sm-10 col-md-8 col-lg-6 q-pa-lg"
     >
       <div class="q-pa-lg text-center">
-        <div class="text-center q-pt-lg q-pb-md">
+        <span class="text-h5">{{ $t("not_auth.connect_to_metamask") }}</span>
+        <div class="text-center q-py-lg">
           <a href="https://metamask.io" rel="noreferrer" target="_blank">
             <img
               class="metamask-img"
@@ -14,13 +15,12 @@
             />
           </a>
         </div>
-        <span class="text-h5">Connect with MetaMask to get started</span>
         <div class="text-center q-pt-lg">
           <q-btn
             class="q-pa-md"
             size="md"
             icon="fas fa-redo-alt fa-2x"
-            label="Retry Web3 Prompt"
+            :label="$t('not_auth.retry_btn')"
             color="info"
             @click="initializeWeb3"
           />

@@ -45,7 +45,7 @@
             <q-tab name="/nft" icon="fas fa-coins" label="Supported NFTs" />
           </router-link>
           <a
-            href="https://github.com/coingecko/nft-manager"
+            href="https://github.com/coingecko/nftgecko"
             rel="noreferrer"
             target="_blank"
           >
