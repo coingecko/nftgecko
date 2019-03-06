@@ -15,5 +15,9 @@
     "error": {
       "no_acc": "no Ethereum account selected."
     }
+  },
+  "not_auth": {
+    "connect_to_metamask": "NFTGecko allows you to manage all your crypto-collectibles in one unified interface. Connect Metamask and view all your ERC-721 Non-Fungible Tokens (NFT).",
+    "retry_btn": "retry"
   }
 }
