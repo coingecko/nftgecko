@@ -6,7 +6,7 @@
     <div class="q-pa-xs col-xs-12" v-show="!showLoading" v-if="!showLoading">
       <q-card
         class="q-my-md full-width"
-        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+        v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
       >
         <q-card-section class="">
           <div class="row">
@@ -53,7 +53,7 @@
       />
       <div
         class="row full-width q-mt-lg"
-        v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+        v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
         v-else
       >
         <div class="col-12 q-pa-lg row">

@@ -358,10 +358,12 @@ DA:75,0
 DA:80,0
 DA:83,0
 DA:84,0
-DA:86,0
+DA:88,0
 LF:18
 LH:0
-BRF:0
+BRDA:84,0,0,0
+BRDA:84,0,1,0
+BRF:2
 BRH:0
 end_of_record
 TN:

@@ -14,7 +14,7 @@
     </div>
     <div
       class="row q-mt-lg"
-      v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }"
+      v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }"
       v-else
     >
       <div class="col-12 q-pa-lg row">

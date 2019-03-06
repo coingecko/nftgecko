@@ -1,5 +1,5 @@
 <template>
-  <q-card v-dm-class="{ dark: 'bg-grey-8', light: 'bg-green-1' }">
+  <q-card v-dm-class="{ dark: 'bg-grey-9', light: 'bg-green-1' }">
     <q-card-section :v-if="currentAddress.length > 1">
       <q-input
         class

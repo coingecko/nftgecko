@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1551758628514" clover="3.2.0">
-  <project timestamp="1551758628514" name="All files">
-    <metrics statements="690" coveredstatements="141" conditionals="98" coveredconditionals="8" methods="180" coveredmethods="42" elements="968" coveredelements="191" complexity="0" loc="690" ncloc="690" packages="28" files="64" classes="64"/>
+<coverage generated="1551846334085" clover="3.2.0">
+  <project timestamp="1551846334085" name="All files">
+    <metrics statements="690" coveredstatements="141" conditionals="100" coveredconditionals="8" methods="180" coveredmethods="42" elements="970" coveredelements="191" complexity="0" loc="690" ncloc="690" packages="28" files="64" classes="64"/>
     <package name="src">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="env.d.ts" path="/Users/johnson/development/coingecko/nft-manager-gh/src/env.d.ts">
@@ -166,7 +166,7 @@
       </file>
     </package>
     <package name="src.components.Shared">
-      <metrics statements="37" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="37" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="7" coveredmethods="0"/>
       <file name="AvailableNFT.vue" path="/Users/johnson/development/coingecko/nft-manager-gh/src/components/Shared/AvailableNFT.vue">
         <metrics statements="19" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="42" count="0" type="stmt"/>
@@ -190,7 +190,7 @@
         <line num="84" count="0" type="stmt"/>
       </file>
       <file name="CurrentAddress.vue" path="/Users/johnson/development/coingecko/nft-manager-gh/src/components/Shared/CurrentAddress.vue">
-        <metrics statements="18" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="18" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="27" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
@@ -207,8 +207,8 @@
         <line num="75" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
         <line num="83" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="86" count="0" type="stmt"/>
+        <line num="84" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="88" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.contracts.contract">
