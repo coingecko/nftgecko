@@ -81,7 +81,9 @@ class CurrentAddressComponent extends Vue {
   }
 
   get identicon(): string {
-    return generateImageHolder(`${this.currentAddress}`, 50);
+    return this.currentAddress.length > 0
+      ? generateImageHolder(`${this.currentAddress}`, 50)
+      : "";
   }
 }
 export default CurrentAddressComponent;
