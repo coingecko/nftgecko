@@ -1,6 +1,6 @@
 # NFT Gecko
 
-[![Build Status](https://travis-ci.org/coingecko/nft-manager.svg?branch=master)](https://travis-ci.org/coingecko/nftgecko)
+[![Build Status](https://travis-ci.org/coingecko/nftgecko.svg?branch=master)](https://travis-ci.org/coingecko/nftgecko)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/08b82cd8-2d1f-4e5c-a921-cdec960554bd/deploy-status)](https://app.netlify.com/sites/nftgecko/deploys)
 
 NFT Gecko is a web interface to manage CryptoCollectibles and ERC-721 tokens.
