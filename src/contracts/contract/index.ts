@@ -2,10 +2,10 @@ const ETHEREUM_FILENAME = [
   "coingecko",
   "marble-nft",
   "gods-unchained",
+  "cookie",
+  "marble-nft",
   "my-crypto-heroes-hero",
   "my-crypto-heroes-extension",
-  "marble-nft",
-  "coingecko",
   "su-squares"
 ];
 const TOMOCHAIN_FILENAME: string[] = [];
