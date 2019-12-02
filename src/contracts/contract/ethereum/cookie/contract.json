@@ -1,0 +1,18 @@
+{
+    "name": "Cookie",
+    "slug": "cookie",
+    "symbol": "COOKIE",
+    "description": "If you earned a cookie, congratulations, you deserved it! Or you bought it, but why would you do that? These cookies never go bad. Seriously, like, never.",
+    "official_site": "https://twitter.com/DeFiDude",
+    "abi": "openzeppelin.abi.json",
+    "image": {
+      "thumb": "img/contract/cookie/thumb.png",
+      "small": "img/contract/cookie/small.png",
+      "large": "img/contract/cookie/large.png"
+    },
+    "contract": {
+      "contract_address": "0xb4E2342bd1FC099A1BE79B235b3a1dE3B17266fE",
+      "standard": "openzeppelin"
+    }
+  }
+  
